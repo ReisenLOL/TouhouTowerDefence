@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -6,12 +9,10 @@ public class WaveManager : MonoBehaviour
     public class SpawnAndMovement
     {
         public Transform spawnPoint;
-        public Transform[] waypoints;
+        public List<Transform> waypoints = new();
     }
-    public SpawnAndMovement[] spawns;
-    
     [System.Serializable]
-    public class EnemySpawn
+    public class EnemyGroup
     {
         public SpawnAndMovement spawn;
         public Enemy enemyToSpawn;
@@ -21,25 +22,49 @@ public class WaveManager : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        public EnemySpawn[] enemies;
+        public EnemyGroup[] enemies;
         public bool isBossWave;
     }
 
     public Wave[] waveList; //THIS IS INSANE. 3 NESTED CLASSES.
+    public int currentWave;
+    private void Start()
+    {
+        foreach (Wave wave in waveList)
+        {
+            foreach (EnemyGroup enemyGroup in wave.enemies)
+            {
+                enemyGroup.spawn.waypoints = enemyGroup.spawn.spawnPoint.GetComponentsInChildren<Transform>().ToList();
+                enemyGroup.spawn.waypoints.RemoveAt(0);
+            }
+        }
+        SpawnWave(waveList[0]);
+    }
 
+    private void Update()
+    {
+        
+    }
+
+    public void DebugSpawnNextWave()
+    {
+        currentWave++;
+        SpawnWave(waveList[currentWave]);
+    }
     public void SpawnWave(Wave wave)
     {
-        foreach (EnemySpawn enemySpawn in wave.enemies)
+        foreach (EnemyGroup enemySpawn in wave.enemies)
         {
             for (int i = 0; i < enemySpawn.amountToSpawn; i++)
             {
                 SpawnEnemy(enemySpawn);
             }
         }
-    }
-    public void SpawnEnemy(EnemySpawn enemyBeingSpawned)
+    }   
+    public void SpawnEnemy(EnemyGroup enemyBeingSpawned)
     {
         Enemy newEnemy = Instantiate(enemyBeingSpawned.enemyToSpawn);
         newEnemy.selectedSpawnAndMovement = enemyBeingSpawned.spawn;
+        newEnemy.transform.position = enemyBeingSpawned.spawn.spawnPoint.position;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2010483278330885321}
   - component: {fileID: 5180126692649479671}
   - component: {fileID: 2338254944154386048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Marisa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,3 +181,5 @@ MonoBehaviour:
   range: 0
   damage: 0
   fireRate: 0
+  isCliffTower: 0
+  blockAmount: 0

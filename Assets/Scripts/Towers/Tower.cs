@@ -8,11 +8,16 @@ public class Tower : Unit
     public string towerID;
 
     // [stats]
-    public float range; //change this to a range shape later
+    public TowerRangeCollider range;
     public float damage;
     public float fireRate;
     public bool isCliffTower;
+    public bool canDetectAir;
     public int blockAmount;
+    
+    // [cache]
+    public List<Enemy> enemiesInRange = new();
+    public List<Enemy> currentlyBlocking = new();
     
     [ContextMenu("Force Kill")]
     protected override void OnKill()
@@ -30,5 +35,13 @@ public class Tower : Unit
             }
         }
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (Enemy enemy in currentlyBlocking)
+        {
+            enemy.canMove = true;
+        }
     }
 }
