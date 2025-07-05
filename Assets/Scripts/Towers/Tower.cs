@@ -11,6 +11,8 @@ public class Tower : Unit
     public float range; //change this to a range shape later
     public float damage;
     public float fireRate;
+    public bool isCliffTower;
+    public int blockAmount;
     
     [ContextMenu("Force Kill")]
     protected override void OnKill()

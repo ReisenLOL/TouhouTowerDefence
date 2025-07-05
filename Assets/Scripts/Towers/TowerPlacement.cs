@@ -53,6 +53,7 @@ public class TowerPlacement : MonoBehaviour
             placeholderTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));;
             if (Input.GetMouseButtonDown(0))
             {
+                //add a check for cliff towers later.
                 Destroy(placeholderTower);
                 Tower newTower = Instantiate(selectedTower.tower, towersFolder);
                 newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
