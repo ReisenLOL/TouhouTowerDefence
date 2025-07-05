@@ -5,10 +5,17 @@ using UnityEngine;
 public class TowerToPlace : MonoBehaviour
 {
     public Tower tower;
+    public Sprite portrait;
+    public bool isPlaced;
     public int cost;
     public float cooldown;
     public bool onCooldown;
-    private float currentCooldownTimer;
+    public float currentCooldownTimer;
+
+    private void Start()
+    {
+        currentCooldownTimer = cooldown;
+    }
 
     private void Update()
     {

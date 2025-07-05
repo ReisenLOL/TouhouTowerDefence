@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5180126692649479671}
   - component: {fileID: 2338254944154386048}
   m_Layer: 0
-  m_Name: Reimu
+  m_Name: Marisa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1667903007603907112, guid: 3da4b7b1399538785b8f220c21f3cacd, type: 3}
+  m_Sprite: {fileID: -2668729246912426200, guid: 0672e2e31074d593ea4a111a9bdbae53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,13 +128,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7868421, y: 0.99473685}
+    oldSize: {x: 0.75405407, y: 1.0851351}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7868421, y: 0.99473685}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &5180126692649479671
 Rigidbody2D:
@@ -177,8 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  towerID: Marisa
   range: 0
   damage: 0
   fireRate: 0
-  isPlaced: 0
-  towerID: Reimu

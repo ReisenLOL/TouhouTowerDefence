@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class Tower : Unit
 {
+    // [identification]
+    public string towerID;
+
     // [stats]
     public float range; //change this to a range shape later
     public float damage;
     public float fireRate;
-
     
-    // [placement stuff]
-    public bool isPlaced;
-    
-    // [identification]
-    public string towerID;
-    
+    [ContextMenu("Force Kill")]
     protected override void OnKill()
     {
         List<TowerToPlace> allTowers = FindFirstObjectByType<TowerPlacement>().availableTowers;
         foreach (TowerToPlace towerToPlace in allTowers)
         {
-            if (towerToPlace.tower == this)
+            
+            if (towerToPlace.tower.towerID == towerID)
             {
+                towerToPlace.isPlaced = false;
                 towerToPlace.onCooldown = true;
+                FindFirstObjectByType<TowerPlacement>().RebuildTowerSelection();
                 break;
             }
         }
