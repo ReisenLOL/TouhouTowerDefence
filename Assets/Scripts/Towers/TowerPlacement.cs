@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class TowerPlacement : MonoBehaviour
     private Grid placementGrid;
     private Transform towersFolder;
     
-    // [placement stuff]
+    [Header("[PLACEMENT STUFF]")]
     public List<TowerToPlace> towersToAdd; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
     public List<TowerToPlace> availableTowers;
     public TowerToPlace selectedTower;
@@ -22,9 +23,15 @@ public class TowerPlacement : MonoBehaviour
     private GameObject placeholderRange;
     private bool createPlaceholder;
     
-    // [placement UI]
+    [Header("[PLACEMENT UI]")]
     public Transform placementFrame;
     public Button buttonTemplate;
+
+    [Header("Resources")] 
+    public int currentPower;
+    public float powerGenerationRate;
+    private float currentPowerGenerationTime;
+    public TextMeshProUGUI powerNumberUI;
     
     private void Start()
     {
@@ -41,6 +48,13 @@ public class TowerPlacement : MonoBehaviour
 
     private void Update()
     {
+        currentPowerGenerationTime += Time.deltaTime;
+        if (currentPowerGenerationTime >= powerGenerationRate)
+        {
+            currentPowerGenerationTime -= powerGenerationRate;
+            currentPower++;
+            powerNumberUI.text = "P " + currentPower;
+        }
         if (isPlacing)
         {
             if (createPlaceholder)
@@ -85,6 +99,7 @@ public class TowerPlacement : MonoBehaviour
                     addRange.transform.rotation = Quaternion.Euler(rotationAmount);
                     addRange.thisTower = newTower;
                     RebuildTowerSelection();
+                    currentPower -= selectedTower.powerCost;
                     isPlacing = false;
                 }
             }
@@ -109,6 +124,7 @@ public class TowerPlacement : MonoBehaviour
                 Button newButton = Instantiate(buttonTemplate, placementFrame);
                 newButton.gameObject.SetActive(true);
                 newButton.transform.Find("TowerImage").GetComponent<Image>().sprite = towerToPlace.portrait;
+                newButton.transform.Find("CostPanel").GetComponentInChildren<TextMeshProUGUI>().text = "P " + towerToPlace.powerCost;
                 newButton.GetComponent<TowerButtonUI>().thisTower = towerToPlace;
                 newButton.onClick.AddListener(() => SetPlacement(towerToPlace));   
             }
@@ -116,7 +132,7 @@ public class TowerPlacement : MonoBehaviour
     }
     public void SetPlacement(TowerToPlace towerChosen) //YOU'RE A FUCKING DU- no i should be more kind. c:
     {
-        if (towerChosen.onCooldown || towerChosen.isPlaced) //i stand corrected, you really are a fucking dumbass, sylvia.
+        if (towerChosen.onCooldown || towerChosen.isPlaced || currentPower < towerChosen.powerCost) //i stand corrected, you really are a fucking dumbass, sylvia.
         {
             return;
         }

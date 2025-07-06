@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class WaveManager : MonoBehaviour
 
     public Wave[] waveList; //THIS IS INSANE. 3 NESTED CLASSES.
     public int currentWave;
+    public float timeBetweenEnemySpawns;
     private void Start()
     {
         foreach (Wave wave in waveList)
@@ -55,16 +57,20 @@ public class WaveManager : MonoBehaviour
     {
         foreach (EnemyGroup enemySpawn in wave.enemies)
         {
-            for (int i = 0; i < enemySpawn.amountToSpawn; i++)
-            {
-                SpawnEnemy(enemySpawn);
-            }
+            StartCoroutine(SpawnEnemy(enemySpawn));
         }
     }   
-    public void SpawnEnemy(EnemyGroup enemyBeingSpawned)
+    IEnumerator SpawnEnemy(EnemyGroup enemyBeingSpawned)
     {
-        Enemy newEnemy = Instantiate(enemyBeingSpawned.enemyToSpawn);
-        newEnemy.selectedSpawnAndMovement = enemyBeingSpawned.spawn;
-        newEnemy.transform.position = enemyBeingSpawned.spawn.spawnPoint.position;
+        int currentEnemyNumber = 0;
+        while (currentEnemyNumber < enemyBeingSpawned.amountToSpawn)
+        {
+            Enemy newEnemy = Instantiate(enemyBeingSpawned.enemyToSpawn);
+            newEnemy.selectedSpawnAndMovement = enemyBeingSpawned.spawn;
+            newEnemy.transform.position = enemyBeingSpawned.spawn.spawnPoint.position;
+            currentEnemyNumber++;
+            yield return new WaitForSeconds(timeBetweenEnemySpawns);
+        }
+        yield return null;
     }
 }

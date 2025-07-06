@@ -1,23 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Tower : Unit
 {
-    // [identification]
+    [Header("[IDENTIFICATION]")]
     public string towerID;
-
-    // [stats]
+    
+    [Header("[STATS]")]
     public TowerRangeCollider range;
     public float damage;
     public float fireRate;
+    public int blockAmount;
     public bool isCliffTower;
     public bool canDetectAir;
-    public int blockAmount;
     
-    // [cache]
+    [Header("[CACHE]")]
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
+    public Enemy closestEnemy;
+    private float currentFiringTime; 
     
     [ContextMenu("Force Kill")]
     protected override void OnKill()
@@ -37,7 +40,30 @@ public class Tower : Unit
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    protected virtual void Update()
+    {
+        //since were having like different tower classes, the update function might be different on each one.
+        currentFiringTime += Time.deltaTime;
+        if (currentFiringTime >= fireRate)
+        {
+            foreach (Enemy foundEnemy in enemiesInRange.ToList())
+            {
+                if (!foundEnemy)
+                {
+                    enemiesInRange.Remove(foundEnemy);
+                    continue;
+                }
+                if (!closestEnemy || Vector3.Distance(transform.position, foundEnemy.transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+                {
+                    closestEnemy = foundEnemy;
+                }
+                closestEnemy.TakeDamage(damage);
+                currentFiringTime = 0;
+            }
+        }
+    }
+
+    protected void OnDestroy()
     {
         foreach (Enemy enemy in currentlyBlocking)
         {

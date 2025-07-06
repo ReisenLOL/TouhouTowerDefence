@@ -47,7 +47,7 @@ MonoBehaviour:
   tower: {fileID: 2338254944154386048, guid: cb164d1276b18ab30bddac0927e3f879, type: 3}
   portrait: {fileID: -2668729246912426200, guid: 0672e2e31074d593ea4a111a9bdbae53, type: 3}
   isPlaced: 0
-  cost: 0
+  powerCost: 10
   cooldown: 60
   onCooldown: 0
   currentCooldownTimer: 0

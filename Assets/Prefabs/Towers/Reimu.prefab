@@ -225,10 +225,12 @@ MonoBehaviour:
   maxHealth: 100
   towerID: Reimu
   range: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
-  damage: 0
-  fireRate: 0
+  damage: 10
+  fireRate: 1
+  blockAmount: 2
+  powerCost: 100
   isCliffTower: 0
   canDetectAir: 0
-  blockAmount: 2
   enemiesInRange: []
   currentlyBlocking: []
+  closestEnemy: {fileID: 0}

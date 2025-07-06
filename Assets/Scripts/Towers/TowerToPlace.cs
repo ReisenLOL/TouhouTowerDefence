@@ -7,7 +7,7 @@ public class TowerToPlace : MonoBehaviour
     public Tower tower;
     public Sprite portrait;
     public bool isPlaced;
-    public int cost;
+    public int powerCost;
     public float cooldown;
     public bool onCooldown;
     public float currentCooldownTimer;

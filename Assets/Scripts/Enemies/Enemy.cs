@@ -3,31 +3,33 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    // [stats]
+    [Header("[STATS]")]
     public float damage;
+    public float fireRate;
     public float moveSpeed;
     public bool isAir;
     
-    // [movement]
+    [Header("[MOVEMENT]")]
     public Rigidbody2D rb;
     public int currentWaypoint;
     public WaveManager.SpawnAndMovement selectedSpawnAndMovement;
     public bool canMove = true;
     public Vector2 moveLocation;
 
-    private void Start()
+    protected float currentFiringTime;
+
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (canMove)
         {
             moveLocation = (selectedSpawnAndMovement.waypoints[currentWaypoint].transform.position - transform.position).normalized;
         }
     }
-
     private void FixedUpdate()
     {
         if (canMove)
@@ -39,5 +41,8 @@ public class Enemy : Unit
             rb.linearVelocity = Vector2.zero;
         }
     }
-    
+    protected override void OnKill()
+    {
+        Destroy(gameObject);
+    }
 }
