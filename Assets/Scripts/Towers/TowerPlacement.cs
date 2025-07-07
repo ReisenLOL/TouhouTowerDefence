@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class TowerPlacement : MonoBehaviour
 {
-    // [caching]
+    [Header("[CACHE]")] 
+    [SerializeField] private GameObject dragHandle;
+    [SerializeField] private LineRenderer dragLine;
     private Camera cam;
     private Grid placementGrid;
     private Transform towersFolder;
@@ -126,9 +128,15 @@ public class TowerPlacement : MonoBehaviour
             }
             if (selectingRotation)
             {
+                dragHandle.SetActive(true);
+                dragHandle.transform.position = placeholderRange.transform.position;
                 Time.timeScale = 0.1f;
                 if (Input.GetMouseButton(0))
                 {
+                    dragHandle.transform.position = worldPos;
+                    dragLine.gameObject.SetActive(true);
+                    dragLine.SetPosition(0, placeholderRange.transform.position);
+                    dragLine.SetPosition(1, dragHandle.transform.position);
                     Vector2 direction = worldPos - rangeToRotate.position;
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                     placeholderRange.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -140,6 +148,8 @@ public class TowerPlacement : MonoBehaviour
                 {
                     Time.timeScale = 1;
                     Destroy(placeholderRange);
+                    dragLine.gameObject.SetActive(false);
+                    dragHandle.SetActive(false);
                     selectingRotation = false;
                     isPlacing = false;
                     showTowerInfo.canShowUI = true;
@@ -149,6 +159,8 @@ public class TowerPlacement : MonoBehaviour
             {
                 Time.timeScale = 1;
                 Destroy(placeholderTower);
+                dragLine.gameObject.SetActive(false);
+                dragHandle.SetActive(false);
                 selectingPosition = false;
                 selectingRotation = false;
                 isPlacing = false;

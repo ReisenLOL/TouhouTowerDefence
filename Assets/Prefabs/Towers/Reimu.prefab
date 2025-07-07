@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5574411014608529422}
   - component: {fileID: 6963426794949026345}
-  - component: {fileID: 2338254944154386048}
+  - component: {fileID: 1346467353842122242}
   m_Layer: 8
   m_Name: Reimu
   m_TagString: Untagged
@@ -286,7 +286,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2338254944154386048
+--- !u!114 &1346467353842122242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2731465358017235426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fce2d81f42a0125f873d2af9d96b83a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e3e5551e24a5cc61afd30b4f27d877a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -310,6 +310,8 @@ MonoBehaviour:
   enemiesInRange: []
   currentlyBlocking: []
   closestEnemy: {fileID: 0}
+  showTowerInfo: {fileID: 0}
+  projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
 --- !u!1 &4586179377811539235
 GameObject:
   m_ObjectHideFlags: 0

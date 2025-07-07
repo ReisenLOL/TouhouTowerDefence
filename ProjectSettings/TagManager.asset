@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Cliff
   - Path
+  - Enemy
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Enemy
   - TowerRange
   - EnemyRange
-  - 
+  - Projectile
   - 
   - 
   - 

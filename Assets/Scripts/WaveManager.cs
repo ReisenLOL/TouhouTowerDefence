@@ -30,16 +30,20 @@ public class WaveManager : MonoBehaviour
     public Wave[] waveList; //THIS IS INSANE. 3 NESTED CLASSES.
     public int currentWave;
     public float timeBetweenEnemySpawns;
+    private GameManager gameManager;
     private void Start()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
         foreach (Wave wave in waveList)
         {
             foreach (EnemyGroup enemyGroup in wave.enemies)
             {
                 enemyGroup.spawn.waypoints = enemyGroup.spawn.spawnPoint.GetComponentsInChildren<Transform>().ToList();
                 enemyGroup.spawn.waypoints.RemoveAt(0);
+                gameManager.totalEnemyCount += enemyGroup.amountToSpawn;
             }
         }
+        gameManager.UpdateEnemyCountUI();
         StartCoroutine(SpawnWave(waveList[currentWave]));
     }
 

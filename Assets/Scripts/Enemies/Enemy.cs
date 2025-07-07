@@ -16,11 +16,14 @@ public class Enemy : Unit
     public bool canMove = true;
     public Vector2 moveLocation;
 
+    // [CACHE]
     protected float currentFiringTime;
+    private GameManager gameManager;
 
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     protected virtual void Update()
@@ -44,5 +47,7 @@ public class Enemy : Unit
     protected override void OnKill()
     {
         Destroy(gameObject);
+        gameManager.currentEnemyCount++;
+        gameManager.UpdateEnemyCountUI();
     }
 }

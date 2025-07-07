@@ -20,7 +20,7 @@ public class Tower : Unit
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
     public Enemy closestEnemy;
-    private float currentFiringTime;
+    protected float currentFiringTime;
     private Transform healthBarUI;
     public ShowTowerInfo showTowerInfo;
 
