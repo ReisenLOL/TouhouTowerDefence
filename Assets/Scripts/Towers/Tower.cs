@@ -20,8 +20,22 @@ public class Tower : Unit
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
     public Enemy closestEnemy;
-    private float currentFiringTime; 
-    
+    private float currentFiringTime;
+    private Transform healthBarUI;
+    public ShowTowerInfo showTowerInfo;
+
+
+    protected virtual void Start()
+    {
+        healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
+        showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
+    }
+
+    private void OnMouseDown()
+    {
+        showTowerInfo.ShowTowerInfoUI(this);
+    }
+
     [ContextMenu("Force Kill")]
     protected override void OnKill()
     {
@@ -40,6 +54,15 @@ public class Tower : Unit
         Destroy(gameObject);
     }
 
+    public override void TakeDamage(float damageTaken)
+    {
+        base.TakeDamage(damageTaken);
+        UpdateHealthBar();
+    }
+    private void UpdateHealthBar()
+    {
+        healthBarUI.localScale = new Vector3(health/maxHealth, healthBarUI.localScale.y);
+    }
     protected virtual void Update()
     {
         //since were having like different tower classes, the update function might be different on each one.

@@ -5,7 +5,7 @@ public class Unit : MonoBehaviour
     public float health;
     public float maxHealth;
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)

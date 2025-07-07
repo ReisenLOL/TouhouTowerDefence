@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91bf3b75b1508515b5d1b2856e77b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisTower: {fileID: 0}
   showRange: {fileID: 2954457162643733835}
 --- !u!1 &2954457162643733835
 GameObject:

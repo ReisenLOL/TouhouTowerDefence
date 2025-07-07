@@ -16,6 +16,7 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private float timeUntilRotation;
     private float currentTimeUntilRotation;
     private bool waitForRotation;
+    private ShowTowerInfo showTowerInfo;
     
     [Header("[PLACEMENT STUFF]")]
     public List<TowerToPlace> towersToAdd; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
@@ -42,6 +43,7 @@ public class TowerPlacement : MonoBehaviour
     {
         towersFolder = GameObject.Find("TowersFolder").transform;
         placementGrid = FindFirstObjectByType<Grid>();
+        showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         cam = Camera.main;
         foreach (TowerToPlace towerToPlace in towersToAdd)
         {
@@ -67,7 +69,10 @@ public class TowerPlacement : MonoBehaviour
                 placeholderTower = Instantiate(selectedTower.tower.gameObject);
                 placeholderTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
                 placeholderTower.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-                Destroy(placeholderTower.GetComponentInChildren<TowerBlockingCollision>().gameObject);
+                if (placeholderTower.GetComponentInChildren<TowerBlockingCollision>())
+                {
+                    Destroy(placeholderTower.GetComponentInChildren<TowerBlockingCollision>().gameObject);   
+                }
                 foreach (MonoBehaviour script in placeholderTower.GetComponents<MonoBehaviour>())
                 {
                     Destroy(script);
@@ -121,6 +126,7 @@ public class TowerPlacement : MonoBehaviour
             }
             if (selectingRotation)
             {
+                Time.timeScale = 0.1f;
                 if (Input.GetMouseButton(0))
                 {
                     Vector2 direction = worldPos - rangeToRotate.position;
@@ -132,15 +138,21 @@ public class TowerPlacement : MonoBehaviour
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
+                    Time.timeScale = 1;
                     Destroy(placeholderRange);
                     selectingRotation = false;
                     isPlacing = false;
+                    showTowerInfo.canShowUI = true;
                 }
             }
             if (Input.GetMouseButtonDown(1))
             {
+                Time.timeScale = 1;
                 Destroy(placeholderTower);
+                selectingPosition = false;
+                selectingRotation = false;
                 isPlacing = false;
+                showTowerInfo.canShowUI = true;
             }
         }
     }
@@ -174,6 +186,7 @@ public class TowerPlacement : MonoBehaviour
         selectingPosition = true;
         createPlaceholder = true;
         isPlacing = true;
+        showTowerInfo.canShowUI = false;
     }
 
     private Vector3 SnapToCardinalDirection(Transform tower)
