@@ -40,7 +40,7 @@ public class WaveManager : MonoBehaviour
                 enemyGroup.spawn.waypoints.RemoveAt(0);
             }
         }
-        SpawnWave(waveList[0]);
+        StartCoroutine(SpawnWave(waveList[currentWave]));
     }
 
     private void Update()
@@ -51,26 +51,25 @@ public class WaveManager : MonoBehaviour
     public void DebugSpawnNextWave()
     {
         currentWave++;
-        SpawnWave(waveList[currentWave]);
+        StartCoroutine(SpawnWave(waveList[currentWave]));
     }
-    public void SpawnWave(Wave wave)
+    IEnumerator SpawnWave(Wave wave)
     {
-        foreach (EnemyGroup enemySpawn in wave.enemies)
+        int currentEnemyGroup = 0;
+        while (currentEnemyGroup < wave.enemies.Length)
         {
-            StartCoroutine(SpawnEnemy(enemySpawn));
-        }
-    }   
-    IEnumerator SpawnEnemy(EnemyGroup enemyBeingSpawned)
-    {
-        int currentEnemyNumber = 0;
-        while (currentEnemyNumber < enemyBeingSpawned.amountToSpawn)
-        {
-            Enemy newEnemy = Instantiate(enemyBeingSpawned.enemyToSpawn);
-            newEnemy.selectedSpawnAndMovement = enemyBeingSpawned.spawn;
-            newEnemy.transform.position = enemyBeingSpawned.spawn.spawnPoint.position;
-            currentEnemyNumber++;
+            int currentEnemyNumber = 0;
+            while (currentEnemyNumber < wave.enemies[currentEnemyGroup].amountToSpawn)
+            {
+                Enemy newEnemy = Instantiate(wave.enemies[currentEnemyGroup].enemyToSpawn);
+                newEnemy.selectedSpawnAndMovement = wave.enemies[currentEnemyGroup].spawn;
+                newEnemy.transform.position = wave.enemies[currentEnemyGroup].spawn.spawnPoint.position;
+                currentEnemyNumber++;
+                yield return new WaitForSeconds(timeBetweenEnemySpawns);
+            }
+            currentEnemyGroup++;
             yield return new WaitForSeconds(timeBetweenEnemySpawns);
         }
         yield return null;
-    }
+    }   
 }

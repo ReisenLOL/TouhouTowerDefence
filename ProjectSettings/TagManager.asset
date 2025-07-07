@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Cliff
+  - Path
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - Waypoint
@@ -16,7 +18,7 @@ TagManager:
   - Tower
   - Enemy
   - TowerRange
-  - 
+  - EnemyRange
   - 
   - 
   - 

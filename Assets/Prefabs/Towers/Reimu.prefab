@@ -78,7 +78,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7, y: 1}
+  m_Size: {x: 0.7, y: 0.8}
   m_EdgeRadius: 0
 --- !u!50 &2942856605665041141
 Rigidbody2D:
@@ -228,7 +228,6 @@ MonoBehaviour:
   damage: 10
   fireRate: 1
   blockAmount: 2
-  powerCost: 100
   isCliffTower: 0
   canDetectAir: 0
   enemiesInRange: []

@@ -10,6 +10,12 @@ public class TowerPlacement : MonoBehaviour
     private Camera cam;
     private Grid placementGrid;
     private Transform towersFolder;
+    private Transform towerToRotate;
+    private Transform rangeToRotate; 
+    //THIS IS SO FUCKING STUPID BUT IT'S ALL I CAN THINK OF AND IT WORKS.
+    [SerializeField] private float timeUntilRotation;
+    private float currentTimeUntilRotation;
+    private bool waitForRotation;
     
     [Header("[PLACEMENT STUFF]")]
     public List<TowerToPlace> towersToAdd; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
@@ -18,7 +24,6 @@ public class TowerPlacement : MonoBehaviour
     private bool isPlacing;
     private bool selectingPosition;
     private bool selectingRotation;
-    private Vector3 rotationAmount;
     private GameObject placeholderTower;
     private GameObject placeholderRange;
     private bool createPlaceholder;
@@ -59,15 +64,10 @@ public class TowerPlacement : MonoBehaviour
         {
             if (createPlaceholder)
             {
-                rotationAmount = Vector3.zero;
                 placeholderTower = Instantiate(selectedTower.tower.gameObject);
                 placeholderTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
-                placeholderRange = Instantiate(placeholderTower.GetComponent<Tower>().range.showRange.gameObject, placeholderTower.transform);
-                placeholderRange.SetActive(true);
-                foreach (MonoBehaviour script in placeholderRange.GetComponents<MonoBehaviour>())
-                {
-                    Destroy(script);
-                }
+                placeholderTower.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                Destroy(placeholderTower.GetComponentInChildren<TowerBlockingCollision>().gameObject);
                 foreach (MonoBehaviour script in placeholderTower.GetComponents<MonoBehaviour>())
                 {
                     Destroy(script);
@@ -75,31 +75,65 @@ public class TowerPlacement : MonoBehaviour
                 createPlaceholder = false;
             }
             Vector3 worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,cam.nearClipPlane + 10));
-            placeholderTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
-            if (Input.GetKeyDown(KeyCode.R))
+            if (placeholderTower)
             {
-                // i'll make the mouse drag way later.
-                if (rotationAmount.z >= 360)
-                {
-                    rotationAmount.z = 0;
-                }
-                rotationAmount.z += 90;
-                placeholderRange.transform.rotation = Quaternion.Euler(rotationAmount);
+                placeholderTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
             }
             if (selectingPosition)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    //add a check for cliff towers later.
-                    Destroy(placeholderTower);
+                    RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f, LayerMask.GetMask("Terrain")); //i don't remember layermasks being that way.
+                    if (selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Path") || !selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Cliff") || !hit)
+                    {
+                        return;
+                    }
                     Tower newTower = Instantiate(selectedTower.tower, towersFolder);
+                    placeholderRange = Instantiate(newTower.range.showRange.gameObject, placeholderTower.transform);
+                    placeholderRange.SetActive(true);
+                    foreach (MonoBehaviour script in placeholderRange.GetComponents<MonoBehaviour>())
+                    {
+                        Destroy(script);
+                    }
+                    placeholderRange.transform.SetParent(newTower.transform);
+                    placeholderRange.transform.position = newTower.transform.position;
+                    Destroy(placeholderTower);
                     newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
                     selectedTower.isPlaced = true;
-                    TowerRangeCollider addRange = Instantiate(selectedTower.tower.range, newTower.transform);
-                    addRange.transform.rotation = Quaternion.Euler(rotationAmount);
+                    TowerRangeCollider addRange = Instantiate(selectedTower.tower.range, newTower.transform); ;
                     addRange.thisTower = newTower;
+                    rangeToRotate = addRange.transform; //also add rotation of towers ONCE YOU CAN DRAW.
                     RebuildTowerSelection();
                     currentPower -= selectedTower.powerCost;
+                    selectingPosition = false;
+                    waitForRotation = true;
+                }
+            }
+
+            if (waitForRotation)
+            {
+                currentTimeUntilRotation += Time.deltaTime;
+                if (currentTimeUntilRotation >= timeUntilRotation)
+                {
+                    selectingRotation = true;
+                    currentTimeUntilRotation = 0;
+                }
+            }
+            if (selectingRotation)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    Vector2 direction = worldPos - rangeToRotate.position;
+                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    placeholderRange.transform.rotation = Quaternion.Euler(0, 0, angle);
+                    placeholderRange.transform.rotation = Quaternion.Euler(SnapToCardinalDirection(rangeToRotate));
+                    rangeToRotate.rotation = Quaternion.Euler(0, 0, angle);
+                    rangeToRotate.rotation = Quaternion.Euler(SnapToCardinalDirection(rangeToRotate));
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    Destroy(placeholderRange);
+                    selectingRotation = false;
                     isPlacing = false;
                 }
             }
@@ -140,5 +174,12 @@ public class TowerPlacement : MonoBehaviour
         selectingPosition = true;
         createPlaceholder = true;
         isPlacing = true;
+    }
+
+    private Vector3 SnapToCardinalDirection(Transform tower)
+    {
+        float currentAngle = tower.eulerAngles.z;
+        float snappedAngle = MathF.Round(currentAngle/90f) * 90f;
+        return new Vector3(0, 0, snappedAngle);
     }
 }
