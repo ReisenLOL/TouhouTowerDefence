@@ -12,7 +12,7 @@ public class RangedTower : Tower
         {
             foreach (Enemy foundEnemy in enemiesInRange.ToList())
             {
-                if (!foundEnemy)
+                if (!foundEnemy || foundEnemy.isDying)
                 {
                     enemiesInRange.Remove(foundEnemy);
                     continue;

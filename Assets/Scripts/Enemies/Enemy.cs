@@ -14,12 +14,15 @@ public class Enemy : Unit
     public int currentWaypoint;
     public WaveManager.SpawnAndMovement selectedSpawnAndMovement;
     public bool canMove = true;
+    public bool isDying;
     public Vector2 moveLocation;
     protected float currentFiringTime;
+    private Animator animator;
     private GameManager gameManager;
 
     protected virtual void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindFirstObjectByType<GameManager>();
     }
@@ -44,8 +47,17 @@ public class Enemy : Unit
     }
     protected override void OnKill()
     {
-        Destroy(gameObject);
+        isDying = true;
         gameManager.currentEnemyCount++;
         gameManager.UpdateEnemyCountUI();
+        if (animator)
+        {
+            animator.Play("Death Animation");
+            Destroy(gameObject, 1.6f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

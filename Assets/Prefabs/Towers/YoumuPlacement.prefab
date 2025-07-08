@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 4000866538924319723, guid: 351b096790dd32f998a7a32887906fb8, type: 3}
-  portrait: {fileID: 7110355193103126144, guid: 349c8423cd88f4902bd71a2444e01202, type: 3}
+  portrait: {fileID: 1617840469300345179, guid: 349c8423cd88f4902bd71a2444e01202, type: 3}
   isPlaced: 0
   powerCost: 10
   cooldown: 60

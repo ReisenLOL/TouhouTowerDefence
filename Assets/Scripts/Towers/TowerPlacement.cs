@@ -78,7 +78,7 @@ public class TowerPlacement : MonoBehaviour
                 CreatePlaceholderTower();
                 createPlaceholder = false;
             }
-            worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,cam.nearClipPlane + -cam.nearClipPlane));
+            worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
             if (placeholderTower)
             {
                 placeholderTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
@@ -111,7 +111,7 @@ public class TowerPlacement : MonoBehaviour
 
     private void RotateTower()
     {
-        newDragHandle.transform.position = placeholderRange.transform.position;
+
         Time.timeScale = 0.1f;
         if (Input.GetMouseButton(0))
         {
@@ -162,12 +162,16 @@ public class TowerPlacement : MonoBehaviour
         selectingPosition = false;
         waitForRotation = true;
         newDragHandle = Instantiate(dragHandle);
+        newDragHandle.transform.position = placeholderRange.transform.position;
         newDragLine = Instantiate(dragLine);
     }
     private void StopPlacement()
     {
         Time.timeScale = 1;
-        Destroy(placeholderRange);
+        if (placeholderRange)
+        {
+            Destroy(placeholderRange);   
+        }
         Destroy(placeholderTower);
         Destroy(newDragLine.gameObject);
         Destroy(newDragHandle);

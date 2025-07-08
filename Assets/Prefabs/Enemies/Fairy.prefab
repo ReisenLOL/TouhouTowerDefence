@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: -8331154986038024083}
   m_Layer: 9
   m_Name: Fairy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,6 +396,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 0}
     waypoints: []
   canMove: 1
+  isDying: 0
   moveLocation: {x: 0, y: 0}
   towersInRange: []
   closestTower: {fileID: 0}

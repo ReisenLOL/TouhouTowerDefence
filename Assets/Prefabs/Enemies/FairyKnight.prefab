@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8286435334993352473}
   m_Layer: 9
   m_Name: FairyKnight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 0}
     waypoints: []
   canMove: 1
+  isDying: 0
   moveLocation: {x: 0, y: 0}
 --- !u!1 &8168135004038561218
 GameObject:

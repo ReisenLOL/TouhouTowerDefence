@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 349c8423cd88f4902bd71a2444e01202
+guid: 3b9069ef9020376a6be382b33cd66698
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1617840469300345179
-    second: youmureal_0
+      213: 536074672613624645
+    second: youmurealconstruction_0
+  - first:
+      213: 883971457900760290
+    second: youmurealconstruction_1
+  - first:
+      213: 3886477025317208301
+    second: youmurealconstruction_2
+  - first:
+      213: 5975790937062267889
+    second: youmurealconstruction_3
+  - first:
+      213: -1686199082731104730
+    second: youmurealconstruction_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: youmureal_0
+      name: youmurealconstruction_0
       rect:
         serializedVersion: 2
-        x: 184
-        y: 16
-        width: 370
-        height: 713
+        x: 26
+        y: 526
+        width: 53
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b59f5ebc559b37610800000000000000
-      internalID: 1617840469300345179
+      spriteID: 54b08321315807700800000000000000
+      internalID: 536074672613624645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youmurealconstruction_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 547
+        width: 263
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec42c38b5f744c00800000000000000
+      internalID: 883971457900760290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youmurealconstruction_2
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 409
+        width: 62
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de0cfb9534a8fe530800000000000000
+      internalID: 3886477025317208301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youmurealconstruction_3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 286
+        width: 50
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fb589732364ee250800000000000000
+      internalID: 5975790937062267889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: youmurealconstruction_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 58
+        width: 253
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626193d3eda6998e0800000000000000
+      internalID: -1686199082731104730
       vertices: []
       indices: 
       edges: []
@@ -148,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      youmureal_0: 1617840469300345179
+      youmurealconstruction_0: 536074672613624645
+      youmurealconstruction_1: 883971457900760290
+      youmurealconstruction_2: 3886477025317208301
+      youmurealconstruction_3: 5975790937062267889
+      youmurealconstruction_4: -1686199082731104730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

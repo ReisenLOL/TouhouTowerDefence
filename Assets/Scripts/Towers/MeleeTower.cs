@@ -12,6 +12,10 @@ public class MeleeTower : Tower
             {
                 foreach (Enemy foundEnemy in enemiesInRange.ToList())
                 {
+                    if (!foundEnemy || foundEnemy.isDying)
+                    {
+                        enemiesInRange.Remove(foundEnemy);
+                    }
                     foundEnemy.TakeDamage(damage);
                     currentFiringTime = 0;
                 }
