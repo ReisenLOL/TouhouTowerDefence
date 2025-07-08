@@ -26,11 +26,11 @@ public class WaveManager : MonoBehaviour
         public EnemyGroup[] enemies;
         public bool isBossWave;
     }
-
     public Wave[] waveList; //THIS IS INSANE. 3 NESTED CLASSES.
     public int currentWave;
     public float timeBetweenEnemySpawns;
     private GameManager gameManager;
+    public Transform enemiesFolder;
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
@@ -65,7 +65,7 @@ public class WaveManager : MonoBehaviour
             int currentEnemyNumber = 0;
             while (currentEnemyNumber < wave.enemies[currentEnemyGroup].amountToSpawn)
             {
-                Enemy newEnemy = Instantiate(wave.enemies[currentEnemyGroup].enemyToSpawn);
+                Enemy newEnemy = Instantiate(wave.enemies[currentEnemyGroup].enemyToSpawn, enemiesFolder);
                 newEnemy.selectedSpawnAndMovement = wave.enemies[currentEnemyGroup].spawn;
                 newEnemy.transform.position = wave.enemies[currentEnemyGroup].spawn.spawnPoint.position;
                 currentEnemyNumber++;

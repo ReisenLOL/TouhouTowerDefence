@@ -15,8 +15,9 @@ public class Tower : Unit
     public int blockAmount;
     public bool isCliffTower;
     public bool canDetectAir;
-    
-    [Header("[CACHE]")]
+
+    [Header("[CACHE]")] 
+    public Animator animator;
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
     public Enemy closestEnemy;
@@ -29,11 +30,7 @@ public class Tower : Unit
     {
         healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
-    }
-
-    private void OnMouseDown()
-    {
-        showTowerInfo.ShowTowerInfoUI(this);
+        animator = GetComponentInChildren<Animator>();
     }
 
     [ContextMenu("Force Kill")]

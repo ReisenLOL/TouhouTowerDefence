@@ -9,14 +9,12 @@ public class Enemy : Unit
     public float moveSpeed;
     public bool isAir;
     
-    [Header("[MOVEMENT]")]
+    [Header("[CACHE]")]
     public Rigidbody2D rb;
     public int currentWaypoint;
     public WaveManager.SpawnAndMovement selectedSpawnAndMovement;
     public bool canMove = true;
     public Vector2 moveLocation;
-
-    // [CACHE]
     protected float currentFiringTime;
     private GameManager gameManager;
 

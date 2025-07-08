@@ -21,9 +21,13 @@ public class RangedTower : Tower
                 {
                     closestEnemy = foundEnemy;
                 }
-                closestEnemy.TakeDamage(damage);
-                FireProjectile(closestEnemy.transform.position);
-                currentFiringTime = 0;
+
+                if (closestEnemy)
+                {
+                    closestEnemy.TakeDamage(damage);
+                    FireProjectile(closestEnemy.transform.position);
+                    currentFiringTime = 0;   
+                }
             }
         }
     }

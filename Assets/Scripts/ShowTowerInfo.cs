@@ -29,6 +29,22 @@ public class ShowTowerInfo : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,cam.nearClipPlane + -cam.nearClipPlane));
+            RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f, LayerMask.GetMask("Tower"));
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.TryGetComponent(out Tower isTower))
+                {
+                    ShowTowerInfoUI(isTower);
+                }
+                else if (hit.collider.gameObject.TryGetComponent(out TowerBlockingCollision isMeleeTower))
+                {
+                    ShowTowerInfoUI(isMeleeTower.thisTower);
+                }
+            }
+        }
         if (movingCamera)
         {
             currentState += Time.deltaTime * cameraMoveSpeed;

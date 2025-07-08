@@ -9,11 +9,15 @@ public class TowerPlacement : MonoBehaviour
     [Header("[CACHE]")] 
     [SerializeField] private GameObject dragHandle;
     [SerializeField] private LineRenderer dragLine;
+    private GameObject newDragHandle;
+    private LineRenderer newDragLine;
     private Camera cam;
     private Grid placementGrid;
     private Transform towersFolder;
     private Transform towerToRotate;
-    private Transform rangeToRotate; 
+    private Transform rangeToRotate;
+    private Vector3 worldPos;
+    private Transform towerSprite;
     //THIS IS SO FUCKING STUPID BUT IT'S ALL I CAN THINK OF AND IT WORKS.
     [SerializeField] private float timeUntilRotation;
     private float currentTimeUntilRotation;
@@ -57,31 +61,24 @@ public class TowerPlacement : MonoBehaviour
 
     private void Update()
     {
-        currentPowerGenerationTime += Time.deltaTime;
-        if (currentPowerGenerationTime >= powerGenerationRate)
+        HandlePowerGeneration(); // is this what they call "code optimization"? no it isn't lol you just split the update function into more functions, but that's more readable so that's fine
+        HandlePlacement();
+    }
+
+    private void HandlePlacement()
+    {
+        if (!isPlacing)
         {
-            currentPowerGenerationTime -= powerGenerationRate;
-            currentPower++;
-            powerNumberUI.text = "P " + currentPower;
+            return;
         }
         if (isPlacing)
         {
             if (createPlaceholder)
             {
-                placeholderTower = Instantiate(selectedTower.tower.gameObject);
-                placeholderTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
-                placeholderTower.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-                if (placeholderTower.GetComponentInChildren<TowerBlockingCollision>())
-                {
-                    Destroy(placeholderTower.GetComponentInChildren<TowerBlockingCollision>().gameObject);   
-                }
-                foreach (MonoBehaviour script in placeholderTower.GetComponents<MonoBehaviour>())
-                {
-                    Destroy(script);
-                }
+                CreatePlaceholderTower();
                 createPlaceholder = false;
             }
-            Vector3 worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,cam.nearClipPlane + 10));
+            worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,cam.nearClipPlane + -cam.nearClipPlane));
             if (placeholderTower)
             {
                 placeholderTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
@@ -90,85 +87,130 @@ public class TowerPlacement : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f, LayerMask.GetMask("Terrain")); //i don't remember layermasks being that way.
-                    if (selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Path") || !selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Cliff") || !hit)
-                    {
-                        return;
-                    }
-                    Tower newTower = Instantiate(selectedTower.tower, towersFolder);
-                    placeholderRange = Instantiate(newTower.range.showRange.gameObject, placeholderTower.transform);
-                    placeholderRange.SetActive(true);
-                    foreach (MonoBehaviour script in placeholderRange.GetComponents<MonoBehaviour>())
-                    {
-                        Destroy(script);
-                    }
-                    placeholderRange.transform.SetParent(newTower.transform);
-                    placeholderRange.transform.position = newTower.transform.position;
-                    Destroy(placeholderTower);
-                    newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
-                    selectedTower.isPlaced = true;
-                    TowerRangeCollider addRange = Instantiate(selectedTower.tower.range, newTower.transform); ;
-                    addRange.thisTower = newTower;
-                    rangeToRotate = addRange.transform; //also add rotation of towers ONCE YOU CAN DRAW.
-                    RebuildTowerSelection();
-                    currentPower -= selectedTower.powerCost;
-                    selectingPosition = false;
-                    waitForRotation = true;
+                    PlaceTower();
                 }
             }
-
             if (waitForRotation)
             {
-                currentTimeUntilRotation += Time.deltaTime;
-                if (currentTimeUntilRotation >= timeUntilRotation)
-                {
-                    selectingRotation = true;
-                    currentTimeUntilRotation = 0;
-                }
+                RotationDelay();
             }
             if (selectingRotation)
             {
-                dragHandle.SetActive(true);
-                dragHandle.transform.position = placeholderRange.transform.position;
-                Time.timeScale = 0.1f;
-                if (Input.GetMouseButton(0))
-                {
-                    dragHandle.transform.position = worldPos;
-                    dragLine.gameObject.SetActive(true);
-                    dragLine.SetPosition(0, placeholderRange.transform.position);
-                    dragLine.SetPosition(1, dragHandle.transform.position);
-                    Vector2 direction = worldPos - rangeToRotate.position;
-                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                    placeholderRange.transform.rotation = Quaternion.Euler(0, 0, angle);
-                    placeholderRange.transform.rotation = Quaternion.Euler(SnapToCardinalDirection(rangeToRotate));
-                    rangeToRotate.rotation = Quaternion.Euler(0, 0, angle);
-                    rangeToRotate.rotation = Quaternion.Euler(SnapToCardinalDirection(rangeToRotate));
-                }
+                RotateTower();
                 if (Input.GetMouseButtonUp(0))
-                {
-                    Time.timeScale = 1;
-                    Destroy(placeholderRange);
-                    dragLine.gameObject.SetActive(false);
-                    dragHandle.SetActive(false);
-                    selectingRotation = false;
-                    isPlacing = false;
-                    showTowerInfo.canShowUI = true;
+                { 
+                    StopPlacement();
                 }
             }
             if (Input.GetMouseButtonDown(1))
             {
-                Time.timeScale = 1;
-                Destroy(placeholderTower);
-                dragLine.gameObject.SetActive(false);
-                dragHandle.SetActive(false);
-                selectingPosition = false;
-                selectingRotation = false;
-                isPlacing = false;
-                showTowerInfo.canShowUI = true;
+                StopPlacement();
             }
         }
     }
 
+    private void RotateTower()
+    {
+        newDragHandle.transform.position = placeholderRange.transform.position;
+        Time.timeScale = 0.1f;
+        if (Input.GetMouseButton(0))
+        {
+            newDragHandle.transform.position = worldPos;
+            newDragLine.SetPosition(0, placeholderRange.transform.position);
+            newDragLine.SetPosition(1, newDragHandle.transform.position);
+            Vector2 direction = worldPos - rangeToRotate.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            placeholderRange.transform.rotation = Quaternion.Euler(0, 0, angle);
+            placeholderRange.transform.rotation = Quaternion.Euler(SnapToCardinalDirection(rangeToRotate));
+            rangeToRotate.rotation = Quaternion.Euler(0, 0, angle);
+            rangeToRotate.rotation = Quaternion.Euler(SnapToCardinalDirection(rangeToRotate));
+            if (rangeToRotate.rotation.z == 0 || rangeToRotate.rotation.z == 360)
+            {
+                towerSprite.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            }
+            else
+            {
+                towerSprite.rotation = Quaternion.Euler(Vector3.zero);
+            }
+        }
+    }
+    private void PlaceTower()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f, LayerMask.GetMask("Terrain")); //i don't remember layermasks being that way.
+        if (selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Path") || !selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Cliff") || !hit)
+        {
+            return;
+        }
+        Tower newTower = Instantiate(selectedTower.tower, towersFolder);
+        placeholderRange = Instantiate(newTower.range.showRange.gameObject, placeholderTower.transform);
+        placeholderRange.SetActive(true);
+        foreach (MonoBehaviour script in placeholderRange.GetComponents<MonoBehaviour>())
+        {
+            Destroy(script);
+        }
+        placeholderRange.transform.SetParent(newTower.transform);
+        placeholderRange.transform.position = newTower.transform.position;
+        Destroy(placeholderTower);
+        newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
+        selectedTower.isPlaced = true;
+        TowerRangeCollider addRange = Instantiate(selectedTower.tower.range, newTower.transform); ;
+        addRange.thisTower = newTower;
+        rangeToRotate = addRange.transform; //also add rotation of towers ONCE YOU CAN DRAW.
+        RebuildTowerSelection();
+        towerSprite = newTower.transform.Find("Sprite").transform;
+        currentPower -= selectedTower.powerCost;
+        selectingPosition = false;
+        waitForRotation = true;
+        newDragHandle = Instantiate(dragHandle);
+        newDragLine = Instantiate(dragLine);
+    }
+    private void StopPlacement()
+    {
+        Time.timeScale = 1;
+        Destroy(placeholderRange);
+        Destroy(placeholderTower);
+        Destroy(newDragLine.gameObject);
+        Destroy(newDragHandle);
+        selectingPosition = false;
+        selectingRotation = false;
+        isPlacing = false;
+        showTowerInfo.canShowUI = true;
+    }
+    private void RotationDelay()
+    {
+        currentTimeUntilRotation += Time.deltaTime;
+        if (currentTimeUntilRotation >= timeUntilRotation)
+        {
+            selectingRotation = true;
+            waitForRotation = false;
+            currentTimeUntilRotation = 0;
+        }
+    }
+    private void HandlePowerGeneration()
+    {
+        currentPowerGenerationTime += Time.deltaTime;
+        if (currentPowerGenerationTime >= powerGenerationRate)
+        {
+            currentPowerGenerationTime -= powerGenerationRate;
+            currentPower++;
+            powerNumberUI.text = "P " + currentPower;
+        }
+    }
+    private void CreatePlaceholderTower()
+    {
+        placeholderTower = Instantiate(selectedTower.tower.gameObject);
+        //placeholderTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
+        placeholderTower.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        if (placeholderTower.GetComponentInChildren<TowerBlockingCollision>())
+        {
+            Destroy(placeholderTower.GetComponentInChildren<TowerBlockingCollision>().gameObject);   
+        }
+        foreach (MonoBehaviour script in placeholderTower.GetComponents<MonoBehaviour>())
+        {
+            Destroy(script);
+        }
+        createPlaceholder = false;
+    }
     public void RebuildTowerSelection()
     {
         foreach (Transform child in placementFrame)
@@ -190,7 +232,7 @@ public class TowerPlacement : MonoBehaviour
     }
     public void SetPlacement(TowerToPlace towerChosen) //YOU'RE A FUCKING DU- no i should be more kind. c:
     {
-        if (towerChosen.onCooldown || towerChosen.isPlaced || currentPower < towerChosen.powerCost) //i stand corrected, you really are a fucking dumbass, sylvia.
+        if (isPlacing || towerChosen.onCooldown || towerChosen.isPlaced || currentPower < towerChosen.powerCost) //i stand corrected, you really are a fucking dumbass, sylvia.
         {
             return;
         }

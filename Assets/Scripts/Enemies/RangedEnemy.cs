@@ -6,6 +6,7 @@ public class RangedEnemy : Enemy
 {
     public List<Tower> towersInRange;
     public Tower closestTower;
+    public MoveProjectile projectile;
 
     public float range;
     protected override void Start()
@@ -38,8 +39,14 @@ public class RangedEnemy : Enemy
                     closestTower = foundTower;
                 }
                 closestTower.TakeDamage(damage);
+                FireProjectile(closestTower.transform.position);
                 currentFiringTime = 0;
             }
         }
+    }
+    private void FireProjectile(Vector2 direction)
+    {
+        MoveProjectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        newProjectile.RotateToTarget(direction);
     }
 }

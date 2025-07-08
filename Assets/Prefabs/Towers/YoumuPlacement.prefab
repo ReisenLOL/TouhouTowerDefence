@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 856945744318788819}
   - component: {fileID: 2541345253646511569}
   m_Layer: 0
-  m_Name: MarisaPlacement
+  m_Name: YoumuPlacement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfd761b8fd4e8ab5bef8ca0bd1b025e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 3475580796332043495, guid: cb164d1276b18ab30bddac0927e3f879, type: 3}
-  portrait: {fileID: -2668729246912426200, guid: 0672e2e31074d593ea4a111a9bdbae53, type: 3}
+  tower: {fileID: 4000866538924319723, guid: 351b096790dd32f998a7a32887906fb8, type: 3}
+  portrait: {fileID: 7110355193103126144, guid: 349c8423cd88f4902bd71a2444e01202, type: 3}
   isPlaced: 0
   powerCost: 10
   cooldown: 60
