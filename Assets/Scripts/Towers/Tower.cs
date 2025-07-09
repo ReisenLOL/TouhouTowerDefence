@@ -15,6 +15,7 @@ public class Tower : Unit
     public int blockAmount;
     public bool isCliffTower;
     public bool canDetectAir;
+    public List<Spellcard> spellcardList = new();
 
     [Header("[CACHE]")] 
     public Animator animator;

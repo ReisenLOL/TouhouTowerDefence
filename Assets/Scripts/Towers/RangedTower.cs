@@ -4,7 +4,9 @@ using UnityEngine;
 public class RangedTower : Tower
 {
     public MoveProjectile projectile;
+    public enum TargettingModes {Focused, Scattered}
 
+    public TargettingModes currentTargettingMode = TargettingModes.Focused;
     protected override void Update()
     {
         currentFiringTime += Time.deltaTime;
