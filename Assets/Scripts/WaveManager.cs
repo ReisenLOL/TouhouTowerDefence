@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -73,6 +74,11 @@ public class WaveManager : MonoBehaviour
             }
             currentEnemyGroup++;
             yield return new WaitForSeconds(timeBetweenEnemySpawns);
+        }
+
+        if (wave == waveList[waveList.Length])
+        {
+            
         }
         yield return null;
     }   

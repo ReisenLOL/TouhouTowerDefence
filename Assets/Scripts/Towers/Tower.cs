@@ -9,12 +9,12 @@ public class Tower : Unit
     public string towerID;
     
     [Header("[STATS]")]
-    public TowerRangeCollider range;
-    public float damage;
-    public float fireRate;
-    public int blockAmount;
-    public bool isCliffTower;
-    public bool canDetectAir;
+    public TowerRangeCollider focusedRange;
+
+    public TowerRangeCollider scatteredRange;
+    public enum TargettingModes {Focused, Scattered}
+    public TargettingModes currentTargettingMode = TargettingModes.Focused;
+    public TowerStats stats;
     public List<Spellcard> spellcardList = new();
 
     [Header("[CACHE]")] 
@@ -65,7 +65,7 @@ public class Tower : Unit
     {
         //since were having like different tower classes, the update function might be different on each one.
         currentFiringTime += Time.deltaTime;
-        if (currentFiringTime >= fireRate)
+        if (currentFiringTime >= stats.fireRate)
         {
             foreach (Enemy foundEnemy in enemiesInRange.ToList())
             {
@@ -78,7 +78,7 @@ public class Tower : Unit
                 {
                     closestEnemy = foundEnemy;
                 }
-                closestEnemy.TakeDamage(damage);
+                closestEnemy.TakeDamage(stats.damage);
                 currentFiringTime = 0;
             }
         }

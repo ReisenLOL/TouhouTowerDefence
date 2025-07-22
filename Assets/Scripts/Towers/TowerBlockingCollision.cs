@@ -9,10 +9,10 @@ public class TowerBlockingCollision : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 9 && !thisTower.isCliffTower)
+        if (other.gameObject.layer == 9 && !thisTower.stats.isCliffTower)
         {
             Enemy foundUnit = other.GetComponent<Enemy>();
-            if (thisTower.currentlyBlocking.Count < thisTower.blockAmount && !thisTower.currentlyBlocking.Contains(foundUnit))
+            if (thisTower.currentlyBlocking.Count < thisTower.stats.blockAmount && !thisTower.currentlyBlocking.Contains(foundUnit))
             {
                 thisTower.currentlyBlocking.Add(foundUnit);
                 foundUnit.canMove = false;

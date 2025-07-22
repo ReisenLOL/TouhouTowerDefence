@@ -137,12 +137,19 @@ public class TowerPlacement : MonoBehaviour
     private void PlaceTower()
     {
         RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f, LayerMask.GetMask("Terrain")); //i don't remember layermasks being that way.
-        if (selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Path") || !selectedTower.tower.isCliffTower && hit.collider.gameObject.CompareTag("Cliff") || !hit)
+        if (selectedTower.tower.stats.isCliffTower && hit.collider.gameObject.CompareTag("Path") || !selectedTower.tower.stats.isCliffTower && hit.collider.gameObject.CompareTag("Cliff") || !hit)
         {
             return;
         }
         Tower newTower = Instantiate(selectedTower.tower, towersFolder);
-        placeholderRange = Instantiate(newTower.range.showRange.gameObject, placeholderTower.transform);
+        if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
+        {
+            placeholderRange = Instantiate(newTower.focusedRange.showRange, newTower.transform);
+        }
+        else
+        {
+            placeholderRange = Instantiate(newTower.scatteredRange.showRange, newTower.transform);
+        }
         placeholderRange.SetActive(true);
         foreach (MonoBehaviour script in placeholderRange.GetComponents<MonoBehaviour>())
         {
@@ -153,7 +160,15 @@ public class TowerPlacement : MonoBehaviour
         Destroy(placeholderTower);
         newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
         selectedTower.isPlaced = true;
-        TowerRangeCollider addRange = Instantiate(selectedTower.tower.range, newTower.transform); ;
+        TowerRangeCollider addRange;
+        if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
+        {
+            addRange = Instantiate(newTower.focusedRange, newTower.transform);
+        }
+        else
+        {
+            addRange = Instantiate(newTower.scatteredRange, newTower.transform);
+        }
         addRange.thisTower = newTower;
         rangeToRotate = addRange.transform; //also add rotation of towers ONCE YOU CAN DRAW.
         RebuildTowerSelection();
@@ -165,16 +180,21 @@ public class TowerPlacement : MonoBehaviour
         newDragHandle.transform.position = placeholderRange.transform.position;
         newDragLine = Instantiate(dragLine);
     }
+
     private void StopPlacement()
     {
         Time.timeScale = 1;
         if (placeholderRange)
         {
-            Destroy(placeholderRange);   
+            Destroy(placeholderRange);
         }
+
         Destroy(placeholderTower);
-        Destroy(newDragLine.gameObject);
-        Destroy(newDragHandle);
+        if (newDragHandle)
+        {
+            Destroy(newDragLine.gameObject);
+            Destroy(newDragHandle);   
+        }
         selectingPosition = false;
         selectingRotation = false;
         isPlacing = false;

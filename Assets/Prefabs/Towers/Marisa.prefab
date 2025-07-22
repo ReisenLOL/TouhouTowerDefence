@@ -124,12 +124,11 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   towerID: Marisa
-  range: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
-  damage: 20
-  fireRate: 1
-  blockAmount: 0
-  isCliffTower: 1
-  canDetectAir: 0
+  focusedRange: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
+  scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
+  currentTargettingMode: 1
+  stats: {fileID: 11400000, guid: 2ba42f5909a44bfbca96f6711b7918f7, type: 2}
+  spellcardList: []
   animator: {fileID: 0}
   enemiesInRange: []
   currentlyBlocking: []

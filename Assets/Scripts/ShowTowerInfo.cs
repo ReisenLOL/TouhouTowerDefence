@@ -84,9 +84,9 @@ public class ShowTowerInfo : MonoBehaviour
             //showRange.SetActive(true);
             //showRange.transform.rotation = towerToShow.transform.rotation;
             towerNameUI.text = towerToShow.towerID;
-            towerDamageUI.text = "Damage: " + towerToShow.damage;
-            towerFireRateUI.text = "FireRate: " + towerToShow.fireRate + "s";
-            towerBlockAmountUI.text = "Block Amount: " + towerToShow.blockAmount;
+            towerDamageUI.text = "Damage: " + towerToShow.stats.damage;
+            towerFireRateUI.text = "FireRate: " + towerToShow.stats.fireRate + "s";
+            towerBlockAmountUI.text = "Block Amount: " + towerToShow.stats.blockAmount;
             cam.transform.position = new Vector3(towerToShow.transform.position.x, towerToShow.transform.position.y, -10);
             cam.orthographicSize = focusedCameraSize;   
         }

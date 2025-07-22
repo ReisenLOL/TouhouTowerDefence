@@ -4,13 +4,10 @@ using UnityEngine;
 public class RangedTower : Tower
 {
     public MoveProjectile projectile;
-    public enum TargettingModes {Focused, Scattered}
-
-    public TargettingModes currentTargettingMode = TargettingModes.Focused;
     protected override void Update()
     {
         currentFiringTime += Time.deltaTime;
-        if (currentFiringTime >= fireRate)
+        if (currentFiringTime >= stats.fireRate)
         {
             foreach (Enemy foundEnemy in enemiesInRange.ToList())
             {
@@ -26,7 +23,7 @@ public class RangedTower : Tower
 
                 if (closestEnemy)
                 {
-                    closestEnemy.TakeDamage(damage);
+                    closestEnemy.TakeDamage(stats.damage);
                     FireProjectile(closestEnemy.transform.position);
                     currentFiringTime = 0;   
                 }

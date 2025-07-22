@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [Header("[CACHE]")]
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI enemyCountText;
+    public GameObject endGameUI;
+    public int rating = 0;
     public int currentEnemyCount;
     public int totalEnemyCount;
 
@@ -22,6 +24,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EndGame()
+    {
+        endGameUI.SetActive(true);
+        if (!gameOver)
+        {
+            rating++;
+        }
+        if (lives == maxLives)
+        {
+            rating++;
+        }
+        if (lives <= maxLives / 2)
+        {
+            rating++;
+        }
+    }
     public void UpdateEnemyCountUI()
     {
         enemyCountText.text = "Enemies: " + currentEnemyCount + "/" + totalEnemyCount;

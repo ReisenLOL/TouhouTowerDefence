@@ -9,7 +9,7 @@ public class TowerRangeCollider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Enemy foundEnemy = other.GetComponent<Enemy>();
-        if (!foundEnemy.isAir || foundEnemy.isAir && thisTower.canDetectAir)
+        if (!foundEnemy.isAir || foundEnemy.isAir && thisTower.stats.canDetectAir)
         {
             thisTower.enemiesInRange.Add(foundEnemy);
         }

@@ -6,7 +6,7 @@ public class MeleeTower : Tower
     protected override void Update()
     {
         currentFiringTime += Time.deltaTime;
-        if (currentFiringTime >= fireRate)
+        if (currentFiringTime >= stats.fireRate)
         {
             if (enemiesInRange.Count > 0)
             {
@@ -16,7 +16,7 @@ public class MeleeTower : Tower
                     {
                         enemiesInRange.Remove(foundEnemy);
                     }
-                    foundEnemy.TakeDamage(damage);
+                    foundEnemy.TakeDamage(stats.damage);
                     currentFiringTime = 0;
                 }
                 if (animator)

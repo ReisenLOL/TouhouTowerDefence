@@ -333,12 +333,11 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   towerID: Reimu
-  range: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
-  damage: 10
-  fireRate: 1
-  blockAmount: 0
-  isCliffTower: 1
-  canDetectAir: 0
+  focusedRange: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
+  scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
+  currentTargettingMode: 0
+  stats: {fileID: 11400000, guid: 32e866edde8655220958aafd2f4bd7e5, type: 2}
+  spellcardList: []
   animator: {fileID: 0}
   enemiesInRange: []
   currentlyBlocking: []
