@@ -697,7 +697,6 @@ MonoBehaviour:
   - {fileID: 2541345253646511569, guid: 6dc7edaece3566e5dbfe0d72be1f52f0, type: 3}
   - {fileID: 2541345253646511569, guid: c081bf239218b54108340618bda2d303, type: 3}
   - {fileID: 2541345253646511569, guid: 45c1e8b7280cfa6b0a76a445bdb7eb7c, type: 3}
-  selectedTowers: []
   templateButton: {fileID: 1629848750}
   towerListUI: {fileID: 413871324}
   selectedTower: {fileID: 0}
@@ -2245,6 +2244,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150464849}
   m_CullTransparentMesh: 1
+--- !u!1 &1246922012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246922014}
+  - component: {fileID: 1246922013}
+  m_Layer: 0
+  m_Name: SelectedTowersTransferHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1246922013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246922012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74bddeee18c9fc2e9bf4c8732908e090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1246922014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246922012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486576761
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,3 +3177,4 @@ SceneRoots:
   - {fileID: 333453167}
   - {fileID: 156070168}
   - {fileID: 1760761865}
+  - {fileID: 1246922014}
