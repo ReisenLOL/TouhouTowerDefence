@@ -25,7 +25,7 @@ public class TowerPlacement : MonoBehaviour
     private ShowTowerInfo showTowerInfo;
     
     [Header("[PLACEMENT STUFF]")]
-    public List<TowerToPlace> towersToAdd; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
+    public List<TowerToPlace> AllTowers; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
     public List<TowerToPlace> availableTowers;
     public TowerToPlace selectedTower;
     private bool isPlacing;
@@ -51,10 +51,18 @@ public class TowerPlacement : MonoBehaviour
         placementGrid = FindFirstObjectByType<Grid>();
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         cam = Camera.main;
-        foreach (TowerToPlace towerToPlace in towersToAdd)
+        foreach (SelectedTowersTransferHandler.SelectedTowerData selectedTowers in SelectedTowersTransferHandler.instance.selectedTowers)
         {
-            TowerToPlace newTower = Instantiate(towerToPlace, transform);
-            availableTowers.Add(newTower);
+            foreach (TowerToPlace towerToPlace in AllTowers)
+            {
+                if (selectedTowers.towerID == towerToPlace.tower.towerID)
+                {
+                    TowerToPlace newTower = Instantiate(towerToPlace, transform);
+                    newTower.tower.currentTargettingMode = (Tower.TargettingModes)selectedTowers.targettingMode;
+                    availableTowers.Add(newTower);
+                    break;
+                }
+            }
         }
         RebuildTowerSelection();
     }

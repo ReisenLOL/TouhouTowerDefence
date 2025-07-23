@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuTowerSelectionUIHandler : MonoBehaviour
@@ -102,5 +103,10 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
             newTowerData.targettingMode = towerModeSelection.value;
             SelectedTowersTransferHandler.instance.selectedTowers.Add(newTowerData);
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Prototype");
     }
 }

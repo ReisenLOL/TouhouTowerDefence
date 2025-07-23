@@ -3094,11 +3094,11 @@ MonoBehaviour:
   dragHandle: {fileID: 1578578463897020899, guid: 0969dd1d43670b0eca1232c0f9a6ded3, type: 3}
   dragLine: {fileID: 8402454956358188348, guid: 9502e7f2c4bd0acc5bb1de92ba02f3e4, type: 3}
   timeUntilRotation: 0.1
-  towersToAdd:
+  AllTowers:
   - {fileID: 2541345253646511569, guid: 6dc7edaece3566e5dbfe0d72be1f52f0, type: 3}
   - {fileID: 2541345253646511569, guid: 53fa2e9e94200b4e2ba183931902aea5, type: 3}
-  - {fileID: 2541345253646511569, guid: 45c1e8b7280cfa6b0a76a445bdb7eb7c, type: 3}
   - {fileID: 2541345253646511569, guid: c081bf239218b54108340618bda2d303, type: 3}
+  - {fileID: 2541345253646511569, guid: 45c1e8b7280cfa6b0a76a445bdb7eb7c, type: 3}
   - {fileID: 2541345253646511569, guid: 2c57213f1d8cb6402aa8b0bb3261f5e9, type: 3}
   availableTowers: []
   selectedTower: {fileID: 0}
@@ -3946,6 +3946,8 @@ MonoBehaviour:
   gameOver: 0
   livesText: {fileID: 353239544}
   enemyCountText: {fileID: 8213315}
+  endGameUI: {fileID: 0}
+  rating: 0
   currentEnemyCount: 0
   totalEnemyCount: 0
 --- !u!1 &1636485698
