@@ -51,17 +51,28 @@ public class TowerPlacement : MonoBehaviour
         placementGrid = FindFirstObjectByType<Grid>();
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         cam = Camera.main;
-        foreach (SelectedTowersTransferHandler.SelectedTowerData selectedTowers in SelectedTowersTransferHandler.instance.selectedTowers)
+        if (SelectedTowersTransferHandler.instance)
+        {
+            foreach (SelectedTowersTransferHandler.SelectedTowerData selectedTowers in SelectedTowersTransferHandler.instance.selectedTowers)
+            {
+                foreach (TowerToPlace towerToPlace in AllTowers)
+                {
+                    if (selectedTowers.towerID == towerToPlace.tower.towerID)
+                    {
+                        TowerToPlace newTower = Instantiate(towerToPlace, transform);
+                        newTower.tower.currentTargettingMode = (Tower.TargettingModes)selectedTowers.targettingMode;
+                        availableTowers.Add(newTower);
+                        break;
+                    }
+                }
+            }
+        }
+        else
         {
             foreach (TowerToPlace towerToPlace in AllTowers)
             {
-                if (selectedTowers.towerID == towerToPlace.tower.towerID)
-                {
-                    TowerToPlace newTower = Instantiate(towerToPlace, transform);
-                    newTower.tower.currentTargettingMode = (Tower.TargettingModes)selectedTowers.targettingMode;
-                    availableTowers.Add(newTower);
-                    break;
-                }
+                TowerToPlace newTower = Instantiate(towerToPlace, transform);
+                availableTowers.Add(newTower);
             }
         }
         RebuildTowerSelection();

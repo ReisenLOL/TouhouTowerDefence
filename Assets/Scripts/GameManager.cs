@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     public int rating = 0;
     public int currentEnemyCount;
     public int totalEnemyCount;
+    public TextMeshProUGUI gameStateText;
+    public TextMeshProUGUI ratingText;
 
     public void TakeDamage(int damage = 1)
     {
@@ -26,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        endGameUI.SetActive(true);
         if (!gameOver)
         {
             rating++;
@@ -39,6 +41,16 @@ public class GameManager : MonoBehaviour
         {
             rating++;
         }
+        endGameUI.SetActive(true);
+        ratingText.text = "Rating: " + rating;
+        if (gameOver)
+        {
+            gameStateText.text = "Failed...";
+        }
+        else
+        {
+            gameStateText.text = "Completed!";
+        }
     }
     public void UpdateEnemyCountUI()
     {
@@ -47,5 +59,15 @@ public class GameManager : MonoBehaviour
     private void UpdateLivesUI()
     {
         livesText.text = "Lives: " + lives + "/" + maxLives; 
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Prototype");
+    }
+
+    public void ReturnGame()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
