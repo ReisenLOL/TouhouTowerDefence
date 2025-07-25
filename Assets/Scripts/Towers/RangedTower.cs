@@ -7,7 +7,7 @@ public class RangedTower : Tower
     protected override void Update()
     {
         currentFiringTime += Time.deltaTime;
-        if (currentFiringTime >= stats.fireRate)
+        if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
         {
             foreach (Enemy foundEnemy in enemiesInRange.ToList())
             {
@@ -23,7 +23,14 @@ public class RangedTower : Tower
 
                 if (closestEnemy)
                 {
-                    closestEnemy.TakeDamage(stats.damage);
+                    if (currentTargettingMode == TargettingModes.Focused)
+                    {
+                        closestEnemy.TakeDamage(stats.damage);
+                    }
+                    else
+                    {
+                        closestEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
+                    }
                     FireProjectile(closestEnemy.transform.position);
                     currentFiringTime = 0;   
                 }

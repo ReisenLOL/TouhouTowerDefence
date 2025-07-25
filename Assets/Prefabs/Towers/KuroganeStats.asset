@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: KuroganeStats
   m_EditorClassIdentifier: 
   damage: 20
+  scatteredDamageModifier: 0.5
   fireRate: 2
+  scatteredFireRateModifier: 1
   blockAmount: 2
   isCliffTower: 0
   canDetectAir: 0
