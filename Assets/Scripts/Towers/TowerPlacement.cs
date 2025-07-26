@@ -23,8 +23,10 @@ public class TowerPlacement : MonoBehaviour
     private float currentTimeUntilRotation;
     private bool waitForRotation;
     private ShowTowerInfo showTowerInfo;
-    
-    [Header("[PLACEMENT STUFF]")]
+
+    [Header("[PLACEMENT STUFF]")] 
+    public AudioClip placementSound;
+    private AudioSource audioSource;
     public List<TowerToPlace> AllTowers; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
     public List<TowerToPlace> availableTowers;
     public TowerToPlace selectedTower;
@@ -47,6 +49,7 @@ public class TowerPlacement : MonoBehaviour
     
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         towersFolder = GameObject.Find("TowersFolder").transform;
         placementGrid = FindFirstObjectByType<Grid>();
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
@@ -160,6 +163,7 @@ public class TowerPlacement : MonoBehaviour
         {
             return;
         }
+        audioSource.PlayOneShot(placementSound);
         Tower newTower = Instantiate(selectedTower.tower, towersFolder);
         if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
         {

@@ -18,6 +18,9 @@ public class Tower : Unit
     public List<Spellcard> spellcardList = new();
 
     [Header("[CACHE]")] 
+    public AudioClip attackSound;
+    public AudioClip deathSound;
+    protected AudioSource audioSource;
     public Animator animator;
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
@@ -29,6 +32,7 @@ public class Tower : Unit
 
     protected virtual void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         animator = GetComponentInChildren<Animator>();
@@ -49,7 +53,8 @@ public class Tower : Unit
                 break;
             }
         }
-        Destroy(gameObject);
+        audioSource.PlayOneShot(deathSound);
+        Destroy(gameObject, 0.2f);
     }
 
     public override void TakeDamage(float damageTaken)

@@ -25,6 +25,7 @@ public class MeleeTower : Tower
                         foundEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
                     }
                     currentFiringTime = 0;
+                    audioSource.PlayOneShot(attackSound);
                 }
                 if (animator)
                 {

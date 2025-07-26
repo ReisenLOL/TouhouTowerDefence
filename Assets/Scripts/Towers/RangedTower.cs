@@ -31,6 +31,7 @@ public class RangedTower : Tower
                     {
                         closestEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
                     }
+                    audioSource.PlayOneShot(attackSound);
                     FireProjectile(closestEnemy.transform.position);
                     currentFiringTime = 0;   
                 }
