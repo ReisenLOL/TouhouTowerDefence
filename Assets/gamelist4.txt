@@ -36,7 +36,8 @@ TODO
         = think it should only be chosen before a game. it'd be a larger range, but less damage, but more multi target (like maybe a overlap circle on the closest target)
     + maybe also equipables for towers?? that'd be pretty cool i think
     + and maybe also units can choose a subclass??? maaybe....
-- add more towers, this is DRAWING and you're LAZY sylvia. also animate them but that's actually kinda fun??
+- add more towers, this is DRAWING and you're LAZY sylvia.
+- add animations for towers. you'll need one for instantiation, idle, firing, casting a spellcard, and defeat.
 
 
 IDEAS

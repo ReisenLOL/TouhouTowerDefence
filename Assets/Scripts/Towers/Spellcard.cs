@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class Spellcard : MonoBehaviour
 {
+    [Header("[IDENTIFICATION]")]
+    public string spellcardID;
+    public Sprite spellcardImage;
+    public string spellcardDescription;
+    [Header("[STATS]")]
     public float cooldown;
     public float currentCooldownTime;
     public bool canCast;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowTowerInfo : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ShowTowerInfo : MonoBehaviour
     public TextMeshProUGUI towerDamageUI;
     public TextMeshProUGUI towerFireRateUI;
     public TextMeshProUGUI towerBlockAmountUI;
+    public Button spellCardButtonTemplate;
+    public Transform spellcardUI;
     private bool movingCamera;
     private bool returningCamera;
     public float currentState;
@@ -88,7 +91,23 @@ public class ShowTowerInfo : MonoBehaviour
             towerFireRateUI.text = "FireRate: " + towerToShow.stats.fireRate + "s";
             towerBlockAmountUI.text = "Block Amount: " + towerToShow.stats.blockAmount;
             cam.transform.position = new Vector3(towerToShow.transform.position.x, towerToShow.transform.position.y, -10);
-            cam.orthographicSize = focusedCameraSize;   
+            cam.orthographicSize = focusedCameraSize;
+            foreach (Transform child in spellcardUI)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (Spellcard spellcard in towerToShow.spellcardList)
+            {
+                Button newSpellcardButton = Instantiate(spellCardButtonTemplate, spellcardUI);
+                newSpellcardButton.onClick.AddListener(() => spellcard.CastSpellCard());
+                newSpellcardButton.transform.Find("SpellcardName").GetComponent<TextMeshProUGUI>().text =
+                    spellcard.spellcardID;
+                newSpellcardButton.transform.Find("SpellcardImage").GetComponent<Image>().sprite =
+                    spellcard.spellcardImage;
+                newSpellcardButton.transform.Find("SpellcardText").GetComponent<TextMeshProUGUI>().text =
+                    spellcard.spellcardDescription;
+            }
         }
     }
 

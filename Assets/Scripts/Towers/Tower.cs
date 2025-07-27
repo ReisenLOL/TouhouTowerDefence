@@ -15,7 +15,7 @@ public class Tower : Unit
     public enum TargettingModes {Focused, Scattered}
     public TargettingModes currentTargettingMode = TargettingModes.Focused;
     public TowerStats stats;
-    public List<Spellcard> spellcardList = new();
+    public List<Spellcard> spellcardsToAdd = new();
 
     [Header("[CACHE]")] 
     public AudioClip attackSound;
@@ -27,15 +27,19 @@ public class Tower : Unit
     public Enemy closestEnemy;
     protected float currentFiringTime;
     private Transform healthBarUI;
-    public ShowTowerInfo showTowerInfo;
+    public List<Spellcard> spellcardList;
 
 
     protected virtual void Start()
     {
         audioSource = GetComponent<AudioSource>();
         healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
-        showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         animator = GetComponentInChildren<Animator>();
+        foreach (Spellcard spellcard in spellcardsToAdd)
+        {
+            Spellcard newSpellcard = Instantiate(spellcard, transform);
+            spellcardList.Add(newSpellcard);
+        }
     }
 
     [ContextMenu("Force Kill")]
