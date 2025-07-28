@@ -92,25 +92,31 @@ public class ShowTowerInfo : MonoBehaviour
             towerBlockAmountUI.text = "Block Amount: " + towerToShow.stats.blockAmount;
             cam.transform.position = new Vector3(towerToShow.transform.position.x, towerToShow.transform.position.y, -10);
             cam.orthographicSize = focusedCameraSize;
-            foreach (Transform child in spellcardUI)
-            {
-                Destroy(child.gameObject);
-            }
+            RebuildSpellcardList(); 
 
-            foreach (Spellcard spellcard in towerToShow.spellcardList)
-            {
-                Button newSpellcardButton = Instantiate(spellCardButtonTemplate, spellcardUI);
-                newSpellcardButton.onClick.AddListener(() => spellcard.CastSpellCard());
-                newSpellcardButton.transform.Find("SpellcardName").GetComponent<TextMeshProUGUI>().text =
-                    spellcard.spellcardID;
-                newSpellcardButton.transform.Find("SpellcardImage").GetComponent<Image>().sprite =
-                    spellcard.spellcardImage;
-                newSpellcardButton.transform.Find("SpellcardText").GetComponent<TextMeshProUGUI>().text =
-                    spellcard.spellcardDescription;
-            }
         }
     }
 
+    public void RebuildSpellcardList()
+    {
+        foreach (Transform child in spellcardUI)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Spellcard spellcard in selectedTower.spellcardList)
+        {
+            Button newSpellcardButton = Instantiate(spellCardButtonTemplate, spellcardUI);
+            newSpellcardButton.onClick.AddListener(() => spellcard.CastSpellCard());
+            newSpellcardButton.transform.Find("SpellcardName").GetComponent<TextMeshProUGUI>().text =
+                spellcard.spellcardID;
+            newSpellcardButton.transform.Find("SpellcardImage").GetComponent<Image>().sprite =
+                spellcard.spellcardImage;
+            newSpellcardButton.transform.Find("SpellcardText").GetComponent<TextMeshProUGUI>().text =
+                spellcard.spellcardDescription;
+            newSpellcardButton.gameObject.SetActive(true);
+        }
+    }
     public void HideTowerInfoUI()
     {
         towerInfoUI.SetActive(false);

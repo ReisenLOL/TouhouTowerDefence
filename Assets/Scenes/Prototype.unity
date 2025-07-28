@@ -2186,6 +2186,8 @@ MonoBehaviour:
   towerDamageUI: {fileID: 249433733}
   towerFireRateUI: {fileID: 711644845}
   towerBlockAmountUI: {fileID: 537350289}
+  spellCardButtonTemplate: {fileID: 1294336821}
+  spellcardUI: {fileID: 925059456}
   currentState: 0
   canShowUI: 0
 --- !u!4 &757475236
@@ -3739,6 +3741,7 @@ MonoBehaviour:
   dragHandle: {fileID: 1578578463897020899, guid: 0969dd1d43670b0eca1232c0f9a6ded3, type: 3}
   dragLine: {fileID: 8402454956358188348, guid: 9502e7f2c4bd0acc5bb1de92ba02f3e4, type: 3}
   timeUntilRotation: 0.1
+  placementSound: {fileID: 0}
   AllTowers:
   - {fileID: 2541345253646511569, guid: 6dc7edaece3566e5dbfe0d72be1f52f0, type: 3}
   - {fileID: 2541345253646511569, guid: 53fa2e9e94200b4e2ba183931902aea5, type: 3}

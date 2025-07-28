@@ -337,12 +337,15 @@ MonoBehaviour:
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
   currentTargettingMode: 0
   stats: {fileID: 11400000, guid: 32e866edde8655220958aafd2f4bd7e5, type: 2}
-  spellcardList: []
+  spellcardsToAdd:
+  - {fileID: 6004244980120150755, guid: b3d1638ad4307e1cdb732215e627086a, type: 3}
+  attackSound: {fileID: 0}
+  deathSound: {fileID: 0}
   animator: {fileID: 0}
   enemiesInRange: []
   currentlyBlocking: []
   closestEnemy: {fileID: 0}
-  showTowerInfo: {fileID: 0}
+  spellcardList: []
   projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
 --- !u!1 &4586179377811539235
 GameObject:

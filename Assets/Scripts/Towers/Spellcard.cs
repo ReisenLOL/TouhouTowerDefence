@@ -10,13 +10,21 @@ public class Spellcard : MonoBehaviour
     [Header("[STATS]")]
     public float cooldown;
     public float currentCooldownTime;
-    public bool canCast;
+    public bool onCooldown;
+    private ShowTowerInfo towerInfoUI;
+
+    private void Start()
+    {
+        towerInfoUI = FindFirstObjectByType<ShowTowerInfo>();
+    }
+
     public void CastSpellCard()
     {
-        if (canCast)
+        if (!onCooldown)
         {
-            canCast = false;
+            onCooldown = true;
             SpellCardEffects();
+            towerInfoUI.RebuildSpellcardList();
         }
     }
 
@@ -26,13 +34,13 @@ public class Spellcard : MonoBehaviour
     }
     private void Update()
     {
-        if (!canCast)
+        if (onCooldown)
         {
             currentCooldownTime += Time.deltaTime;
             if (currentCooldownTime >= cooldown)
             {
                 currentCooldownTime = 0;
-                canCast = true;
+                onCooldown = false;
             }   
         }
     }
