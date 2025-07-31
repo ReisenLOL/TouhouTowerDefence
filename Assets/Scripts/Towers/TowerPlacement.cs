@@ -218,6 +218,7 @@ public class TowerPlacement : MonoBehaviour
             Destroy(newDragLine.gameObject);
             Destroy(newDragHandle);   
         }
+        placementFrame.gameObject.SetActive(true);
         selectingPosition = false;
         selectingRotation = false;
         isPlacing = false;
@@ -287,6 +288,7 @@ public class TowerPlacement : MonoBehaviour
         selectingPosition = true;
         createPlaceholder = true;
         isPlacing = true;
+        placementFrame.gameObject.SetActive(false);
         showTowerInfo.canShowUI = false;
     }
 

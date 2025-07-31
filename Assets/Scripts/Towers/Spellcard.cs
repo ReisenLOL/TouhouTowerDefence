@@ -32,14 +32,14 @@ public class Spellcard : MonoBehaviour
     {
         
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (onCooldown)
         {
-            currentCooldownTime += Time.deltaTime;
-            if (currentCooldownTime >= cooldown)
+            currentCooldownTime -= Time.deltaTime;
+            if (currentCooldownTime <= 0)
             {
-                currentCooldownTime = 0;
+                currentCooldownTime = cooldown;
                 onCooldown = false;
             }   
         }

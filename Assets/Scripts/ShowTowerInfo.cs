@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -115,6 +116,8 @@ public class ShowTowerInfo : MonoBehaviour
             newSpellcardButton.transform.Find("SpellcardText").GetComponent<TextMeshProUGUI>().text =
                 spellcard.spellcardDescription;
             newSpellcardButton.gameObject.SetActive(true);
+            SpellcardButtonUI newSpellcardButtonUI = newSpellcardButton.AddComponent<SpellcardButtonUI>();
+            newSpellcardButtonUI.thisSpellcard = spellcard;
         }
     }
     public void HideTowerInfoUI()
