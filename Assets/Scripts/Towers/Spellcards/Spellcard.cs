@@ -12,6 +12,8 @@ public class Spellcard : MonoBehaviour
     public float currentCooldownTime;
     public bool onCooldown;
     private ShowTowerInfo towerInfoUI;
+    [Header("[CACHE]")]
+    public Tower thisTower;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class Spellcard : MonoBehaviour
         {
             onCooldown = true;
             SpellCardEffects();
+            currentCooldownTime = cooldown;
             towerInfoUI.RebuildSpellcardList();
         }
     }
@@ -39,7 +42,6 @@ public class Spellcard : MonoBehaviour
             currentCooldownTime -= Time.deltaTime;
             if (currentCooldownTime <= 0)
             {
-                currentCooldownTime = cooldown;
                 onCooldown = false;
             }   
         }

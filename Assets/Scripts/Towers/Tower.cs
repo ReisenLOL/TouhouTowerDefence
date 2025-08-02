@@ -38,6 +38,7 @@ public class Tower : Unit
         foreach (Spellcard spellcard in spellcardsToAdd)
         {
             Spellcard newSpellcard = Instantiate(spellcard, transform);
+            newSpellcard.thisTower = this;
             spellcardList.Add(newSpellcard);
         }
     }

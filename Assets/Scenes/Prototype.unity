@@ -4763,6 +4763,50 @@ MonoBehaviour:
       enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
       amountToSpawn: 2
     isBossWave: 0
+  - enemies:
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    isBossWave: 0
+  - enemies:
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    isBossWave: 0
   currentWave: 0
   timeBetweenEnemySpawns: 4
   enemiesFolder: {fileID: 1636485699}

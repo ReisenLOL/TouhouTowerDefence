@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShowTowerInfo : MonoBehaviour
@@ -70,8 +71,7 @@ public class ShowTowerInfo : MonoBehaviour
                 HideTowerInfoUI();
             }
         }
-
-        if (towerInfoUI.activeSelf && currentState > 0.5f && Input.GetMouseButtonDown(0))
+        if (towerInfoUI.activeSelf && currentState > 0.5f && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             returningCamera = true;
         }
