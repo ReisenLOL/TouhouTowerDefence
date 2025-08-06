@@ -15,7 +15,7 @@ public class Spellcard : MonoBehaviour
     [Header("[CACHE]")]
     public Tower thisTower;
 
-    private void Start()
+    protected virtual void Start()
     {
         towerInfoUI = FindFirstObjectByType<ShowTowerInfo>();
     }

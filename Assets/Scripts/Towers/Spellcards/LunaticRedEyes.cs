@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LunaricRedEyes : Spellcard
+public class LunaticRedEyes : Spellcard
 {
     // change the name of this spellcard later lol
     public float stunDuration;
