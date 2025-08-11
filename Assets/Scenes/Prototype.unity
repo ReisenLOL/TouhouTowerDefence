@@ -1747,6 +1747,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1872,6 +1873,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &537350288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4750,18 +4848,13 @@ MonoBehaviour:
     - spawn:
         spawnPoint: {fileID: 1285585082}
         waypoints: []
-      enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
-      amountToSpawn: 2
-    - spawn:
-        spawnPoint: {fileID: 1285585082}
-        waypoints: []
       enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
       amountToSpawn: 2
     - spawn:
-        spawnPoint: {fileID: 1285585082}
+        spawnPoint: {fileID: 169791732}
         waypoints: []
       enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
-      amountToSpawn: 2
+      amountToSpawn: 1
     isBossWave: 0
   - enemies:
     - spawn:
@@ -4772,20 +4865,8 @@ MonoBehaviour:
     - spawn:
         spawnPoint: {fileID: 1285585082}
         waypoints: []
-      enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
-      amountToSpawn: 2
-    - spawn:
-        spawnPoint: {fileID: 1285585082}
-        waypoints: []
       enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
       amountToSpawn: 2
-    - spawn:
-        spawnPoint: {fileID: 1285585082}
-        waypoints: []
-      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
-      amountToSpawn: 2
-    isBossWave: 0
-  - enemies:
     - spawn:
         spawnPoint: {fileID: 169791732}
         waypoints: []
@@ -4794,18 +4875,84 @@ MonoBehaviour:
     - spawn:
         spawnPoint: {fileID: 1285585082}
         waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 1
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 1
+    isBossWave: 0
+  - enemies:
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
+      amountToSpawn: 3
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
+      amountToSpawn: 3
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 3
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 3
+    isBossWave: 0
+  - enemies:
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 384a556127b233d63a0fa854ba76c757, type: 3}
+      amountToSpawn: 2
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 4
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
       enemyToSpawn: {fileID: 8286435334993352473, guid: e9eee39bd2f74cc00b143ff970481d33, type: 3}
       amountToSpawn: 2
     - spawn:
         spawnPoint: {fileID: 1285585082}
         waypoints: []
       enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
-      amountToSpawn: 2
+      amountToSpawn: 4
+    isBossWave: 0
+  - enemies:
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 384a556127b233d63a0fa854ba76c757, type: 3}
+      amountToSpawn: 3
+    - spawn:
+        spawnPoint: {fileID: 169791732}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
+      amountToSpawn: 4
+    - spawn:
+        spawnPoint: {fileID: 1285585082}
+        waypoints: []
+      enemyToSpawn: {fileID: -8331154986038024083, guid: 384a556127b233d63a0fa854ba76c757, type: 3}
+      amountToSpawn: 3
     - spawn:
         spawnPoint: {fileID: 1285585082}
         waypoints: []
       enemyToSpawn: {fileID: -8331154986038024083, guid: 051c2f42042d1cb97be3296e11bee1e1, type: 3}
-      amountToSpawn: 2
+      amountToSpawn: 4
     isBossWave: 0
   currentWave: 0
   timeBetweenEnemySpawns: 4

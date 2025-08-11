@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6817202977256971003}
-  - component: {fileID: 6004244980120150755}
+  - component: {fileID: 2510057981858112619}
   m_Layer: 0
   m_Name: FantasySeal
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6004244980120150755
+--- !u!114 &2510057981858112619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7911216193190828130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27672f420216c2c55953aafc7ea8608f, type: 3}
+  m_Script: {fileID: 11500000, guid: d313bf5da3c6595b6abe62574e6ec73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spellcardID: Fantasy Seal
-  spellcardImage: {fileID: 5265108533749722248, guid: 894a23abda43ffc58a0b2b2d31858730, type: 3}
-  spellcardDescription: yeah
-  cooldown: 5
-  currentCooldownTime: 5
-  canCast: 1
+  spellcardImage: {fileID: 0}
+  spellcardDescription: Yeah
+  cooldown: 120
+  currentCooldownTime: 120
+  onCooldown: 0
+  thisTower: {fileID: 0}
+  damage: 80

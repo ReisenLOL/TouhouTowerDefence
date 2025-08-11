@@ -19,7 +19,10 @@ screw it, i'll draw reisen.
 hmmm maybe i'll work on outside of game stuff. like level selection and stuff?
 i'm a little tired so i'll cut it right here for tonight, maybe i'll get some done tmrw
 i just spent like 3 hours configuring gentoo lol so short one.
-
+so basically
+STOP MAKING SYSTEMS. RIGHT NOW.
+i can make systems later. but right now? make the game playable.
+i was gonna draw actual sprites but it's way too late for that rn i'll just focus on whatever i can to make the game look more playable rn. hopefully i can convice myself to game dev when i wake up tmrw.
 
 TODO
 - add a level and map system

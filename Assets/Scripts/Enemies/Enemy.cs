@@ -48,6 +48,7 @@ public class Enemy : Unit
     protected override void OnKill()
     {
         isDying = true;
+        canMove = false;
         gameManager.currentEnemyCount++;
         gameManager.UpdateEnemyCountUI();
         if (animator)

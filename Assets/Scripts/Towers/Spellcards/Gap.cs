@@ -7,8 +7,9 @@ public class Gap : Spellcard
     public Tower gapTower;
     private TowerPlacement placementHandler;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         placementHandler = FindFirstObjectByType<TowerPlacement>();
     }
     protected override void SpellCardEffects()

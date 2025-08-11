@@ -384,11 +384,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011713737b91869029932786be53573e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 50
+  maxHealth: 50
+  defence: 1
+  attackModifier: 1
   damage: 5
   fireRate: 4
-  moveSpeed: 2
+  moveSpeed: 1
   isAir: 0
   rb: {fileID: 0}
   currentWaypoint: 0

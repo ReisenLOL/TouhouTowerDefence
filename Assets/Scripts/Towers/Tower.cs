@@ -32,7 +32,7 @@ public class Tower : Unit
 
     protected virtual void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = FindFirstObjectByType<AudioSource>();
         healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
         animator = GetComponentInChildren<Animator>();
         foreach (Spellcard spellcard in spellcardsToAdd)

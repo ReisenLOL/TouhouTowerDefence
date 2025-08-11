@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2731465358017235426
+--- !u!1 &2261117069195059708
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5574411014608529422}
-  - component: {fileID: 6963426794949026345}
-  - component: {fileID: 2010483278330885321}
-  - component: {fileID: 5180126692649479671}
-  - component: {fileID: 8286435334993352473}
+  - component: {fileID: 8935404930559608960}
+  - component: {fileID: 4302401794526145548}
   m_Layer: 9
-  m_Name: FairyKnight
-  m_TagString: Enemy
+  m_Name: Sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5574411014608529422
+--- !u!4 &8935404930559608960
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2731465358017235426}
+  m_GameObject: {fileID: 2261117069195059708}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6304706727027700184}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 5574411014608529422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6963426794949026345
+--- !u!212 &4302401794526145548
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2731465358017235426}
+  m_GameObject: {fileID: 2261117069195059708}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,17 +76,53 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 121048882190692432, guid: 6a86ec1f551edf3ea886393b8a13c611, type: 3}
+  m_Sprite: {fileID: -3572592971998205411, guid: 5bdbc0117bba92a44b09754279adbba4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.54, y: 9.87}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2731465358017235426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5574411014608529422}
+  - component: {fileID: 2010483278330885321}
+  - component: {fileID: 5180126692649479671}
+  - component: {fileID: -8331154986038024083}
+  m_Layer: 9
+  m_Name: KappaGunner
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5574411014608529422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731465358017235426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6304706727027700184}
+  - {fileID: 8935404930559608960}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2010483278330885321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -129,7 +161,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5271429, y: 0.9742857}
+    oldSize: {x: 0.40625, y: 0.8525}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -164,7 +196,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8286435334993352473
+--- !u!114 &-8331154986038024083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,16 +205,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2731465358017235426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7a92c0bd5a334fcb4bd903d59e3088, type: 3}
+  m_Script: {fileID: 11500000, guid: 011713737b91869029932786be53573e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 125
-  maxHealth: 125
+  health: 100
+  maxHealth: 100
   defence: 1
   attackModifier: 1
-  damage: 15
-  fireRate: 2
-  moveSpeed: 0.4
+  damage: 10
+  fireRate: 4
+  moveSpeed: 0.7
   isAir: 0
   rb: {fileID: 0}
   currentWaypoint: 0
@@ -192,6 +224,10 @@ MonoBehaviour:
   canMove: 1
   isDying: 0
   moveLocation: {x: 0, y: 0}
+  towersInRange: []
+  closestTower: {fileID: 0}
+  projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
+  range: 2
 --- !u!1 &8168135004038561218
 GameObject:
   m_ObjectHideFlags: 0

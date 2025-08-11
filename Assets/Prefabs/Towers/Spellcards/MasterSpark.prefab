@@ -58,3 +58,4 @@ MonoBehaviour:
     m_Bits: 512
   damageDebounce: 0.4
   damageDealtPerTick: 10
+  masterSparkBeam: {fileID: 6013995890916791538, guid: 3d7248d78b8bc80e6a0ca57c21b0ec86, type: 3}

@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: 2c6296aa18cc58b72aa8b69be71ecf78
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -21467113071099481
+    second: reimutowerconstruction_0
+  - first:
+      213: -8135925299131761717
+    second: reimutowerconstruction_1
+  - first:
+      213: -3216351221622175349
+    second: reimutowerconstruction_2
+  - first:
+      213: 6797880019246846178
+    second: reimutowerconstruction_3
+  - first:
+      213: -4871824127655068771
+    second: reimutowerconstruction_4
+  - first:
+      213: -7095529797680645552
+    second: reimutowerconstruction_5
+  - first:
+      213: 4106482365044749366
+    second: reimutowerconstruction_6
+  - first:
+      213: 1835751620231035993
+    second: reimutowerconstruction_7
+  - first:
+      213: -6288821237191309846
+    second: reimutowerconstruction_8
+  - first:
+      213: -3096718314675251278
+    second: reimutowerconstruction_9
+  - first:
+      213: -2548539379986720620
+    second: reimutowerconstruction_10
+  - first:
+      213: 5058707184360358490
+    second: reimutowerconstruction_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: reimutowerconstruction_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 2241
+        width: 305
+        height: 694
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a14b0f36cbb3bff0800000000000000
+      internalID: -21467113071099481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_1
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 2481
+        width: 392
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb3322eb03671f80800000000000000
+      internalID: -8135925299131761717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_2
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 2192
+        width: 380
+        height: 763
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b89015ada993d53d0800000000000000
+      internalID: -3216351221622175349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_3
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 2691
+        width: 109
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e01fec5cdbe65e50800000000000000
+      internalID: 6797880019246846178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_4
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 2693
+        width: 130
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b31f694cdc36cb0800000000000000
+      internalID: -4871824127655068771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_5
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 2233
+        width: 366
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05abb042e3d978d90800000000000000
+      internalID: -7095529797680645552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_6
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 2367
+        width: 212
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 634f5e434f72df830800000000000000
+      internalID: 4106482365044749366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_7
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 2294
+        width: 131
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95cf7b35f56e97910800000000000000
+      internalID: 1835751620231035993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_8
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1820
+        width: 128
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae58745876e99b8a0800000000000000
+      internalID: -6288821237191309846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_9
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1846
+        width: 123
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b7d554991f3605d0800000000000000
+      internalID: -3096718314675251278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1340
+        width: 173
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4981cc7cfe4c1acd0800000000000000
+      internalID: -2548539379986720620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reimutowerconstruction_11
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 1363
+        width: 189
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a52048ac163243640800000000000000
+      internalID: 5058707184360358490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      reimutowerconstruction_0: -21467113071099481
+      reimutowerconstruction_1: -8135925299131761717
+      reimutowerconstruction_10: -2548539379986720620
+      reimutowerconstruction_11: 5058707184360358490
+      reimutowerconstruction_2: -3216351221622175349
+      reimutowerconstruction_3: 6797880019246846178
+      reimutowerconstruction_4: -4871824127655068771
+      reimutowerconstruction_5: -7095529797680645552
+      reimutowerconstruction_6: 4106482365044749366
+      reimutowerconstruction_7: 1835751620231035993
+      reimutowerconstruction_8: -6288821237191309846
+      reimutowerconstruction_9: -3096718314675251278
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

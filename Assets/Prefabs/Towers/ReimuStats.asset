@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   scatteredDamageModifier: 0.5
-  fireRate: 2
+  fireRate: 1
   scatteredFireRateModifier: 1
   blockAmount: 2
   isCliffTower: 1
