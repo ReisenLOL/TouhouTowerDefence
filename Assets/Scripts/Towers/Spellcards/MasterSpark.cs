@@ -1,9 +1,9 @@
+using Core.Extensions;
 using UnityEngine;
 
 public class MasterSpark : Spellcard
 {
     //add cool funny effect.
-    private Transform towerSprite;
     public float sparkDuration;
     private float currentSparkTime;
     private bool sparkActive;
@@ -18,14 +18,12 @@ public class MasterSpark : Spellcard
     protected override void Start()
     {
         base.Start();
-        towerSprite = thisTower.transform.Find("Sprite").transform;
         rangeToCheck = thisTower.GetComponentInChildren<TowerRangeCollider>().transform;
-        Transform newBeam = Instantiate(masterSparkBeam, thisTower.transform);
+        Transform newBeam = Instantiate(masterSparkBeam, rangeToCheck.transform);
         newBeam.position = thisTower.transform.position;
-        newBeam.rotation = rangeToCheck.rotation;
         newBeam.localScale = new Vector3(100f, sparkSize.y, 1);
         newBeam.gameObject.SetActive(false);
-        newBeam.Translate(rangeToCheck.transform.right * 50f);
+        newBeam.Translate(Vector2.right * (50f + 0.5f));
         createdBeam = newBeam.gameObject;
     }
     protected override void SpellCardEffects()
@@ -41,10 +39,10 @@ public class MasterSpark : Spellcard
         base.Update();
         if (sparkActive)
         {
-            
             currentSparkTime += Time.deltaTime;
             if (currentSparkTime >= sparkDuration)
             {
+                currentSparkTime = 0;
                 sparkActive = false;
                 createdBeam.gameObject.SetActive(false);
             }

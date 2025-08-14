@@ -20,8 +20,9 @@ public class Enemy : Unit
     private Animator animator;
     private GameManager gameManager;
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindFirstObjectByType<GameManager>();

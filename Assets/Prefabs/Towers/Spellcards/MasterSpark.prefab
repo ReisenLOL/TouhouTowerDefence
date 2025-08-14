@@ -47,15 +47,15 @@ MonoBehaviour:
   spellcardID: Master Spark
   spellcardImage: {fileID: 5265108533749722248, guid: 894a23abda43ffc58a0b2b2d31858730, type: 3}
   spellcardDescription: Yeah
-  cooldown: 2
+  cooldown: 120
   currentCooldownTime: 0
   onCooldown: 0
   thisTower: {fileID: 0}
-  sparkDuration: 4.9234297e+10
-  sparkSize: {x: 3, y: 1}
+  sparkDuration: 5
+  sparkSize: {x: 3, y: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  damageDebounce: 0.4
-  damageDealtPerTick: 10
+  damageDebounce: 0.25
+  damageDealtPerTick: 5
   masterSparkBeam: {fileID: 6013995890916791538, guid: 3d7248d78b8bc80e6a0ca57c21b0ec86, type: 3}

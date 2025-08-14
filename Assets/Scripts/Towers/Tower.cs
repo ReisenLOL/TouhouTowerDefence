@@ -30,8 +30,9 @@ public class Tower : Unit
     public List<Spellcard> spellcardList;
     
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
         audioSource = FindFirstObjectByType<AudioSource>();
         healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
         animator = GetComponentInChildren<Animator>();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class TowerPlacement : MonoBehaviour
@@ -18,6 +19,7 @@ public class TowerPlacement : MonoBehaviour
     private Transform rangeToRotate;
     private Vector3 worldPos;
     private Transform towerSprite;
+    private Transform createdSelectionSquare;
     //THIS IS SO FUCKING STUPID BUT IT'S ALL I CAN THINK OF AND IT WORKS.
     [SerializeField] private float timeUntilRotation;
     private float currentTimeUntilRotation;
@@ -25,6 +27,7 @@ public class TowerPlacement : MonoBehaviour
     private ShowTowerInfo showTowerInfo;
 
     [Header("[PLACEMENT STUFF]")] 
+    public Transform towerSelectionSquare;
     public AudioClip placementSound;
     private AudioSource audioSource;
     public List<TowerToPlace> AllTowers; //please don't use this ever it's for the prefabs if you use it you edit the prefabs. who are you talking to sylvia? no one else is gonna be developing this game. i think.
@@ -35,23 +38,29 @@ public class TowerPlacement : MonoBehaviour
     private bool selectingRotation;
     private GameObject placeholderTower;
     private GameObject placeholderRange;
-    private bool createPlaceholder;
     
     [Header("[PLACEMENT UI]")]
     public Transform placementFrame;
     public Button buttonTemplate;
 
-    [Header("Resources")] 
+    [Header("[RESOURCES]")] 
     public int currentPower;
     public float powerGenerationRate;
     private float currentPowerGenerationTime;
     public TextMeshProUGUI powerNumberUI;
-    
+    //time to do a bunch more visual stuffs.
+    [Header("[VISUALS]")] 
+    public Tilemap cliffMap;
+    public Tilemap pathMap;
+    public Color noPlace;
+    public Color yesPlace;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         towersFolder = GameObject.Find("TowersFolder").transform;
         placementGrid = FindFirstObjectByType<Grid>();
+        cliffMap = GameObject.Find("Cliff Map").GetComponent<Tilemap>();
+        pathMap = GameObject.Find("Path Map").GetComponent<Tilemap>();
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         cam = Camera.main;
         if (SelectedTowersTransferHandler.instance)
@@ -95,15 +104,16 @@ public class TowerPlacement : MonoBehaviour
         }
         if (isPlacing)
         {
-            if (createPlaceholder)
-            {
-                CreatePlaceholderTower();
-                createPlaceholder = false;
-            }
             worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
             if (placeholderTower)
             {
-                placeholderTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
+                Vector3 setPosition = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
+                placeholderTower.transform.position = setPosition;
+                createdSelectionSquare.position = setPosition;
+            }
+            else
+            {
+                CreatePlaceholderTower();
             }
             if (selectingPosition)
             {
@@ -181,8 +191,11 @@ public class TowerPlacement : MonoBehaviour
         placeholderRange.transform.SetParent(newTower.transform);
         placeholderRange.transform.position = newTower.transform.position;
         Destroy(placeholderTower);
+        Destroy(createdSelectionSquare.gameObject);
         newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
         selectedTower.isPlaced = true;
+        cliffMap.color = Color.white;
+        pathMap.color = Color.white;
         TowerRangeCollider addRange;
         if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
         {
@@ -211,8 +224,10 @@ public class TowerPlacement : MonoBehaviour
         {
             Destroy(placeholderRange);
         }
-
+        cliffMap.color = Color.white;
+        pathMap.color = Color.white;
         Destroy(placeholderTower);
+        Destroy(createdSelectionSquare.gameObject);
         if (newDragHandle)
         {
             Destroy(newDragLine.gameObject);
@@ -247,7 +262,6 @@ public class TowerPlacement : MonoBehaviour
     private void CreatePlaceholderTower()
     {
         placeholderTower = Instantiate(selectedTower.tower.gameObject);
-        //placeholderTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.8f);
         placeholderTower.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         if (placeholderTower.GetComponentInChildren<TowerBlockingCollision>())
         {
@@ -257,7 +271,8 @@ public class TowerPlacement : MonoBehaviour
         {
             Destroy(script);
         }
-        createPlaceholder = false;
+        createdSelectionSquare = Instantiate(towerSelectionSquare);
+        createdSelectionSquare.position = placeholderTower.transform.position;
     }
     public void RebuildTowerSelection()
     {
@@ -284,9 +299,18 @@ public class TowerPlacement : MonoBehaviour
         {
             return;
         }
+        if (towerChosen.tower.stats.isCliffTower)
+        {
+            cliffMap.color = yesPlace;
+            pathMap.color = noPlace;
+        }
+        else
+        {
+            cliffMap.color = noPlace;
+            pathMap.color = yesPlace;
+        }
         selectedTower = towerChosen;
         selectingPosition = true;
-        createPlaceholder = true;
         isPlacing = true;
         placementFrame.gameObject.SetActive(false);
         showTowerInfo.canShowUI = false;

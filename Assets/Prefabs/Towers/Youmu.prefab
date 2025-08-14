@@ -248,6 +248,7 @@ MonoBehaviour:
   maxHealth: 100
   defence: 1
   attackModifier: 1
+  damageColorChangeSpeed: 4
   towerID: Youmu
   focusedRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}

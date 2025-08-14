@@ -180,6 +180,7 @@ MonoBehaviour:
   maxHealth: 125
   defence: 1
   attackModifier: 1
+  damageColorChangeSpeed: 4
   damage: 15
   fireRate: 2
   moveSpeed: 0.4

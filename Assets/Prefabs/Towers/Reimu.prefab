@@ -272,6 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2129643190523924007}
+  - component: {fileID: 1877168078677812330}
   m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
@@ -295,6 +296,28 @@ Transform:
   - {fileID: 2427810018709272369}
   m_Father: {fileID: 5574411014608529422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1877168078677812330
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231517360673001188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83eafdde756c715a6b3b4e63ab2f1b55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1752094417476307792
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +654,7 @@ MonoBehaviour:
   maxHealth: 100
   defence: 1
   attackModifier: 1
+  damageColorChangeSpeed: 4
   towerID: Reimu
   focusedRange: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
@@ -645,7 +669,7 @@ MonoBehaviour:
   currentlyBlocking: []
   closestEnemy: {fileID: 0}
   spellcardList: []
-  projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
+  projectile: {fileID: 3434601637527348039, guid: 180340b2e31e3038984ef9c64b1186b8, type: 3}
 --- !u!82 &-7331480864839345858
 AudioSource:
   m_ObjectHideFlags: 0
