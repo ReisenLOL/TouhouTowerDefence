@@ -8,9 +8,11 @@ public class Unit : MonoBehaviour
     public float maxHealth;
     public float defence = 1f;
     public float attackModifier = 1f;
+    public bool isDying;
     protected SpriteRenderer[] spriteRenderers;
     private float currentState;
-    public float damageColorChangeSpeed = 4f;
+    [SerializeField] private float damageColorChangeSpeed = 4f;
+    [SerializeField] private float deathColorChangeSpeed = 4f;
 
     protected virtual void Start()
     {
@@ -20,11 +22,14 @@ public class Unit : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         health -= damage * defence;
-        if (health <= 0)
+        if (health <= 0 && !isDying)
         {
+            currentState = 0;
+            isDying = true;
             OnKill();
+            StartCoroutine(DeathAnimation());
         }
-        else
+        else if (!isDying)
         {
             currentState = 0;
             StartCoroutine(DamageAnimation());
@@ -45,6 +50,25 @@ public class Unit : MonoBehaviour
                 if (spritepart)
                 {
                     spritepart.color = Color.Lerp(Color.red, Color.white, currentState);
+                }
+            }
+            yield return null;
+        }
+    }
+    private IEnumerator DeathAnimation()
+    {
+        while (currentState < 1)
+        {
+            currentState += Time.deltaTime * deathColorChangeSpeed;
+            if (currentState >= 1)
+            {
+                Destroy(gameObject);
+            }
+            foreach (SpriteRenderer spritepart in spriteRenderers)
+            {
+                if (spritepart)
+                {
+                    spritepart.color = Color.Lerp(Color.white, Color.black, currentState);
                 }
             }
             yield return null;

@@ -111,7 +111,7 @@ public class TowerPlacement : MonoBehaviour
                 placeholderTower.transform.position = setPosition;
                 createdSelectionSquare.position = setPosition;
             }
-            else
+            else if (!selectingRotation)
             {
                 CreatePlaceholderTower();
             }
@@ -190,8 +190,6 @@ public class TowerPlacement : MonoBehaviour
         }
         placeholderRange.transform.SetParent(newTower.transform);
         placeholderRange.transform.position = newTower.transform.position;
-        Destroy(placeholderTower);
-        Destroy(createdSelectionSquare.gameObject);
         newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
         selectedTower.isPlaced = true;
         cliffMap.color = Color.white;
@@ -226,8 +224,11 @@ public class TowerPlacement : MonoBehaviour
         }
         cliffMap.color = Color.white;
         pathMap.color = Color.white;
-        Destroy(placeholderTower);
-        Destroy(createdSelectionSquare.gameObject);
+        if (placeholderTower)
+        {
+            Destroy(placeholderTower);
+            Destroy(createdSelectionSquare.gameObject);
+        }
         if (newDragHandle)
         {
             Destroy(newDragLine.gameObject);
@@ -245,6 +246,8 @@ public class TowerPlacement : MonoBehaviour
         if (currentTimeUntilRotation >= timeUntilRotation)
         {
             selectingRotation = true;
+            Destroy(placeholderTower);
+            Destroy(createdSelectionSquare.gameObject);
             waitForRotation = false;
             currentTimeUntilRotation = 0;
         }

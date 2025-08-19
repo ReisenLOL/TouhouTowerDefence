@@ -148,3 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 24
+  timeUntilAutoDestroy: 2
+  target: {fileID: 0}

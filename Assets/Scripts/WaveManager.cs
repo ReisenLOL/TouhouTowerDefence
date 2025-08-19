@@ -29,7 +29,8 @@ public class WaveManager : MonoBehaviour
     }
     public Wave[] waveList; //THIS IS INSANE. 3 NESTED CLASSES.
     public int currentWave;
-    public float timeBetweenEnemySpawns;
+    public float timeBetweenEnemySpawns; //i think each wave should have their own variable of this.
+    public float timeBetweenWaves;
     private GameManager gameManager;
     public Transform enemiesFolder;
     private void Start()
@@ -73,7 +74,7 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(timeBetweenEnemySpawns);
             }
             currentEnemyGroup++;
-            yield return new WaitForSeconds(timeBetweenEnemySpawns);
+            yield return new WaitForSeconds(timeBetweenWaves);
         }
 
         if (currentWave != waveList.Length)

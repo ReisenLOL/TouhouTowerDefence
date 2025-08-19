@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: -1545172601277227428}
   m_Layer: 0
   m_Name: Kurogane
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,6 +717,7 @@ MonoBehaviour:
   defence: 1
   attackModifier: 1
   damageColorChangeSpeed: 4
+  deathColorChangeSpeed: 2
   towerID: Kurogane
   focusedRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}

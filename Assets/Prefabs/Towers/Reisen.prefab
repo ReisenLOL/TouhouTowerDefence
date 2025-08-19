@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8123707340622689288}
   m_Layer: 8
   m_Name: Reisen
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   defence: 1
   attackModifier: 1
   damageColorChangeSpeed: 4
+  deathColorChangeSpeed: 2
   towerID: Reisen
   focusedRange: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}

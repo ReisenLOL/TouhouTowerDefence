@@ -212,7 +212,9 @@ MonoBehaviour:
   maxHealth: 100
   defence: 1
   attackModifier: 1
+  isDying: 0
   damageColorChangeSpeed: 4
+  deathColorChangeSpeed: 0.5
   damage: 10
   fireRate: 4
   moveSpeed: 0.7
@@ -223,7 +225,6 @@ MonoBehaviour:
     spawnPoint: {fileID: 0}
     waypoints: []
   canMove: 1
-  isDying: 0
   moveLocation: {x: 0, y: 0}
   towersInRange: []
   closestTower: {fileID: 0}

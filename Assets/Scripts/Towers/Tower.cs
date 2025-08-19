@@ -20,7 +20,7 @@ public class Tower : Unit
     [Header("[CACHE]")] 
     public AudioClip attackSound;
     public AudioClip deathSound;
-    protected AudioSource audioSource;
+    public AudioSource audioSource;
     public Animator animator;
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
@@ -60,7 +60,6 @@ public class Tower : Unit
             }
         }
         audioSource.PlayOneShot(deathSound);
-        Destroy(gameObject, 0.2f);
     }
 
     public override void TakeDamage(float damageTaken)

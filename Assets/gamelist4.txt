@@ -23,6 +23,7 @@ so basically
 STOP MAKING SYSTEMS. RIGHT NOW.
 i can make systems later. but right now? make the game playable.
 i was gonna draw actual sprites but it's way too late for that rn i'll just focus on whatever i can to make the game look more playable rn. hopefully i can convice myself to game dev when i wake up tmrw.
+dude i should make like a buff and debuff icon that displays ontop of enemies!! it'd look so awesome!!
 
 TODO
 - add a level and map system

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7582621265792496825}
   - component: {fileID: 1518192108830214666}
-  - component: {fileID: 3434601637527348039}
+  - component: {fileID: 2403158037455446920}
   m_Layer: 12
-  m_Name: Talisman
+  m_Name: Sprit Orb
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4, y: 0.23}
   m_EdgeRadius: 0
---- !u!114 &3434601637527348039
+--- !u!114 &2403158037455446920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,12 +89,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4279057010999144170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dfa8ed70a9a011b1ad621487afe8ca6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2487bc862cab3a946988a2f84c145f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 24
-  timeUntilAutoDestroy: 2
+  speed: 5
+  timeUntilAutoDestroy: 4
   target: {fileID: 0}
+  homingRange: 12
+  timeUntilHoming: 0.5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  damage: 0
 --- !u!1 &8959733896276759086
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +177,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5918660992592920703, guid: ac565dc58e13919fba2dae29f0b6c5a6, type: 3}
+  m_Sprite: {fileID: 6780163795253843707, guid: 48e73df0e864d5f448448b9ac150668c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

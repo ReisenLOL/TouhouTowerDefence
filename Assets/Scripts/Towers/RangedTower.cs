@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RangedTower : Tower
 {
-    public MoveProjectile projectile;
+    public Projectile projectile;
     protected override void Update()
     {
         currentFiringTime += Time.deltaTime;
@@ -32,16 +32,17 @@ public class RangedTower : Tower
                         closestEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
                     }
                     audioSource.PlayOneShot(attackSound);
-                    FireProjectile(closestEnemy.transform.position);
+                    FireProjectile(closestEnemy.transform);
                     currentFiringTime = 0;   
                 }
             }
         }
     }
 
-    private void FireProjectile(Vector2 direction)
+    private void FireProjectile(Transform direction)
     {
-        MoveProjectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
-        newProjectile.RotateToTarget(direction);
+        Projectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        newProjectile.target = direction;
+        newProjectile.RotateToTarget(direction.position);
     }
 }

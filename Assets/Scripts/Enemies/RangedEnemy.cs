@@ -39,14 +39,15 @@ public class RangedEnemy : Enemy
                     closestTower = foundTower;
                 }
                 closestTower.TakeDamage(damage);
-                FireProjectile(closestTower.transform.position);
+                FireProjectile(closestTower.transform);
                 currentFiringTime = 0;
             }
         }
     }
-    private void FireProjectile(Vector2 direction)
+    private void FireProjectile(Transform direction)
     {
         MoveProjectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
-        newProjectile.RotateToTarget(direction);
+        newProjectile.RotateToTarget(direction.position);
+        newProjectile.target = direction;
     }
 }

@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: -7331480864839345858}
   m_Layer: 8
   m_Name: Reimu
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -655,13 +655,15 @@ MonoBehaviour:
   defence: 1
   attackModifier: 1
   damageColorChangeSpeed: 4
+  deathColorChangeSpeed: 2
   towerID: Reimu
   focusedRange: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
   currentTargettingMode: 0
   stats: {fileID: 11400000, guid: 32e866edde8655220958aafd2f4bd7e5, type: 2}
   spellcardsToAdd:
-  - {fileID: 6004244980120150755, guid: b3d1638ad4307e1cdb732215e627086a, type: 3}
+  - {fileID: 2510057981858112619, guid: b3d1638ad4307e1cdb732215e627086a, type: 3}
+  - {fileID: 6743446974495392422, guid: 4ffd103fb567363cda68fa619292909e, type: 3}
   attackSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
   animator: {fileID: 0}

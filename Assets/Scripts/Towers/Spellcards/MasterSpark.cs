@@ -28,8 +28,6 @@ public class MasterSpark : Spellcard
     }
     protected override void SpellCardEffects()
     {
-        //do an overlapbox where the tower faces, foreach enemy inside during this, damage them.
-        //or ray cast?
         sparkActive = true;
         createdBeam.gameObject.SetActive(true);
     }

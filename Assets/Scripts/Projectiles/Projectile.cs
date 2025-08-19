@@ -1,27 +1,21 @@
-using System;
 using Core.Extensions;
 using UnityEngine;
 
-public class MoveProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float speed;
-
-    private void Start()
+    public float timeUntilAutoDestroy;
+    public Transform target;
+    
+    protected virtual void Start()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, timeUntilAutoDestroy);
     }
-
-    private void Update()
-    {
-        transform.Translate(Vector3.right * (speed * Time.deltaTime));
-    }
-
     public void RotateToTarget(Vector2 direction)
     {
         transform.Lookat2D(direction);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && gameObject.CompareTag("Tower") ||
             other.gameObject.layer == LayerMask.NameToLayer("Tower") && gameObject.CompareTag("Enemy"))
@@ -30,3 +24,4 @@ public class MoveProjectile : MonoBehaviour
         }
     }
 }
+

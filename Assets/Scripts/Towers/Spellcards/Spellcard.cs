@@ -12,6 +12,8 @@ public class Spellcard : MonoBehaviour
     public float currentCooldownTime;
     public bool onCooldown;
     private ShowTowerInfo towerInfoUI;
+    public AudioClip spellcardSound;
+    public float spellcardSoundVolume;
     [Header("[CACHE]")]
     public Tower thisTower;
 
@@ -28,6 +30,10 @@ public class Spellcard : MonoBehaviour
             SpellCardEffects();
             currentCooldownTime = cooldown;
             towerInfoUI.RebuildSpellcardList();
+            if (spellcardSound)
+            {
+                thisTower.audioSource.PlayOneShot(spellcardSound, spellcardSoundVolume);   
+            }
         }
     }
 

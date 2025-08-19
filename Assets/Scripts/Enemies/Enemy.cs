@@ -14,7 +14,7 @@ public class Enemy : Unit
     public int currentWaypoint;
     public WaveManager.SpawnAndMovement selectedSpawnAndMovement;
     public bool canMove = true;
-    public bool isDying;
+
     public Vector2 moveLocation;
     protected float currentFiringTime;
     private Animator animator;
@@ -48,18 +48,12 @@ public class Enemy : Unit
     }
     protected override void OnKill()
     {
-        isDying = true;
         canMove = false;
         gameManager.currentEnemyCount++;
         gameManager.UpdateEnemyCountUI();
         if (animator)
         {
             animator.Play("Death Animation");
-            Destroy(gameObject, 1.6f);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 }

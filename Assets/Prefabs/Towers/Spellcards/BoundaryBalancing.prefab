@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6817202977256971003}
-  - component: {fileID: -6105903671066902028}
+  - component: {fileID: 6743446974495392422}
   m_Layer: 0
-  m_Name: MasterSpark
+  m_Name: BoundaryBalancing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6105903671066902028
+--- !u!114 &6743446974495392422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,23 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7911216193190828130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 695f070ac9db42168eba7f23d59ba789, type: 3}
+  m_Script: {fileID: 11500000, guid: a6c60355bb0642f29d4c50f546c53e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellcardID: Master Spark
+  spellcardID: Boundary Balancing
   spellcardImage: {fileID: 5265108533749722248, guid: 894a23abda43ffc58a0b2b2d31858730, type: 3}
-  spellcardDescription: Yeah
-  cooldown: 120
+  spellcardDescription: '"Balance" the attack power to our favor.'
+  cooldown: 60
   currentCooldownTime: 0
   onCooldown: 0
-  spellcardSound: {fileID: 8300000, guid: 5f312ddd616712caab49cdd46a93cb19, type: 3}
+  spellcardSound: {fileID: 8300000, guid: 6bdd7f271238ecbc28fe45f6915de5de, type: 3}
   spellcardSoundVolume: 0.4
   thisTower: {fileID: 0}
-  sparkDuration: 5
-  sparkSize: {x: 3, y: 3}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  damageDebounce: 0.25
-  damageDealtPerTick: 5
-  masterSparkBeam: {fileID: 6013995890916791538, guid: 3d7248d78b8bc80e6a0ca57c21b0ec86, type: 3}
+  buffDuration: 12
+  currentbuffTime: 0
+  buffActive: 0
