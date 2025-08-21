@@ -35,6 +35,11 @@ public class Unit : MonoBehaviour
             StartCoroutine(DamageAnimation());
         }
     }
+    public virtual void HealDamage(float healing)
+    {
+        health += healing;
+        StartCoroutine(HealAnimation());
+    }
 
     protected virtual void OnKill()
     {
@@ -69,6 +74,21 @@ public class Unit : MonoBehaviour
                 if (spritepart)
                 {
                     spritepart.color = Color.Lerp(Color.white, Color.black, currentState);
+                }
+            }
+            yield return null;
+        }
+    }
+    private IEnumerator HealAnimation()
+    {
+        while (currentState < 1)
+        {
+            currentState += Time.deltaTime * damageColorChangeSpeed;
+            foreach (SpriteRenderer spritepart in spriteRenderers)
+            {
+                if (spritepart)
+                {
+                    spritepart.color = Color.Lerp(Color.green, Color.white, currentState);
                 }
             }
             yield return null;

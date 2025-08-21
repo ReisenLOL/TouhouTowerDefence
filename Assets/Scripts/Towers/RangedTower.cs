@@ -6,6 +6,11 @@ public class RangedTower : Tower
     public Projectile projectile;
     protected override void Update()
     {
+        TryAttack();
+    }
+
+    protected override void TryAttack()
+    {
         currentFiringTime += Time.deltaTime;
         if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
         {
@@ -38,8 +43,7 @@ public class RangedTower : Tower
             }
         }
     }
-
-    private void FireProjectile(Transform direction)
+    protected void FireProjectile(Transform direction)
     {
         Projectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
         newProjectile.target = direction;

@@ -74,6 +74,11 @@ public class Tower : Unit
     protected virtual void Update()
     {
         //since were having like different tower classes, the update function might be different on each one.
+        TryAttack();
+    }
+
+    protected virtual void TryAttack()
+    {
         currentFiringTime += Time.deltaTime;
         if (currentFiringTime >= stats.fireRate)
         {
@@ -93,7 +98,6 @@ public class Tower : Unit
             }
         }
     }
-
     protected void OnDestroy()
     {
         foreach (Enemy enemy in currentlyBlocking)

@@ -5,6 +5,11 @@ public class MeleeTower : Tower
 {
     protected override void Update()
     {
+        TryAttack();
+    }
+
+    protected override void TryAttack()
+    {
         currentFiringTime += Time.deltaTime;
         if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
         {
@@ -34,5 +39,4 @@ public class MeleeTower : Tower
             }
         }
     }
-
 }

@@ -61,7 +61,9 @@ IDEAS
     + Momiji
         =
     + 
-    
+- Classses
+    + Summoner Class
+        = maybe like alice periodically summons a bunch of dolls that move through the path
 TOWERS
 Sanae - Healer
 Yukari - Support????
