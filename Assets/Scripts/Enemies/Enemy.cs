@@ -13,7 +13,6 @@ public class Enemy : Unit
     public Rigidbody2D rb;
     public int currentWaypoint;
     public WaveManager.SpawnAndMovement selectedSpawnAndMovement;
-    public bool canMove = true;
 
     public Vector2 moveLocation;
     protected float currentFiringTime;

@@ -44,12 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c76ab99278b87728dcbe8a2333487f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellcardID: yeah
+  spellcardID: Lunatic Red Eyes
   spellcardImage: {fileID: 5265108533749722248, guid: 894a23abda43ffc58a0b2b2d31858730, type: 3}
-  spellcardDescription: yeah
+  spellcardDescription: Stun all enemies in range.
   cooldown: 20
   currentCooldownTime: 0
   onCooldown: 0
+  spellcardSound: {fileID: 0}
+  spellcardSoundVolume: 0
   thisTower: {fileID: 0}
-  stunDuration: 5
-  currentStunTime: 0
+  stunEffect: {fileID: 11400000, guid: cd3239ce3a66b6da39929b6f407a8305, type: 2}

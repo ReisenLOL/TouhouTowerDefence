@@ -22,7 +22,7 @@ public class Spellcard : MonoBehaviour
         towerInfoUI = FindFirstObjectByType<ShowTowerInfo>();
     }
 
-    public void CastSpellCard()
+    public virtual void CastSpellCard()
     {
         if (!onCooldown)
         {

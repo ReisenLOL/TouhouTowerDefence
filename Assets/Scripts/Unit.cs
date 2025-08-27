@@ -9,8 +9,10 @@ public class Unit : MonoBehaviour
     public float defence = 1f;
     public float attackModifier = 1f;
     public bool isDying;
+    public bool canMove = true; //this shouldn't be here for towers but whatever!
     protected SpriteRenderer[] spriteRenderers;
     private float currentState;
+    public Transform effectOverlayUI;
     [SerializeField] private float damageColorChangeSpeed = 4f;
     [SerializeField] private float deathColorChangeSpeed = 4f;
 

@@ -15,6 +15,8 @@ public class MasterSpark : Spellcard
     public float damageDealtPerTick;
     public Transform masterSparkBeam;
     private GameObject createdBeam;
+    public ParticleSystem masterSparkParticles;
+    private ParticleSystem masterSparkParticlesInstance;
     protected override void Start()
     {
         base.Start();
@@ -30,6 +32,8 @@ public class MasterSpark : Spellcard
     {
         sparkActive = true;
         createdBeam.gameObject.SetActive(true);
+        masterSparkParticlesInstance = Instantiate(masterSparkParticles, rangeToCheck.transform);
+        masterSparkParticlesInstance.transform.localEulerAngles = new Vector3(0, 0, 180);
     }
 
     protected override void Update()
@@ -43,6 +47,7 @@ public class MasterSpark : Spellcard
                 currentSparkTime = 0;
                 sparkActive = false;
                 createdBeam.gameObject.SetActive(false);
+                Destroy(masterSparkParticlesInstance);
             }
             damageDebounceTime += Time.deltaTime;
             if (damageDebounceTime > damageDebounce)
