@@ -112,10 +112,10 @@ GameObject:
   - component: {fileID: 5574411014608529422}
   - component: {fileID: 2010483278330885321}
   - component: {fileID: 5180126692649479671}
-  - component: {fileID: 3475580796332043495}
+  - component: {fileID: 8431745549309746855}
   - component: {fileID: -8123707340622689288}
   m_Layer: 8
-  m_Name: Reisen
+  m_Name: Sanae
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3475580796332043495
+--- !u!114 &8431745549309746855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2731465358017235426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e3e5551e24a5cc61afd30b4f27d877a, type: 3}
+  m_Script: {fileID: 11500000, guid: ee80f4e7f2a092695b56bd10aef9da78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -233,22 +233,22 @@ MonoBehaviour:
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
-  towerID: Reisen
-  focusedRange: {fileID: 7306455127275621131, guid: 8d7e98572fe9d9276bc6421282f7de64, type: 3}
-  scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
+  towerID: Sanae
+  focusedRange: {fileID: 7322529300519180303, guid: 4c0eb233adaea83f9aabdd7f89ffe0af, type: 3}
+  scatteredRange: {fileID: 7322529300519180303, guid: 4c0eb233adaea83f9aabdd7f89ffe0af, type: 3}
   currentTargettingMode: 0
-  stats: {fileID: 11400000, guid: f7dec2f3473508cfea9b595acb297df8, type: 2}
-  spellcardsToAdd:
-  - {fileID: 6514951590809409605, guid: a653346f51a7332678501deaad93a69f, type: 3}
+  stats: {fileID: 11400000, guid: 1cb24dd88eff16aa9b2e031bdec3c300, type: 2}
+  spellcardsToAdd: []
   attackSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: -8123707340622689288}
   animator: {fileID: 0}
   enemiesInRange: []
   currentlyBlocking: []
   closestEnemy: {fileID: 0}
   spellcardList: []
-  projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
+  projectile: {fileID: 0}
+  towersInRange: []
 --- !u!82 &-8123707340622689288
 AudioSource:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7030384307350582015, guid: 0f313563eae154fa0aef9fc8065a1573, type: 3}
+  m_Sprite: {fileID: -4603481911156076454, guid: 9759294768eca009e8dc822162e3da8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

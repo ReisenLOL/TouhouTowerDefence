@@ -23,7 +23,7 @@ public class Effect : ScriptableObject
         {
             newEffectSquare.transform.Find("StatusIcon").eulerAngles = new Vector3(0,0,180);
         }
-        else
+        else if (thisEffectType == EffectType.Neutral)
         {
             newEffectSquare.transform.Find("StatusIcon").gameObject.SetActive(false);
         }

@@ -53,6 +53,5 @@ MonoBehaviour:
   spellcardSound: {fileID: 8300000, guid: 6bdd7f271238ecbc28fe45f6915de5de, type: 3}
   spellcardSoundVolume: 0.4
   thisTower: {fileID: 0}
-  buffDuration: 12
-  currentbuffTime: 0
-  buffActive: 0
+  towerBuffEffect: {fileID: 11400000, guid: bda5d98e3225fc10187fe712957e8768, type: 2}
+  enemyDebuffEffect: {fileID: 11400000, guid: c80707de2569fd366a5fb8ab3556d4ed, type: 2}

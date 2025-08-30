@@ -1441,7 +1441,7 @@ Transform:
   m_GameObject: {fileID: 202898623}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.184, y: 0.868, z: 0}
+  m_LocalPosition: {x: -4.172, y: 0.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3398,7 +3398,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8288426215254106694, guid: 69e7856d62ac42c0f97250a3e587d82f, type: 3}
   m_Color: {r: 0.9147109, g: 0.9147109, b: 0.9147109, a: 1}
   m_FlipX: 0
@@ -8202,6 +8202,7 @@ MonoBehaviour:
   - {fileID: 2541345253646511569, guid: c081bf239218b54108340618bda2d303, type: 3}
   - {fileID: 2541345253646511569, guid: 45c1e8b7280cfa6b0a76a445bdb7eb7c, type: 3}
   - {fileID: 2541345253646511569, guid: 2c57213f1d8cb6402aa8b0bb3261f5e9, type: 3}
+  - {fileID: 2541345253646511569, guid: 1c7326c6ebccafca8bef9878779af2e1, type: 3}
   availableTowers: []
   selectedTower: {fileID: 0}
   placementFrame: {fileID: 630806858}
