@@ -43,6 +43,7 @@ public class TowerPlacement : MonoBehaviour
     private bool selectingRotation;
     private GameObject placeholderTower;
     private GameObject placeholderRange;
+    public Tower newlyCreatedTower;
     
     [Header("[PLACEMENT UI]")]
     public Transform placementFrame;
@@ -57,6 +58,7 @@ public class TowerPlacement : MonoBehaviour
     [Header("[VISUALS]")] 
     public Tilemap cliffMap;
     public Tilemap pathMap;
+    public Tilemap unplaceableMap;
     public Color noPlace;
     public Color yesPlace;
     private void Start()
@@ -66,6 +68,7 @@ public class TowerPlacement : MonoBehaviour
         placementGrid = FindFirstObjectByType<Grid>();
         cliffMap = GameObject.Find("Cliff Map").GetComponent<Tilemap>();
         pathMap = GameObject.Find("Path Map").GetComponent<Tilemap>();
+        unplaceableMap = GameObject.Find("Unplaceable Map").GetComponent<Tilemap>();
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         cam = Camera.main;
         if (SelectedTowersTransferHandler.instance)
@@ -135,7 +138,11 @@ public class TowerPlacement : MonoBehaviour
             {
                 RotateTower();
                 if (Input.GetMouseButtonUp(0))
-                { 
+                {
+                    if (newlyCreatedTower.animator)
+                    {
+                        newlyCreatedTower.animator.Play(newlyCreatedTower.deployAnimParam);
+                    }
                     StopPlacement();
                 }
             }
@@ -179,39 +186,40 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
         audioSource.PlayOneShot(placementSound);
-        Tower newTower = Instantiate(selectedTower.tower, towersFolder);
+        newlyCreatedTower = Instantiate(selectedTower.tower, towersFolder);
         if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
         {
-            placeholderRange = Instantiate(newTower.focusedRange.showRange, newTower.transform);
+            placeholderRange = Instantiate(newlyCreatedTower.focusedRange.showRange, newlyCreatedTower.transform);
         }
         else
         {
-            placeholderRange = Instantiate(newTower.scatteredRange.showRange, newTower.transform);
+            placeholderRange = Instantiate(newlyCreatedTower.scatteredRange.showRange, newlyCreatedTower.transform);
         }
         placeholderRange.SetActive(true);
         foreach (MonoBehaviour script in placeholderRange.GetComponents<MonoBehaviour>())
         {
             Destroy(script);
         }
-        placeholderRange.transform.SetParent(newTower.transform);
-        placeholderRange.transform.position = newTower.transform.position;
-        newTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
+        placeholderRange.transform.SetParent(newlyCreatedTower.transform);
+        placeholderRange.transform.position = newlyCreatedTower.transform.position;
+        newlyCreatedTower.transform.position = placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(worldPos));
         selectedTower.isPlaced = true;
         cliffMap.color = Color.white;
         pathMap.color = Color.white;
+        unplaceableMap.color = Color.white;
         TowerRangeCollider addRange;
         if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
         {
-            addRange = Instantiate(newTower.focusedRange, newTower.transform);
+            addRange = Instantiate(newlyCreatedTower.focusedRange, newlyCreatedTower.transform);
         }
         else
         {
-            addRange = Instantiate(newTower.scatteredRange, newTower.transform);
+            addRange = Instantiate(newlyCreatedTower.scatteredRange, newlyCreatedTower.transform);
         }
-        addRange.thisTower = newTower;
+        addRange.thisTower = newlyCreatedTower;
         rangeToRotate = addRange.transform; //also add rotation of towers ONCE YOU CAN DRAW.
         RebuildTowerSelection();
-        towerSprite = newTower.transform.Find("Sprite").transform;
+        towerSprite = newlyCreatedTower.transform.Find("Sprite").transform;
         currentPower -= selectedTower.powerCost;
         selectingPosition = false;
         waitForRotation = true;
@@ -229,6 +237,7 @@ public class TowerPlacement : MonoBehaviour
         }
         cliffMap.color = Color.white;
         pathMap.color = Color.white;
+        unplaceableMap.color = Color.white;
         if (placeholderTower)
         {
             Destroy(placeholderTower);
@@ -279,6 +288,10 @@ public class TowerPlacement : MonoBehaviour
         {
             Destroy(script);
         }
+        if (placeholderTower.GetComponentInChildren<Animator>())
+        {
+            Destroy(placeholderTower.GetComponentInChildren<Animator>());
+        }
         createdSelectionSquare = Instantiate(towerSelectionSquare);
         createdSelectionSquare.position = placeholderTower.transform.position;
         placementSquareSprite = createdSelectionSquare.GetComponent<SpriteRenderer>();
@@ -319,6 +332,8 @@ public class TowerPlacement : MonoBehaviour
             cliffMap.color = noPlace;
             pathMap.color = yesPlace;
         }
+
+        unplaceableMap.color = noPlace;
         selectedTower = towerChosen;
         selectingPosition = true;
         isPlacing = true;
@@ -336,7 +351,7 @@ public class TowerPlacement : MonoBehaviour
     {
         if (!placementSquareSprite)
         {
-            StopCoroutine(PlacementSquareAnimation());
+            yield break;
         }
         if (!reverseFade && currentState < 1)
         {

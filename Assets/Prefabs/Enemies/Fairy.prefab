@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5495973925646187427}
   - component: {fileID: 5794028296265789270}
   m_Layer: 0
-  m_Name: Left leg
+  m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -8955680450205373156, guid: 3c3cdd068dc451a5681979092ee0e600, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -200,8 +200,8 @@ Transform:
   m_GameObject: {fileID: 2588495940304693346}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.1050003, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.109, y: 2.112, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 50213576101422739}
@@ -404,6 +404,8 @@ MonoBehaviour:
     spawnPoint: {fileID: 0}
     waypoints: []
   moveLocation: {x: 0, y: 0}
+  deathAnimParamName: Dying
+  speedAnimParamName: Speed
   towersInRange: []
   closestTower: {fileID: 0}
   projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
@@ -800,8 +802,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 393228971534091102}
   - {fileID: 6510482863436794054}
+  - {fileID: 393228971534091102}
   - {fileID: 5495973925646187427}
   - {fileID: 4014557741791833388}
   - {fileID: 9150007784261954932}

@@ -18,6 +18,8 @@ public class Enemy : Unit
     protected float currentFiringTime;
     private Animator animator;
     private GameManager gameManager;
+    public string deathAnimParamName;
+    public string speedAnimParamName;
 
     protected override void Start()
     {
@@ -32,6 +34,14 @@ public class Enemy : Unit
         if (canMove)
         {
             moveLocation = (selectedSpawnAndMovement.waypoints[currentWaypoint].transform.position - transform.position).normalized;
+            if (animator)
+            {
+                animator.SetFloat(speedAnimParamName, 1f);
+            }
+        }
+        else if (!canMove && animator)
+        {
+            animator.SetFloat(speedAnimParamName, 0f);
         }
     }
     private void FixedUpdate()
@@ -52,7 +62,7 @@ public class Enemy : Unit
         gameManager.UpdateEnemyCountUI();
         if (animator)
         {
-            animator.Play("Death Animation");
+            animator.SetBool(deathAnimParamName, true);
         }
     }
 }

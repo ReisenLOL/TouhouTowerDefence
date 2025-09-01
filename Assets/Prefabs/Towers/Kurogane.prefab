@@ -736,6 +736,8 @@ MonoBehaviour:
   currentlyBlocking: []
   closestEnemy: {fileID: 0}
   spellcardList: []
+  attackAnimParam: Attack
+  deployAnimParam: HasDeployed
 --- !u!82 &-1545172601277227428
 AudioSource:
   m_ObjectHideFlags: 0

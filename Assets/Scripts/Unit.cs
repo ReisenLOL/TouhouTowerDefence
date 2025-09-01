@@ -24,10 +24,6 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (isDying || deathCoroutine != null)
-        {
-            return;
-        }
         health -= damage * defence;
         if (health <= 0)
         {
@@ -54,23 +50,27 @@ public class Unit : MonoBehaviour
     }
     private IEnumerator DamageAnimation()
     {
-        while (currentState < 1)
+        if (!isDying)
         {
-            currentState += Time.deltaTime * damageColorChangeSpeed;
-            foreach (SpriteRenderer spritepart in spriteRenderers)
+            while (currentState < 1)
             {
-                if (spritepart)
+                currentState += Time.deltaTime * damageColorChangeSpeed;
+                foreach (SpriteRenderer spritepart in spriteRenderers)
                 {
-                    spritepart.color = Color.Lerp(Color.red, Color.white, currentState);
+                    if (spritepart)
+                    {
+                        spritepart.color = Color.Lerp(Color.red, Color.white, currentState);
+                    }
                 }
+                yield return null;
             }
-            yield return null;
         }
     }
     private IEnumerator DeathAnimation()
     {
         while (currentState < 1)
         {
+            //Debug.Log("STATE: DYING");
             currentState += Time.deltaTime * deathColorChangeSpeed;
             if (currentState >= 1)
             {

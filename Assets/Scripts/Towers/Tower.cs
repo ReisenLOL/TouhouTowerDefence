@@ -20,6 +20,7 @@ public class Tower : Unit
     [Header("[CACHE]")] 
     public AudioClip attackSound;
     public AudioClip deathSound;
+    public float attackSoundVolume;
     public AudioSource audioSource;
     public Animator animator;
     public List<Enemy> enemiesInRange = new();
@@ -28,8 +29,8 @@ public class Tower : Unit
     protected float currentFiringTime;
     private Transform healthBarUI;
     public List<Spellcard> spellcardList;
-    
-
+    public string attackAnimParam;
+    public string deployAnimParam;
     protected override void Start()
     {
         base.Start();
@@ -50,7 +51,6 @@ public class Tower : Unit
         List<TowerToPlace> allTowers = FindFirstObjectByType<TowerPlacement>().availableTowers;
         foreach (TowerToPlace towerToPlace in allTowers)
         {
-            
             if (towerToPlace.tower.towerID == towerID)
             {
                 towerToPlace.isPlaced = false;
@@ -80,22 +80,28 @@ public class Tower : Unit
     protected virtual void TryAttack()
     {
         currentFiringTime += Time.deltaTime;
-        if (currentFiringTime >= stats.fireRate)
+        if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
         {
-            foreach (Enemy foundEnemy in enemiesInRange.ToList())
+            Attack();
+            currentFiringTime = 0;
+        }
+    }
+
+    protected virtual void Attack()
+    {
+        //this is example function, never actually used.
+        foreach (Enemy foundEnemy in enemiesInRange.ToList())
+        {
+            if (!foundEnemy)
             {
-                if (!foundEnemy)
-                {
-                    enemiesInRange.Remove(foundEnemy);
-                    continue;
-                }
-                if (!closestEnemy || Vector3.Distance(transform.position, foundEnemy.transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
-                {
-                    closestEnemy = foundEnemy;
-                }
-                closestEnemy.TakeDamage(stats.damage);
-                currentFiringTime = 0;
+                enemiesInRange.Remove(foundEnemy);
+                continue;
             }
+            if (!closestEnemy || Vector3.Distance(transform.position, foundEnemy.transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+            {
+                closestEnemy = foundEnemy;
+            }
+            closestEnemy.TakeDamage(stats.damage);
         }
     }
     protected void OnDestroy()

@@ -61,7 +61,6 @@ public class MasterSpark : Spellcard
                     foundEnemy.transform.gameObject.GetComponent<Enemy>().TakeDamage(damageDealtPerTick);
                 }
             }
-
         }
     }
 }

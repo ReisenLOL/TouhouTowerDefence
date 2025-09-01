@@ -670,12 +670,15 @@ MonoBehaviour:
   - {fileID: 6743446974495392422, guid: 4ffd103fb567363cda68fa619292909e, type: 3}
   attackSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
+  attackSoundVolume: 0.4
   audioSource: {fileID: 0}
   animator: {fileID: 0}
   enemiesInRange: []
   currentlyBlocking: []
   closestEnemy: {fileID: 0}
   spellcardList: []
+  attackAnimParam: 
+  deployAnimParam: 
   projectile: {fileID: 3434601637527348039, guid: 180340b2e31e3038984ef9c64b1186b8, type: 3}
 --- !u!82 &-7331480864839345858
 AudioSource:

@@ -3,39 +3,30 @@ using UnityEngine;
 
 public class MeleeTower : Tower
 {
-    protected override void Update()
+    protected override void Attack()
     {
-        TryAttack();
-    }
-
-    protected override void TryAttack()
-    {
-        currentFiringTime += Time.deltaTime;
-        if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
+        if (enemiesInRange.Count > 0)
         {
-            if (enemiesInRange.Count > 0)
+            foreach (Enemy foundEnemy in enemiesInRange.ToList())
             {
-                foreach (Enemy foundEnemy in enemiesInRange.ToList())
+                if (!foundEnemy || foundEnemy.isDying)
                 {
-                    if (!foundEnemy || foundEnemy.isDying)
-                    {
-                        enemiesInRange.Remove(foundEnemy);
-                    }
-                    if (currentTargettingMode == TargettingModes.Focused)
-                    {
-                        foundEnemy.TakeDamage(stats.damage);
-                    }
-                    else
-                    {
-                        foundEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
-                    }
-                    currentFiringTime = 0;
-                    audioSource.PlayOneShot(attackSound);
+                    enemiesInRange.Remove(foundEnemy);
+                    continue;
                 }
-                if (animator)
+                if (currentTargettingMode == TargettingModes.Focused)
                 {
-                    animator.Play("AttackAnimation");
-                }   
+                    foundEnemy.TakeDamage(stats.damage);
+                }
+                else
+                {
+                    foundEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
+                }
+                audioSource.PlayOneShot(attackSound, attackSoundVolume);
+            }
+            if (animator)
+            {
+                animator.SetTrigger(attackAnimParam);
             }
         }
     }
