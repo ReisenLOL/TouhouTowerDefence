@@ -50,7 +50,7 @@ MonoBehaviour:
   cooldown: 20
   currentCooldownTime: 0
   onCooldown: 0
-  spellcardSound: {fileID: 0}
-  spellcardSoundVolume: 0
+  spellcardSound: {fileID: 8300000, guid: f7bed4c24f814b8edb1fb4b9e8adcada, type: 3}
+  spellcardSoundVolume: 0.2
   thisTower: {fileID: 0}
   stunEffect: {fileID: 11400000, guid: cd3239ce3a66b6da39929b6f407a8305, type: 2}

@@ -8,7 +8,6 @@ public class HomingOrbProjectile : Projectile
     public LayerMask enemyLayer; //i'll have to change this so enemies can have homing projectiles, if ever!
     private float _time;
     private bool isHoming;
-    public float damage;
     protected override void Start()
     {
         base.Start();

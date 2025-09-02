@@ -51,7 +51,7 @@ MonoBehaviour:
   currentCooldownTime: 0
   onCooldown: 0
   spellcardSound: {fileID: 8300000, guid: 5f312ddd616712caab49cdd46a93cb19, type: 3}
-  spellcardSoundVolume: 0.2
+  spellcardSoundVolume: 0.05
   thisTower: {fileID: 0}
   sparkDuration: 5
   sparkSize: {x: 3, y: 3}

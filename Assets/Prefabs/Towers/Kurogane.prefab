@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 5165270852394041448}
   - component: {fileID: 4194428947015685437}
   - component: {fileID: -1545172601277227428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Kurogane
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -730,6 +730,7 @@ MonoBehaviour:
   spellcardsToAdd: []
   attackSound: {fileID: 8300000, guid: 8b4c4b765fcca2f42ae8bf4257f10c1d, type: 3}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
+  attackSoundVolume: 0
   audioSource: {fileID: 0}
   animator: {fileID: 0}
   enemiesInRange: []

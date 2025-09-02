@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &535204811168595790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4558726885169060131}
+  m_Layer: 2
+  m_Name: ParticleFireLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4558726885169060131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535204811168595790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.098, y: -1.928, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4780702244989924712}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752650395046018343
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +375,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisTower: {fileID: 3475580796332043495}
+  target: {fileID: 0}
+  attackParticles: {fileID: 4112102572818408128, guid: e38bd8a0bf4d14b2e9279efc3f06ebc3, type: 3}
+  towerParticleLocation: {fileID: 4558726885169060131}
 --- !u!1 &2731465358017235426
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +519,7 @@ MonoBehaviour:
   - {fileID: 6514951590809409605, guid: a653346f51a7332678501deaad93a69f, type: 3}
   attackSound: {fileID: 8300000, guid: 9b643dd9f5f3815c6ae90b30fb4ad872, type: 3}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
-  attackSoundVolume: 0.4
+  attackSoundVolume: 0.05
   audioSource: {fileID: 0}
   animator: {fileID: 0}
   enemiesInRange: []
@@ -495,6 +529,7 @@ MonoBehaviour:
   attackAnimParam: Attack
   deployAnimParam: ReisenDeploy
   projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
+  thisSpriteScript: {fileID: 5501152774160246068}
 --- !u!82 &-8123707340622689288
 AudioSource:
   m_ObjectHideFlags: 0
@@ -623,6 +658,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9162983182667295446}
+  - {fileID: 4558726885169060131}
   m_Father: {fileID: 8267106743980588006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.433}
 --- !u!212 &485436804993217494

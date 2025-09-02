@@ -38,7 +38,6 @@ public class RangedEnemy : Enemy
                 {
                     closestTower = foundTower;
                 }
-                closestTower.TakeDamage(damage);
                 FireProjectile(closestTower.transform);
                 currentFiringTime = 0;
             }
@@ -47,6 +46,8 @@ public class RangedEnemy : Enemy
     private void FireProjectile(Transform direction)
     {
         MoveProjectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        newProjectile.damage = damage * attackModifier;
+        newProjectile.tag = gameObject.tag;
         newProjectile.RotateToTarget(direction.position);
         newProjectile.target = direction;
     }

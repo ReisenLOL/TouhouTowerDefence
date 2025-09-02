@@ -4,6 +4,7 @@ using UnityEngine;
 public class RangedTower : Tower
 {
     public Projectile projectile;
+    public RangedTowerSprite thisSpriteScript;
 
     protected override void Attack()
     {
@@ -20,6 +21,7 @@ public class RangedTower : Tower
             }
             if (closestEnemy)
             {
+                thisSpriteScript.target = closestEnemy.transform;
                 if (animator)
                 {
                     animator.SetTrigger(attackAnimParam);
@@ -29,14 +31,6 @@ public class RangedTower : Tower
                     FireProjectile(closestEnemy.transform);
                     audioSource.PlayOneShot(attackSound, attackSoundVolume);
                 }
-                if (currentTargettingMode == TargettingModes.Focused)
-                {
-                    closestEnemy.TakeDamage(stats.damage);
-                }
-                else
-                {
-                    closestEnemy.TakeDamage(stats.damage * stats.scatteredDamageModifier);
-                }
                 currentFiringTime = 0;   
             }
         }
@@ -44,6 +38,14 @@ public class RangedTower : Tower
     public void FireProjectile(Transform direction)
     {
         Projectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        if (currentTargettingMode == TargettingModes.Focused)
+        {
+            newProjectile.damage = stats.damage * attackModifier;
+        }
+        else
+        {
+            newProjectile.damage = stats.damage * attackModifier * stats.scatteredDamageModifier;
+        }
         newProjectile.target = direction;
         newProjectile.RotateToTarget(direction.position);
     }

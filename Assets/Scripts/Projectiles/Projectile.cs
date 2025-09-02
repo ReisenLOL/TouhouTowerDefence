@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
     public float speed;
     public float timeUntilAutoDestroy;
     public Transform target;
+    public float damage;
     
     protected virtual void Start()
     {

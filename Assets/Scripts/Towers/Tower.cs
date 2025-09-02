@@ -25,7 +25,7 @@ public class Tower : Unit
     public Animator animator;
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
-    public Enemy closestEnemy;
+    public Enemy closestEnemy = null;
     protected float currentFiringTime;
     private Transform healthBarUI;
     public List<Spellcard> spellcardList;

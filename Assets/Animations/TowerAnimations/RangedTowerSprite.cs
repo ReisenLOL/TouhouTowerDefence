@@ -1,16 +1,25 @@
 using System;
+using Core.Extensions;
 using UnityEngine;
 
 public class RangedTowerSprite : MonoBehaviour
 {
     public RangedTower thisTower;
+    public Transform target;
+    public ParticleSystem attackParticles;
+    public Transform towerParticleLocation;
 
     public void ProjectileAnimation()
     {
-        if (thisTower.closestEnemy)
+        if (target)
         {
-            thisTower.FireProjectile(thisTower.closestEnemy.transform); //THIS IS REALLY BAD.
-            thisTower.audioSource.PlayOneShot(thisTower.attackSound);
+            thisTower.FireProjectile(target); //THIS IS REALLY BAD.
+            if (attackParticles)
+            {
+                ParticleSystem newParticles = Instantiate(attackParticles);
+                newParticles.transform.position = towerParticleLocation.position;
+            }
+            thisTower.audioSource.PlayOneShot(thisTower.attackSound, thisTower.attackSoundVolume);
         }
         else
         {
