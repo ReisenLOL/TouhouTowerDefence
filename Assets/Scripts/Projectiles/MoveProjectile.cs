@@ -9,20 +9,17 @@ public class MoveProjectile : Projectile
     {
         rb.linearVelocity = (target.transform.position - transform.position).normalized * speed;
     }
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnHitEffects(Collider2D objectHit)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && gameObject.CompareTag("Tower") ||
-            other.gameObject.layer == LayerMask.NameToLayer("Tower") && gameObject.CompareTag("Enemy"))
+        base.OnHitEffects(objectHit);
+        if (objectHit.TryGetComponent(out Unit isRangedTower))
         {
-            if (other.TryGetComponent(out Unit isRangedTower))
-            {
-                isRangedTower.TakeDamage(damage);
-            }
-            else if (other.TryGetComponent(out TowerBlockingCollision isMeleeTower))
-            {
-                isMeleeTower.thisTower.TakeDamage(damage);
-            }
-            Destroy(gameObject);
+            isRangedTower.TakeDamage(damage);
         }
+        else if (objectHit.TryGetComponent(out TowerBlockingCollision isMeleeTower))
+        {
+            isMeleeTower.thisTower.TakeDamage(damage);
+        }
+        Destroy(gameObject);
     }
 }

@@ -1,5 +1,6 @@
 using Core.Extensions;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class MasterSpark : Spellcard
 {
@@ -17,10 +18,13 @@ public class MasterSpark : Spellcard
     private GameObject createdBeam;
     public ParticleSystem masterSparkParticles;
     private ParticleSystem masterSparkParticlesInstance;
+    private CinemachineImpulseSource impulseSource;
+    public float cameraShakeForce;
     protected override void Start()
     {
         base.Start();
         rangeToCheck = thisTower.GetComponentInChildren<TowerRangeCollider>().transform;
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         Transform newBeam = Instantiate(masterSparkBeam, rangeToCheck.transform);
         newBeam.position = thisTower.transform.position;
         newBeam.localScale = new Vector3(100f, sparkSize.y, 1);
@@ -44,6 +48,7 @@ public class MasterSpark : Spellcard
             currentSparkTime += Time.deltaTime;
             if (currentSparkTime >= sparkDuration)
             {
+                Camera.main.transform.position = new Vector3(0, 0, -10);
                 currentSparkTime = 0;
                 sparkActive = false;
                 createdBeam.gameObject.SetActive(false);
@@ -54,6 +59,8 @@ public class MasterSpark : Spellcard
             {
                 damageDebounceTime = 0;
                 //i do not like that i am constantly running this raycast and getcomponent
+                impulseSource.DefaultVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+                impulseSource.GenerateImpulse(cameraShakeForce);
                 RaycastHit2D[] hit = Physics2D.BoxCastAll(thisTower.transform.position, sparkSize,
                     rangeToCheck.eulerAngles.z, rangeToCheck.transform.right, 100f, enemyLayer);
                 foreach (RaycastHit2D foundEnemy in hit)

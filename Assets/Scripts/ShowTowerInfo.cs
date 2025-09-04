@@ -25,8 +25,10 @@ public class ShowTowerInfo : MonoBehaviour
     public Transform spellcardUI;
     private bool movingCamera;
     private bool returningCamera;
+    private bool hasFoundTower;
     public float currentState;
     public bool canShowUI;
+    private Tower currentFocusedTower;
     void Start()
     {
         cam = Camera.main;
@@ -42,11 +44,17 @@ public class ShowTowerInfo : MonoBehaviour
             {
                 if (hit.collider.gameObject.TryGetComponent(out Tower isTower))
                 {
-                    ShowTowerInfoUI(isTower);
+                    currentFocusedTower = isTower;
                 }
                 else if (hit.collider.gameObject.TryGetComponent(out TowerBlockingCollision isMeleeTower))
                 {
-                    ShowTowerInfoUI(isMeleeTower.thisTower);
+                    currentFocusedTower = isMeleeTower.thisTower;
+                }
+                if (currentFocusedTower && !hasFoundTower)
+                {
+                    hasFoundTower = true;
+                    ShowTowerInfoUI(currentFocusedTower);
+                    currentFocusedTower.GetComponentInChildren<TowerRangeCollider>().showRange.SetActive(true);
                 }
             }
         }
@@ -74,6 +82,9 @@ public class ShowTowerInfo : MonoBehaviour
         if (towerInfoUI.activeSelf && currentState > 0.5f && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             returningCamera = true;
+            currentFocusedTower.GetComponentInChildren<TowerRangeCollider>().showRange.SetActive(false);
+            currentFocusedTower = null;
+            hasFoundTower = false;
         }
     }
 

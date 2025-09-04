@@ -32,14 +32,9 @@ public class HomingOrbProjectile : Projectile
         transform.Translate(Time.deltaTime * speed * Vector2.right);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnHitEffects(Collider2D objectHit)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && gameObject.CompareTag("Tower") ||
-            other.gameObject.layer == LayerMask.NameToLayer("Tower") && gameObject.CompareTag("Enemy"))
-        {
-            other.GetComponent<Unit>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
+        objectHit.GetComponent<Unit>().TakeDamage(damage);
     }
     private Transform DetectEnemies(float radius)
     {

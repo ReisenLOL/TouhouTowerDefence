@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public float timeUntilAutoDestroy;
     public Transform target;
     public float damage;
+    public ParticleSystem hitParticles;
     
     protected virtual void Start()
     {
@@ -21,7 +22,18 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && gameObject.CompareTag("Tower") ||
             other.gameObject.layer == LayerMask.NameToLayer("Tower") && gameObject.CompareTag("Enemy"))
         {
+            OnHitEffects(other);
             Destroy(gameObject);
+        }
+    }
+
+    protected virtual void OnHitEffects(Collider2D objectHit)
+    {
+        if (hitParticles)
+        {
+            ParticleSystem newHitParticles = Instantiate(hitParticles);
+            newHitParticles.transform.position = objectHit.transform.position;
+            newHitParticles.transform.Lookat2D(transform.position);
         }
     }
 }
