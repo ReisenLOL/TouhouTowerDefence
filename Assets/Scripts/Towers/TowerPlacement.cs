@@ -27,10 +27,6 @@ public class TowerPlacement : MonoBehaviour
     private bool waitForRotation;
     private ShowTowerInfo showTowerInfo;
     private float currentState;
-    public float placementSquareFadeSpeed;
-    private SpriteRenderer placementSquareSprite;
-    private bool reverseFade;
-
     [Header("[PLACEMENT STUFF]")] 
     public Transform towerSelectionSquare;
     public AudioClip placementSound;
@@ -142,6 +138,10 @@ public class TowerPlacement : MonoBehaviour
                     if (newlyCreatedTower.animator)
                     {
                         newlyCreatedTower.animator.Play(newlyCreatedTower.deployAnimParam);
+                    }
+                    foreach (HealerTowerRangeCollider healerTowerRange in FindObjectsByType<HealerTowerRangeCollider>(FindObjectsSortMode.None))
+                    {
+                        healerTowerRange.updateTowerPlacements = true;
                     }
                     StopPlacement();
                 }
@@ -294,8 +294,6 @@ public class TowerPlacement : MonoBehaviour
         }
         createdSelectionSquare = Instantiate(towerSelectionSquare);
         createdSelectionSquare.position = placeholderTower.transform.position;
-        placementSquareSprite = createdSelectionSquare.GetComponent<SpriteRenderer>();
-        StartCoroutine(PlacementSquareAnimation());
     }
     public void RebuildTowerSelection()
     {
@@ -346,40 +344,5 @@ public class TowerPlacement : MonoBehaviour
         float currentAngle = tower.eulerAngles.z;
         float snappedAngle = MathF.Round(currentAngle/90f) * 90f;
         return new Vector3(0, 0, snappedAngle);
-    }
-    private IEnumerator PlacementSquareAnimation()
-    {
-        if (!placementSquareSprite)
-        {
-            yield break;
-        }
-        if (!reverseFade && currentState < 1)
-        {
-            while (currentState < 1)
-            {
-                currentState += Time.deltaTime * placementSquareFadeSpeed;
-                if (currentState >= 1)
-                {
-                    reverseFade = false;
-                    yield return null;
-                }
-                placementSquareSprite.color = Color.Lerp(new Color(1,1,1, 0), Color.white, currentState);
-                yield return null;
-            }
-        }
-        else if (reverseFade && currentState > 0)
-        {
-            while (currentState > 0)
-            {
-                currentState -= Time.deltaTime * placementSquareFadeSpeed;
-                if (currentState <= 0)
-                {
-                    reverseFade = false;
-                    yield return null;
-                }
-                placementSquareSprite.color = Color.Lerp(new Color(1,1,1, 0), Color.white, currentState);
-                yield return null;
-            }
-        }
     }
 }

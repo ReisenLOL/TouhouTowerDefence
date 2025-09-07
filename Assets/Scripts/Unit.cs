@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
     public Transform effectOverlayUI;
     [SerializeField] private float damageColorChangeSpeed = 4f;
     [SerializeField] private float deathColorChangeSpeed = 4f;
-    private Coroutine deathCoroutine;
+    public DamageNumberSO onHitDamageNumber;
 
     protected virtual void Start()
     {
@@ -24,13 +24,18 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        health -= damage * defence;
+        float damageToDeal = damage * defence;
+        health -= damageToDeal;
+        if (onHitDamageNumber)
+        {
+            onHitDamageNumber.Spawn(transform.position, damageToDeal);
+        }
         if (health <= 0)
         {
             currentState = 0;
             isDying = true;
             OnKill();
-            deathCoroutine = StartCoroutine(DeathAnimation());
+            StartCoroutine(DeathAnimation());
         }
         else
         {
@@ -41,6 +46,8 @@ public class Unit : MonoBehaviour
     public virtual void HealDamage(float healing)
     {
         health += healing;
+        health = Mathf.Clamp(health, 0f, maxHealth);
+        currentState = 0;
         StartCoroutine(HealAnimation());
     }
 

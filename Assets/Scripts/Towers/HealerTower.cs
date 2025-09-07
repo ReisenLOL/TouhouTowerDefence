@@ -17,12 +17,12 @@ public class HealerTower : RangedTower
                     towersInRange.Remove(foundTower);
                     continue;
                 }
-                if (!closestTower || Vector3.Distance(transform.position, foundTower.transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+                if ((!closestTower || foundTower.health < closestTower.health && foundTower) && foundTower.health < foundTower.maxHealth)
                 {
                     closestTower = foundTower;
                 }
 
-                if (closestTower)
+                if (closestTower && closestTower.health < closestTower.maxHealth)
                 {
                     if (currentTargettingMode == TargettingModes.Focused)
                     {
@@ -33,7 +33,7 @@ public class HealerTower : RangedTower
                         closestTower.HealDamage(stats.damage * stats.scatteredDamageModifier);
                     }
                     audioSource.PlayOneShot(attackSound);
-                    FireProjectile(closestTower.transform);
+                    //FireProjectile(closestTower.transform);
                     currentFiringTime = 0;   
                 }
             }

@@ -67,6 +67,13 @@ public class Tower : Unit
         base.TakeDamage(damageTaken);
         UpdateHealthBar();
     }
+
+    public override void HealDamage(float healing)
+    {
+        base.HealDamage(healing);
+        UpdateHealthBar();
+    }
+
     private void UpdateHealthBar()
     {
         healthBarUI.localScale = new Vector3(health/maxHealth, healthBarUI.localScale.y);

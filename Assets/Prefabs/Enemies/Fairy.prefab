@@ -385,8 +385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011713737b91869029932786be53573e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  maxHealth: 50
+  health: 100
+  maxHealth: 100
   defence: 1
   attackModifier: 1
   isDying: 0
@@ -394,9 +394,10 @@ MonoBehaviour:
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 0.5
+  onHitDamageNumber: {fileID: 11400000, guid: b1afc13171294462584eec46d5ef99a1, type: 2}
   damage: 5
   fireRate: 4
-  moveSpeed: 1
+  moveSpeed: 0.5
   isAir: 0
   rb: {fileID: 0}
   currentWaypoint: 0

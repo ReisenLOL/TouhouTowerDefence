@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 011713737b91869029932786be53573e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 200
+  maxHealth: 200
   defence: 1
   attackModifier: 1
   isDying: 0
@@ -218,9 +218,10 @@ MonoBehaviour:
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 0.5
+  onHitDamageNumber: {fileID: 11400000, guid: b1afc13171294462584eec46d5ef99a1, type: 2}
   damage: 10
   fireRate: 4
-  moveSpeed: 0.7
+  moveSpeed: 0.35
   isAir: 0
   rb: {fileID: 0}
   currentWaypoint: 0
@@ -228,6 +229,8 @@ MonoBehaviour:
     spawnPoint: {fileID: 0}
     waypoints: []
   moveLocation: {x: 0, y: 0}
+  deathAnimParamName: 
+  speedAnimParamName: 
   towersInRange: []
   closestTower: {fileID: 0}
   projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}

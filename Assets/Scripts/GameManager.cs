@@ -11,35 +11,42 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI enemyCountText;
     public GameObject endGameUI;
-    public int rating = 0;
+    public int rating;
     public int currentEnemyCount;
     public int totalEnemyCount;
     public TextMeshProUGUI gameStateText;
     public TextMeshProUGUI ratingText;
+    public AudioSource audioSource;
+    public AudioClip damageSound;
+    public float damageVolume;
+    public bool speedUp;
 
     public void TakeDamage(int damage = 1)
     {
         lives -= damage;
+        audioSource.PlayOneShot(damageSound, damageVolume);
         UpdateLivesUI();
-        if (lives >= 0)
+        if (lives <= 0)
         {
             gameOver = true;
+            EndGame();
         }
     }
 
     public void EndGame()
     {
+        Time.timeScale = 0;
         if (!gameOver)
         {
             rating++;
-        }
-        if (lives == maxLives)
-        {
-            rating++;
-        }
-        if (lives <= maxLives / 2)
-        {
-            rating++;
+            if (lives == maxLives)
+            {
+                rating++;
+            }
+            if (lives <= maxLives / 2)
+            {
+                rating++;
+            }
         }
         endGameUI.SetActive(true);
         ratingText.text = "Rating: " + rating;
@@ -50,6 +57,20 @@ public class GameManager : MonoBehaviour
         else
         {
             gameStateText.text = "Completed!";
+        }
+    }
+
+    public void ToggleSpeed()
+    {
+        if (speedUp)
+        {
+            speedUp = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            speedUp = true;
+            Time.timeScale = 2;
         }
     }
     public void UpdateEnemyCountUI()
