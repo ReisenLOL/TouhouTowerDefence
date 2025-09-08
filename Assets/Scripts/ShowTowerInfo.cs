@@ -15,12 +15,14 @@ public class ShowTowerInfo : MonoBehaviour
     public float cameraMoveSpeed;
 
     [Header("[CACHE]")]
-    private Tower selectedTower;
+    public Tower selectedTower;
     public GameObject towerInfoUI;
     public TextMeshProUGUI towerNameUI;
     public TextMeshProUGUI towerDamageUI;
     public TextMeshProUGUI towerFireRateUI;
     public TextMeshProUGUI towerBlockAmountUI;
+    public Transform healthBar;
+    public TextMeshProUGUI healthNumber;
     public Button spellCardButtonTemplate;
     public Transform spellcardUI;
     private bool movingCamera;
@@ -29,6 +31,8 @@ public class ShowTowerInfo : MonoBehaviour
     public float currentState;
     public bool canShowUI;
     private Tower currentFocusedTower;
+    public GameObject fastForwardButton;
+    public GameObject pauseButton;
     void Start()
     {
         cam = Camera.main;
@@ -55,6 +59,8 @@ public class ShowTowerInfo : MonoBehaviour
                     hasFoundTower = true;
                     ShowTowerInfoUI(currentFocusedTower);
                     currentFocusedTower.GetComponentInChildren<TowerRangeCollider>().showRange.SetActive(true);
+                    fastForwardButton.SetActive(false);
+                    pauseButton.SetActive(false);
                 }
             }
         }
@@ -70,13 +76,21 @@ public class ShowTowerInfo : MonoBehaviour
         }
         if (returningCamera)
         {
-            currentState -= Time.deltaTime * cameraMoveSpeed;
-            cam.transform.position = Vector3.Lerp(new Vector3(0,0,-10), new Vector3(selectedTower.transform.position.x, selectedTower.transform.position.y, -10), currentState);
-            cam.orthographicSize = Mathf.Lerp(defaultCameraSize, focusedCameraSize, currentState);
-            if (currentState <= 0)
+            if (selectedTower)
             {
-                returningCamera = false;   
-                HideTowerInfoUI();
+                currentState -= Time.deltaTime * cameraMoveSpeed;
+                cam.transform.position = Vector3.Lerp(new Vector3(0,0,-10), new Vector3(selectedTower.transform.position.x, selectedTower.transform.position.y, -10), currentState);
+                cam.orthographicSize = Mathf.Lerp(defaultCameraSize, focusedCameraSize, currentState);
+                if (currentState <= 0)
+                {
+                    returningCamera = false;   
+                    HideTowerInfoUI();
+                }
+            }
+            else
+            {
+                cam.transform.position = new Vector3(0, 0, -10);
+                returningCamera = false;
             }
         }
         if (towerInfoUI.activeSelf && currentState > 0.5f && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
@@ -99,9 +113,9 @@ public class ShowTowerInfo : MonoBehaviour
             //showRange.SetActive(true);
             //showRange.transform.rotation = towerToShow.transform.rotation;
             towerNameUI.text = towerToShow.towerID;
-            towerDamageUI.text = "Damage: " + towerToShow.stats.damage;
-            towerFireRateUI.text = "FireRate: " + towerToShow.stats.fireRate + "s";
-            towerBlockAmountUI.text = "Block Amount: " + towerToShow.stats.blockAmount;
+            towerDamageUI.text = towerToShow.stats.damage.ToString();
+            towerFireRateUI.text = towerToShow.stats.fireRate + "s";
+            towerBlockAmountUI.text = towerToShow.stats.blockAmount.ToString();
             cam.transform.position = new Vector3(towerToShow.transform.position.x, towerToShow.transform.position.y, -10);
             cam.orthographicSize = focusedCameraSize;
             RebuildSpellcardList(); 
@@ -134,6 +148,14 @@ public class ShowTowerInfo : MonoBehaviour
     public void HideTowerInfoUI()
     {
         towerInfoUI.SetActive(false);
+        fastForwardButton.SetActive(true);
+        pauseButton.SetActive(true);
         selectedTower = null;
+    }
+
+    public void UpdateTowerHealthBar()
+    {
+        healthBar.localScale = new Vector3(selectedTower.health / selectedTower.maxHealth, 1f);
+        healthNumber.text = selectedTower.health + "/" + selectedTower.maxHealth;
     }
 }

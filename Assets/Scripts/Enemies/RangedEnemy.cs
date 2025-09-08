@@ -38,7 +38,15 @@ public class RangedEnemy : Enemy
                 {
                     closestTower = foundTower;
                 }
-                FireProjectile(closestTower.transform);
+
+                if (closestTower.TryGetComponent(out MeleeTower isMelee))
+                {
+                    FireProjectile(isMelee.blockingCollision.transform);
+                }
+                else
+                {
+                    FireProjectile(closestTower.transform);
+                }
                 currentFiringTime = 0;
             }
         }

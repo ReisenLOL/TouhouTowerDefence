@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : Unit
 {
@@ -31,9 +32,11 @@ public class Tower : Unit
     public List<Spellcard> spellcardList;
     public string attackAnimParam;
     public string deployAnimParam;
+    public ShowTowerInfo towerInfoUI;
     protected override void Start()
     {
         base.Start();
+        towerInfoUI = FindFirstObjectByType<ShowTowerInfo>();
         audioSource = FindFirstObjectByType<AudioSource>();
         healthBarUI = transform.Find("HealthBarUI").Find("HealthBarPanelBG").Find("HealthBar").transform;
         animator = GetComponentInChildren<Animator>();
@@ -77,6 +80,10 @@ public class Tower : Unit
     private void UpdateHealthBar()
     {
         healthBarUI.localScale = new Vector3(health/maxHealth, healthBarUI.localScale.y);
+        if (towerInfoUI.selectedTower == this)
+        {
+            towerInfoUI.UpdateTowerHealthBar();
+        }
     }
     protected virtual void Update()
     {

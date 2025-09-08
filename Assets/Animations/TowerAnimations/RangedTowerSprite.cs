@@ -8,6 +8,7 @@ public class RangedTowerSprite : MonoBehaviour
     public Transform target;
     public ParticleSystem attackParticles;
     public Transform towerParticleLocation;
+    public GameObject shadow;
 
     public void ProjectileAnimation()
     {
@@ -25,5 +26,10 @@ public class RangedTowerSprite : MonoBehaviour
         {
             Debug.Log("YOU FUCKED UP DUDE");
         }
+    }
+
+    public void FinishDeploy()
+    {
+        shadow.SetActive(true);
     }
 }
