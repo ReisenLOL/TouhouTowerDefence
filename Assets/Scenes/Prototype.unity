@@ -5033,7 +5033,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 75, y: 75}
   m_Spacing: {x: 0, y: 0}
@@ -7956,13 +7956,15 @@ MonoBehaviour:
   - {fileID: 2541345253646511569, guid: c081bf239218b54108340618bda2d303, type: 3}
   - {fileID: 2541345253646511569, guid: 45c1e8b7280cfa6b0a76a445bdb7eb7c, type: 3}
   - {fileID: 2541345253646511569, guid: 6257f0b9a16dbf60787bf142c71c4119, type: 3}
+  - {fileID: 2541345253646511569, guid: dc640e5d33c5dbff3a04939ac51d6cc9, type: 3}
   - {fileID: 2541345253646511569, guid: 1c7326c6ebccafca8bef9878779af2e1, type: 3}
+  - {fileID: 2541345253646511569, guid: bdf00bfbf3644a77b811e1d7f7bf9671, type: 3}
   availableTowers: []
   selectedTower: {fileID: 0}
   newlyCreatedTower: {fileID: 0}
   placementFrame: {fileID: 630806858}
   buttonTemplate: {fileID: 746293709}
-  currentPower: 40
+  currentPower: 90
   powerGenerationRate: 1
   powerNumberUI: {fileID: 638470600}
   cliffMap: {fileID: 0}

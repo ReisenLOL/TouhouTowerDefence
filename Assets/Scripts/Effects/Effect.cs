@@ -14,6 +14,7 @@ public class Effect : ScriptableObject
     public virtual void ApplyEffects(Unit affectedUnit)
     { //i don't like using transform.find, is there any better option??
         EffectInstance newEffectInstance = affectedUnit.AddComponent<EffectInstance>();
+        newEffectInstance.affectedUnit = affectedUnit;
         newEffectInstance.effectToApply = this;
         newEffectInstance.effectLenth = effectLength;
         Transform newEffectSquare = Instantiate(templateEffectSquare, affectedUnit.transform.Find("EffectsCanvas"));
@@ -31,6 +32,13 @@ public class Effect : ScriptableObject
 
     public virtual void RemoveEffect(EffectInstance effectInstanceToRemove)
     {
-        Destroy(effectInstanceToRemove.effectIconSquare);
+        if (effectInstanceToRemove)
+        {
+            foreach (GameObject effectVisual in effectInstanceToRemove.effectVisuals)
+            {
+                Destroy(effectVisual);
+            }
+            Destroy(effectInstanceToRemove.effectIconSquare);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour
     public float attackModifier = 1f;
     public bool isDying;
     public bool canMove = true; //this shouldn't be here for towers but whatever!
+    public bool canFire = true;
     protected SpriteRenderer[] spriteRenderers;
     private float currentState;
     public Transform effectOverlayUI;

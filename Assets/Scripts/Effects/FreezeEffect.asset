@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3b61233822894799cca50d67435197, type: 3}
+  m_Name: FreezeEffect
+  m_EditorClassIdentifier: 
+  effectName: PerfectFreeze
+  effectIcon: {fileID: -7290898435481400720, guid: f6a2162d01af671a4af29f5688e25b17, type: 3}
+  thisEffectType: 2
+  templateEffectSquare: {fileID: 4162851657862829791, guid: 7f21b742d06c5053b8bfa462e7930946, type: 3}
+  effectLength: 9
+  ice: {fileID: 8831412821232058162, guid: 8b06ccbd5cbc079d4b3748becc9fe3fe, type: 3}

@@ -17,6 +17,7 @@ public class Tower : Unit
     public TargettingModes currentTargettingMode = TargettingModes.Focused;
     public TowerStats stats;
     public List<Spellcard> spellcardsToAdd = new();
+    public bool isOneUse;
 
     [Header("[CACHE]")] 
     public AudioClip attackSound;
@@ -51,15 +52,30 @@ public class Tower : Unit
     [ContextMenu("Force Kill")]
     protected override void OnKill()
     {
-        List<TowerToPlace> allTowers = FindFirstObjectByType<TowerPlacement>().availableTowers;
-        foreach (TowerToPlace towerToPlace in allTowers)
+        TowerPlacement towerPlacement = FindFirstObjectByType<TowerPlacement>();
+        if (!isOneUse)
         {
-            if (towerToPlace.tower.towerID == towerID)
+            List<TowerToPlace> allTowers = towerPlacement.availableTowers;
+            foreach (TowerToPlace towerToPlace in allTowers)
             {
-                towerToPlace.isPlaced = false;
-                towerToPlace.onCooldown = true;
-                FindFirstObjectByType<TowerPlacement>().RebuildTowerSelection();
-                break;
+                if (towerToPlace.tower.towerID == towerID)
+                {
+                    towerToPlace.isPlaced = false;
+                    towerToPlace.onCooldown = true;
+                    towerPlacement.RebuildTowerSelection();
+                    break;
+                }
+            }
+        }
+        else
+        {
+            foreach (TowerToPlace towerToPlace in towerPlacement.availableTowers)
+            {
+                if (towerToPlace.tower.towerID == towerID)
+                {
+                    towerPlacement.availableTowers.Remove(towerToPlace);
+                    break;
+                }
             }
         }
         audioSource.PlayOneShot(deathSound);
@@ -93,11 +109,14 @@ public class Tower : Unit
 
     protected virtual void TryAttack()
     {
-        currentFiringTime += Time.deltaTime;
-        if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
+        if (canFire)
         {
-            Attack();
-            currentFiringTime = 0;
+            currentFiringTime += Time.deltaTime;
+            if (currentTargettingMode == TargettingModes.Focused && currentFiringTime >= stats.fireRate || currentFiringTime >= stats.fireRate * stats.scatteredFireRateModifier)
+            {
+                Attack();
+                currentFiringTime = 0;
+            }
         }
     }
 

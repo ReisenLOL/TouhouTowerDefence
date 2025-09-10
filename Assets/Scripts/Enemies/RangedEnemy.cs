@@ -24,7 +24,7 @@ public class RangedEnemy : Enemy
     {
         base.Update();
         currentFiringTime += Time.deltaTime;
-        if (!isDying && currentFiringTime >= fireRate)
+        if (canFire && !isDying && currentFiringTime >= fireRate)
         {
             foreach (Tower foundTower in towersInRange.ToList())
             {

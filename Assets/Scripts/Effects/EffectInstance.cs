@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectInstance : MonoBehaviour
@@ -8,6 +9,7 @@ public class EffectInstance : MonoBehaviour
     public float currentEffectTime;
     public Unit affectedUnit;
     public GameObject effectIconSquare;
+    public List<GameObject> effectVisuals = new();
     private void Update()
     {
         currentEffectTime += Time.deltaTime;

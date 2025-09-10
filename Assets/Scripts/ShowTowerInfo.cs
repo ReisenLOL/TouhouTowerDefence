@@ -40,7 +40,7 @@ public class ShowTowerInfo : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !selectedTower)
         {
             Vector3 worldPos = cam.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,10));
             RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f, LayerMask.GetMask("Tower"));
@@ -54,9 +54,8 @@ public class ShowTowerInfo : MonoBehaviour
                 {
                     currentFocusedTower = isMeleeTower.thisTower;
                 }
-                if (currentFocusedTower && !hasFoundTower)
+                if (currentFocusedTower)
                 {
-                    hasFoundTower = true;
                     ShowTowerInfoUI(currentFocusedTower);
                     currentFocusedTower.GetComponentInChildren<TowerRangeCollider>().showRange.SetActive(true);
                     fastForwardButton.SetActive(false);
@@ -90,6 +89,7 @@ public class ShowTowerInfo : MonoBehaviour
             else
             {
                 cam.transform.position = new Vector3(0, 0, -10);
+                HideTowerInfoUI();
                 returningCamera = false;
             }
         }
@@ -98,7 +98,6 @@ public class ShowTowerInfo : MonoBehaviour
             returningCamera = true;
             currentFocusedTower.GetComponentInChildren<TowerRangeCollider>().showRange.SetActive(false);
             currentFocusedTower = null;
-            hasFoundTower = false;
         }
     }
 

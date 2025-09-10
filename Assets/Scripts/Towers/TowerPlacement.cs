@@ -94,6 +94,18 @@ public class TowerPlacement : MonoBehaviour
         RebuildTowerSelection();
     }
 
+    public void AddTower(string towerID)
+    {
+        foreach (TowerToPlace towerToPlace in AllTowers)
+        {
+            if (towerID == towerToPlace.tower.towerID)
+            {
+                TowerToPlace newTower = Instantiate(towerToPlace, transform);
+                availableTowers.Add(newTower);
+                break;
+            }
+        }
+    }
     private void Update()
     {
         HandlePowerGeneration(); // is this what they call "code optimization"? no it isn't lol you just split the update function into more functions, but that's more readable so that's fine

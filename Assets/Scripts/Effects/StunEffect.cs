@@ -7,12 +7,17 @@ public class StunEffect : Effect
     {
         base.ApplyEffects(affectedUnit);
         affectedUnit.canMove = false;
+        affectedUnit.canFire = false;
     }
 
     public override void RemoveEffect(EffectInstance effectInstanceToRemove)
     {
         base.RemoveEffect(effectInstanceToRemove);
-        effectInstanceToRemove.affectedUnit.canMove = true;
-        Destroy(effectInstanceToRemove);
+        if (effectInstanceToRemove)
+        {
+            effectInstanceToRemove.affectedUnit.canMove = true;
+            effectInstanceToRemove.affectedUnit.canFire = true;
+            Destroy(effectInstanceToRemove);
+        }
     }
 }
