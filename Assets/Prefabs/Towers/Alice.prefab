@@ -433,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisTower: {fileID: 3475580796332043495}
   target: {fileID: 0}
-  attackParticles: {fileID: 4112102572818408128, guid: 255f7215295c8f313b0c826fef236c75, type: 3}
+  attackParticles: {fileID: 4112102572818408128, guid: 55287bcf412ea83ddabf74df7e82a8a1, type: 3}
   towerParticleLocation: {fileID: 5127751027967637784}
   shadow: {fileID: 6560291404773996674}
 --- !u!1 &2731465358017235426
@@ -566,6 +566,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2

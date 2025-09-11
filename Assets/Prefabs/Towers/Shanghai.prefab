@@ -697,6 +697,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
@@ -721,7 +722,7 @@ MonoBehaviour:
   deployAnimParam: ShanghaiDeploy
   towerInfoUI: {fileID: 0}
   projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
-  thisSpriteScript: {fileID: 0}
+  thisSpriteScript: {fileID: 6967644606334361244}
 --- !u!82 &-8123707340622689288
 AudioSource:
   m_ObjectHideFlags: 0

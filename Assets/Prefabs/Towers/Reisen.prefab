@@ -509,6 +509,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
@@ -520,6 +521,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: f7dec2f3473508cfea9b595acb297df8, type: 2}
   spellcardsToAdd:
   - {fileID: 6514951590809409605, guid: a653346f51a7332678501deaad93a69f, type: 3}
+  isOneUse: 0
   attackSound: {fileID: 8300000, guid: 9b643dd9f5f3815c6ae90b30fb4ad872, type: 3}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
   attackSoundVolume: 0.05
@@ -796,7 +798,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5975790937062267889, guid: 3b9069ef9020376a6be382b33cd66698, type: 3}
+  m_Sprite: {fileID: 8336313872992969528, guid: 9ecf3399f01340e1190cb4d5df41b87e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1062,7 +1064,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5975790937062267889, guid: 3b9069ef9020376a6be382b33cd66698, type: 3}
+  m_Sprite: {fileID: 8336313872992969528, guid: 9ecf3399f01340e1190cb4d5df41b87e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

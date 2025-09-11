@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public AudioClip damageSound;
     public float damageVolume;
     public bool speedUp;
+    public Transform enemyBar;
+    public Transform livesBar;
 
     public void TakeDamage(int damage = 1)
     {
@@ -75,11 +77,13 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateEnemyCountUI()
     {
-        enemyCountText.text = "Enemies: " + currentEnemyCount + "/" + totalEnemyCount;
+        enemyCountText.text = currentEnemyCount + "/" + totalEnemyCount;
+        enemyBar.transform.localScale = new Vector3((float)currentEnemyCount/totalEnemyCount, 1, 1);
     }
     private void UpdateLivesUI()
     {
-        livesText.text = "Lives: " + lives + "/" + maxLives; 
+        livesText.text = lives + "/" + maxLives; 
+        livesBar.transform.localScale = new Vector3((float)lives/maxLives, 1, 1);
     }
 
     public void RestartGame()

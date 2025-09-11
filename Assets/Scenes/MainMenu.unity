@@ -698,6 +698,9 @@ MonoBehaviour:
   - {fileID: 2541345253646511569, guid: 6dc7edaece3566e5dbfe0d72be1f52f0, type: 3}
   - {fileID: 2541345253646511569, guid: c081bf239218b54108340618bda2d303, type: 3}
   - {fileID: 2541345253646511569, guid: 45c1e8b7280cfa6b0a76a445bdb7eb7c, type: 3}
+  - {fileID: 2541345253646511569, guid: 1c7326c6ebccafca8bef9878779af2e1, type: 3}
+  - {fileID: 2541345253646511569, guid: 6257f0b9a16dbf60787bf142c71c4119, type: 3}
+  - {fileID: 2541345253646511569, guid: dc640e5d33c5dbff3a04939ac51d6cc9, type: 3}
   templateButton: {fileID: 1629848750}
   towerListUI: {fileID: 413871324}
   selectedTower: {fileID: 0}
