@@ -22,6 +22,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
     public TextMeshProUGUI towerBlockAmount;
     public TMP_Dropdown towerModeSelection;
     public Button selectTowerButton;
+    public string levelSelected;
     private void Start()
     {
         foreach (TowerToPlace towerToPlace in selectableTowers)
@@ -107,6 +108,6 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene(levelSelected);
     }
 }

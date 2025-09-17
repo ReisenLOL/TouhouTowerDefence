@@ -264,7 +264,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6150520699931534130
 MonoBehaviour:
@@ -534,6 +534,7 @@ MonoBehaviour:
   attackAnimParam: Attack
   deployAnimParam: ReisenDeploy
   towerInfoUI: {fileID: 0}
+  towerSprite: {fileID: 5803268739303007626}
   projectile: {fileID: 3434601637527348039, guid: dc404b2964b4b688288788f51bf62cad, type: 3}
   thisSpriteScript: {fileID: 5501152774160246068}
 --- !u!82 &-8123707340622689288

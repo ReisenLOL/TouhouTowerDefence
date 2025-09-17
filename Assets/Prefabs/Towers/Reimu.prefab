@@ -549,6 +549,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
@@ -561,6 +562,7 @@ MonoBehaviour:
   spellcardsToAdd:
   - {fileID: 2510057981858112619, guid: b3d1638ad4307e1cdb732215e627086a, type: 3}
   - {fileID: 6743446974495392422, guid: 4ffd103fb567363cda68fa619292909e, type: 3}
+  isOneUse: 0
   attackSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
   attackSoundVolume: 0.4
@@ -1039,7 +1041,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &1072760830521689859
 MonoBehaviour:

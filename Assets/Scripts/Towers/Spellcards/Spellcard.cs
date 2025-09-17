@@ -27,8 +27,8 @@ public class Spellcard : MonoBehaviour
         if (!onCooldown)
         {
             onCooldown = true;
-            SpellCardEffects();
             currentCooldownTime = cooldown;
+            SpellCardEffects();
             towerInfoUI.RebuildSpellcardList();
             if (spellcardSound)
             {

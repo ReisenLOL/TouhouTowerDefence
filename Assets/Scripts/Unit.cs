@@ -31,7 +31,7 @@ public class Unit : MonoBehaviour
         {
             onHitDamageNumber.Spawn(transform.position, damageToDeal);
         }
-        if (health <= 0 && !isDying)
+        if (health <= 0)
         {
             currentState = 0;
             isDying = true;

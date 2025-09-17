@@ -9,7 +9,7 @@ public class FreezeEffect : Effect
         base.ApplyEffects(affectedUnit);
         affectedUnit.canMove = false;
         affectedUnit.canFire = false;
-        GameObject newIceObject = Instantiate(ice);
+        GameObject newIceObject = Instantiate(ice, affectedUnit.transform);
         newIceObject.transform.position = affectedUnit.transform.position;
         affectedUnit.GetComponent<EffectInstance>().effectVisuals.Add(newIceObject);
         Animator affectedUnitAnimator = affectedUnit.GetComponentInChildren<Animator>();

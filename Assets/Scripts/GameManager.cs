@@ -20,8 +20,10 @@ public class GameManager : MonoBehaviour
     public AudioClip damageSound;
     public float damageVolume;
     public bool speedUp;
+    public bool paused;
     public Transform enemyBar;
     public Transform livesBar;
+    public GameObject pauseUI;
 
     public void TakeDamage(int damage = 1)
     {
@@ -73,6 +75,22 @@ public class GameManager : MonoBehaviour
         {
             speedUp = true;
             Time.timeScale = 2;
+        }
+    }
+
+    public void TogglePause()
+    {
+        if (paused)
+        {
+            paused = false;
+            Time.timeScale = 1;
+            pauseUI.SetActive(false);
+        }
+        else
+        {
+            paused = true;
+            Time.timeScale = 0;
+            pauseUI.SetActive(true);
         }
     }
     public void UpdateEnemyCountUI()

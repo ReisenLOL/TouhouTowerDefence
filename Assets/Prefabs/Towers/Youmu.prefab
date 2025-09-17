@@ -266,7 +266,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &8184822201921942362
 MonoBehaviour:
@@ -364,6 +364,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
@@ -374,6 +375,7 @@ MonoBehaviour:
   currentTargettingMode: 0
   stats: {fileID: 11400000, guid: 7ed047a1a3460996c91dd07b4aa07b63, type: 2}
   spellcardsToAdd: []
+  isOneUse: 0
   attackSound: {fileID: 8300000, guid: 8b4c4b765fcca2f42ae8bf4257f10c1d, type: 3}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
   attackSoundVolume: 0
@@ -386,6 +388,7 @@ MonoBehaviour:
   attackAnimParam: Attack
   deployAnimParam: YoumuDeploy
   towerInfoUI: {fileID: 0}
+  towerSprite: {fileID: 4210387755379936525}
   blockingCollision: {fileID: 2941194319679325163}
 --- !u!82 &837767820088710498
 AudioSource:

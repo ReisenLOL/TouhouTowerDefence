@@ -34,6 +34,7 @@ public class Tower : Unit
     public string attackAnimParam;
     public string deployAnimParam;
     public ShowTowerInfo towerInfoUI;
+    public Transform towerSprite;
     protected override void Start()
     {
         base.Start();

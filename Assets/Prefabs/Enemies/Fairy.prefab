@@ -392,6 +392,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 0.5
@@ -471,7 +472,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &8126023312103363467
 MonoBehaviour:

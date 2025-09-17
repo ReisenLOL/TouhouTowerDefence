@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 121048882190692432, guid: 6a86ec1f551edf3ea886393b8a13c611, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -184,6 +184,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 4
@@ -259,7 +260,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &2478131774950992226
 MonoBehaviour:

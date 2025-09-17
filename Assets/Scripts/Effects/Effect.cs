@@ -20,6 +20,7 @@ public class Effect : ScriptableObject
         Transform newEffectSquare = Instantiate(templateEffectSquare, affectedUnit.transform.Find("EffectsCanvas"));
         newEffectInstance.effectIconSquare = newEffectSquare.gameObject;
         newEffectSquare.transform.Find("EffectIcon").GetComponent<Image>().sprite = effectIcon;
+        newEffectInstance.durationBar = newEffectSquare.transform.Find("DurationBar");
         if (thisEffectType == EffectType.Debuff)
         {
             newEffectSquare.transform.Find("StatusIcon").eulerAngles = new Vector3(0,0,180);

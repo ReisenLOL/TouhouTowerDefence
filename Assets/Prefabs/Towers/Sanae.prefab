@@ -59,7 +59,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6150520699931534130
 MonoBehaviour:
@@ -231,6 +231,7 @@ MonoBehaviour:
   attackModifier: 1
   isDying: 0
   canMove: 1
+  canFire: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
@@ -241,6 +242,7 @@ MonoBehaviour:
   currentTargettingMode: 0
   stats: {fileID: 11400000, guid: 1cb24dd88eff16aa9b2e031bdec3c300, type: 2}
   spellcardsToAdd: []
+  isOneUse: 0
   attackSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}
   attackSoundVolume: 0
@@ -253,6 +255,7 @@ MonoBehaviour:
   attackAnimParam: 
   deployAnimParam: 
   towerInfoUI: {fileID: 0}
+  towerSprite: {fileID: 5034738585660152008}
   projectile: {fileID: 0}
   thisSpriteScript: {fileID: 0}
   towersInRange: []
