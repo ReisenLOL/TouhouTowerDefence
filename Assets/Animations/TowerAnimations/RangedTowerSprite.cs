@@ -10,7 +10,7 @@ public class RangedTowerSprite : MonoBehaviour
     public Transform towerParticleLocation;
     public GameObject shadow;
 
-    public void ProjectileAnimation()
+    public virtual void ProjectileAnimation()
     {
         if (target)
         {

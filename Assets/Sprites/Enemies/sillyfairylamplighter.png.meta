@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sillyfairylamplighter_0: -323963371781241186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

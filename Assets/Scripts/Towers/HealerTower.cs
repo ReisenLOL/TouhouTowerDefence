@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class HealerTower : RangedTower
 {
+    public HealerTowerSprite thisTowerSprite;
     public List<Tower> towersInRange;
     protected Tower closestTower; 
     protected override void TryAttack()
@@ -24,15 +25,21 @@ public class HealerTower : RangedTower
 
                 if (closestTower && closestTower.health < closestTower.maxHealth)
                 {
-                    if (currentTargettingMode == TargettingModes.Focused)
+                    if (animator)
+                    {
+                        thisTowerSprite.healingTarget = closestTower;
+                        animator.SetTrigger(attackAnimParam);
+                    }
+                    else if (currentTargettingMode == TargettingModes.Focused)
                     {
                         closestTower.HealDamage(stats.damage);
                     }
                     else
                     {
-                        closestTower.HealDamage(stats.damage * stats.scatteredDamageModifier);
+                        closestTower.HealDamage(stats.damage * stats.scatteredDamageModifier); //??
                     }
                     audioSource.PlayOneShot(attackSound);
+                    
                     //FireProjectile(closestTower.transform);
                     currentFiringTime = 0;   
                 }

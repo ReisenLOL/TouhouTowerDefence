@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DoubleDoor2_0: -6760130535416102111
+      DoubleDoor2_1: -7393392624985204174
+      DoubleDoor2_2: -1645553613827899218
+      DoubleDoor2_3: -6948103492402168107
+      DoubleDoor2_4: 7494544309515863727
+      DoubleDoor2_5: 8657069861593821173
+      DoubleDoor2_6: 4456182876484781594
+      DoubleDoor2_7: -8417525475991305640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

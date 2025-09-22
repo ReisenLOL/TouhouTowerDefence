@@ -374,7 +374,8 @@ MonoBehaviour:
   scatteredRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}
   currentTargettingMode: 0
   stats: {fileID: 11400000, guid: 7ed047a1a3460996c91dd07b4aa07b63, type: 2}
-  spellcardsToAdd: []
+  spellcardsToAdd:
+  - {fileID: -845332313683096479, guid: 6f785f9261496fd00a3c5bb0cf9a1e6a, type: 3}
   isOneUse: 0
   attackSound: {fileID: 8300000, guid: 8b4c4b765fcca2f42ae8bf4257f10c1d, type: 3}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}

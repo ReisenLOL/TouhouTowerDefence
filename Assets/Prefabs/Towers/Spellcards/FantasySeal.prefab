@@ -304,8 +304,10 @@ MonoBehaviour:
   spellcardImage: {fileID: 5265108533749722248, guid: 894a23abda43ffc58a0b2b2d31858730, type: 3}
   spellcardDescription: Yeah
   cooldown: 120
-  currentCooldownTime: 120
+  currentCooldownTime: 0
   onCooldown: 0
+  spellcardSound: {fileID: 0}
+  spellcardSoundVolume: 0
   thisTower: {fileID: 0}
   damage: 80
   firingPositions:

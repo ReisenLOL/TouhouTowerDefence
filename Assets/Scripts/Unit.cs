@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
     public bool isDying;
     public bool canMove = true; //this shouldn't be here for towers but whatever!
     public bool canFire = true;
+    public bool canBeAttacked = true;
     protected SpriteRenderer[] spriteRenderers;
     private float currentState;
     public Transform effectOverlayUI;
@@ -25,23 +26,26 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        float damageToDeal = damage * defence;
-        health -= damageToDeal;
-        if (onHitDamageNumber)
+        if (canBeAttacked)
         {
-            onHitDamageNumber.Spawn(transform.position, damageToDeal);
-        }
-        if (health <= 0)
-        {
-            currentState = 0;
-            isDying = true;
-            OnKill();
-            StartCoroutine(DeathAnimation());
-        }
-        else
-        {
-            currentState = 0;
-            StartCoroutine(DamageAnimation());
+            float damageToDeal = damage * defence;
+            health -= damageToDeal;
+            if (onHitDamageNumber)
+            {
+                onHitDamageNumber.Spawn(transform.position, damageToDeal);
+            }
+            if (health <= 0)
+            {
+                currentState = 0;
+                isDying = true;
+                OnKill();
+                StartCoroutine(DeathAnimation());
+            }
+            else
+            {
+                currentState = 0;
+                StartCoroutine(DamageAnimation());
+            }
         }
     }
     public virtual void HealDamage(float healing)

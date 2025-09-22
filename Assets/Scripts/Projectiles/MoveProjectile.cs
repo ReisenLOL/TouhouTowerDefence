@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveProjectile : Projectile
 {
     public Rigidbody2D rb;
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         rb.linearVelocity = (target.transform.position - transform.position).normalized * speed;
     }

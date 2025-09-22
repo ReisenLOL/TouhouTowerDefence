@@ -13,6 +13,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
     public RectTransform towerListUI;
     public TowerToPlace selectedTower;
     public GameObject showSelectedPanel;
+    public Animator selectionAnimator;
     [Header("[TOWER SELECTION UI]")]
     public RectTransform towerSelectionUI;
     public Image towerSprite;
@@ -46,16 +47,12 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
     {
         if (selectedTower == towerSelected)
         {
-            towerSelectionUI.gameObject.SetActive(false);
-            selectedTower = null;
-            towerListUI.sizeDelta = Vector2.zero;
-            towerListUI.anchoredPosition = Vector2.zero;
+            selectionAnimator.SetTrigger("Deselect");
         }
         else
         {
             selectedTower = towerSelected;
-            towerListUI.sizeDelta = new Vector2(-towerSelectionUI.rect.width, 0);
-            towerListUI.anchoredPosition = new Vector2(towerListUI.sizeDelta.x/2, 0);
+            selectionAnimator.SetTrigger("Select");
             ShowSelectionInfo();
         } 
         showSelectedPanel = buttonSelected.Find("SelectionPanel").gameObject;

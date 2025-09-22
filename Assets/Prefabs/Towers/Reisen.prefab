@@ -521,6 +521,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: f7dec2f3473508cfea9b595acb297df8, type: 2}
   spellcardsToAdd:
   - {fileID: 6514951590809409605, guid: a653346f51a7332678501deaad93a69f, type: 3}
+  - {fileID: 7921039131306991888, guid: eac6a5a71e006aac28e8e9021663606c, type: 3}
   isOneUse: 0
   attackSound: {fileID: 8300000, guid: 9b643dd9f5f3815c6ae90b30fb4ad872, type: 3}
   deathSound: {fileID: 8300000, guid: f09294957f4a4c74aab66eaf75520f11, type: 3}

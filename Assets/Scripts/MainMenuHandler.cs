@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,18 @@ using UnityEngine.SceneManagement;
 public class MainMenuHandler : MonoBehaviour
 {
     public GameObject mainMenuUI;
+    private bool isStarted;
+    public Animator mainMenuAnimator;
+
+    private void Update()
+    {
+        if (!isStarted && Input.GetMouseButtonDown(0))
+        {
+            isStarted = true;
+            mainMenuAnimator.SetTrigger("Start");
+        }
+    }
+
     public void ExitMenu(GameObject menu)
     {
         menu.SetActive(false);

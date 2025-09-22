@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ratingText;
     public AudioSource audioSource;
     public AudioClip damageSound;
+    public AudioClip pauseSound;
+    public float pauseVolume;
     public float damageVolume;
     public bool speedUp;
     public bool paused;
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
             paused = true;
             Time.timeScale = 0;
             pauseUI.SetActive(true);
+            audioSource.PlayOneShot(pauseSound, pauseVolume);
         }
     }
     public void UpdateEnemyCountUI()

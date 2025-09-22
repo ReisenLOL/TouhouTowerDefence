@@ -553,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisTower: {fileID: 3475580796332043495}
   target: {fileID: 0}
-  attackParticles: {fileID: 0}
+  attackParticles: {fileID: 4112102572818408128, guid: e38bd8a0bf4d14b2e9279efc3f06ebc3, type: 3}
   towerParticleLocation: {fileID: 5127751027967637784}
   shadow: {fileID: 6560291404773996674}
   listOfStrings:
@@ -698,6 +698,7 @@ MonoBehaviour:
   isDying: 0
   canMove: 1
   canFire: 1
+  canBeAttacked: 1
   effectOverlayUI: {fileID: 0}
   damageColorChangeSpeed: 4
   deathColorChangeSpeed: 2
@@ -706,7 +707,7 @@ MonoBehaviour:
   focusedRange: {fileID: 7306455127275621131, guid: f60e46434d7788bbc90dfbda5658b55b, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
   currentTargettingMode: 0
-  stats: {fileID: 11400000, guid: 3c237fab1b4b17179a720709edb4f6fb, type: 2}
+  stats: {fileID: 11400000, guid: 43441674d059493989ae02f96d5e1ed7, type: 2}
   spellcardsToAdd: []
   isOneUse: 1
   attackSound: {fileID: 8300000, guid: 9b643dd9f5f3815c6ae90b30fb4ad872, type: 3}
@@ -1394,7 +1395,7 @@ Transform:
   m_GameObject: {fileID: 5669832905475254543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.426, y: -1.392, z: 0}
+  m_LocalPosition: {x: -0.031, y: -1.174, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sanaeconstruction_0: -4356640045249516644
+      sanaeconstruction_1: -8523299139389758490
+      sanaeconstruction_2: -5743768282915929677
+      sanaeconstruction_3: 732198866195844337
+      sanaeconstruction_4: 8572697658717545012
+      sanaeconstruction_5: -3272450280912353412
+      sanaeconstruction_6: 347969402433208683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

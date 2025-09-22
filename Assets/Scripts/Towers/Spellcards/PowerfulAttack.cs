@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PowerfulAttack : Spellcard
 {
-    public Projectile projectile;
+    public ExplosiveProjectile projectile;
     public float attackBaseDamage;
+    public float blastRadius;
+    public float blastDamage;
     protected override void SpellCardEffects()
     {
         if (thisTower.closestEnemy)
@@ -19,7 +21,9 @@ public class PowerfulAttack : Spellcard
 
     public void FireProjectile(Transform direction)
     {
-        Projectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        ExplosiveProjectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        newProjectile.radius = blastRadius;
+        newProjectile.blastDamage = blastDamage;
         if (thisTower.currentTargettingMode == Tower.TargettingModes.Focused)
         {
             newProjectile.damage = attackBaseDamage * thisTower.attackModifier;

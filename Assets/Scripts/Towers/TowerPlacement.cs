@@ -43,7 +43,7 @@ public class TowerPlacement : MonoBehaviour
     
     [Header("[PLACEMENT UI]")]
     public Transform placementFrame;
-    public Button buttonTemplate;
+    public GameObject buttonTemplate;
 
     [Header("[RESOURCES]")] 
     public int currentPower;
@@ -151,6 +151,7 @@ public class TowerPlacement : MonoBehaviour
                     {
                         newlyCreatedTower.animator.Play(newlyCreatedTower.deployAnimParam);
                     }
+                    newlyCreatedTower.canBeAttacked = true;
                     foreach (HealerTowerRangeCollider healerTowerRange in FindObjectsByType<HealerTowerRangeCollider>(FindObjectsSortMode.None))
                     {
                         healerTowerRange.updateTowerPlacements = true;
@@ -199,6 +200,7 @@ public class TowerPlacement : MonoBehaviour
         }
         audioSource.PlayOneShot(placementSound);
         newlyCreatedTower = Instantiate(selectedTower.tower, towersFolder);
+        newlyCreatedTower.canBeAttacked = false;
         if (selectedTower.tower.currentTargettingMode == Tower.TargettingModes.Focused)
         {
             placeholderRange = Instantiate(newlyCreatedTower.focusedRange.showRange, newlyCreatedTower.transform);
@@ -317,12 +319,13 @@ public class TowerPlacement : MonoBehaviour
         {
             if (!towerToPlace.isPlaced)
             {
-                Button newButton = Instantiate(buttonTemplate, placementFrame);
+                GameObject newButton = Instantiate(buttonTemplate, placementFrame);
+                Button newButtonInteractable = newButton.GetComponentInChildren<Button>();
                 newButton.gameObject.SetActive(true);
-                newButton.transform.Find("TowerImage").GetComponent<Image>().sprite = towerToPlace.portrait;
-                newButton.transform.Find("CostPanel").GetComponentInChildren<TextMeshProUGUI>().text = "P " + towerToPlace.powerCost;
-                newButton.GetComponent<TowerButtonUI>().thisTower = towerToPlace;
-                newButton.onClick.AddListener(() => SetPlacement(towerToPlace));   
+                newButtonInteractable.transform.Find("TowerImage").GetComponent<Image>().sprite = towerToPlace.portrait;
+                newButtonInteractable.transform.Find("CostPanel").GetComponentInChildren<TextMeshProUGUI>().text = "P " + towerToPlace.powerCost;
+                newButtonInteractable.GetComponent<TowerButtonUI>().thisTower = towerToPlace;
+                newButtonInteractable.onClick.AddListener(() => SetPlacement(towerToPlace));   
             }
         }
     }

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7911216193190828130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6817202977256971003}
+  - component: {fileID: 7921039131306991888}
+  m_Layer: 0
+  m_Name: BigShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6817202977256971003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911216193190828130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7921039131306991888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911216193190828130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f439d3b85307ecbb3c375cacda19f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellcardID: BIG SHOT
+  spellcardImage: {fileID: 5265108533749722248, guid: 894a23abda43ffc58a0b2b2d31858730, type: 3}
+  spellcardDescription: A single, powerful attack that damages nearby enemies.
+  cooldown: 60
+  currentCooldownTime: 0
+  onCooldown: 0
+  spellcardSound: {fileID: 8300000, guid: 62f40d2da8b7bb604acecc3d29d5a01b, type: 3}
+  spellcardSoundVolume: 0.4
+  thisTower: {fileID: 0}
+  projectile: {fileID: -1290252095410132652, guid: d0ba4f8200e004772a0854b64c7638ed, type: 3}
+  attackBaseDamage: 180
+  blastRadius: 1.2
+  blastDamage: 100
