@@ -6318,7 +6318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedToMove: 15
   offset: {x: 0, y: 15}
-  originalPosition: {x: 0, y: 0}
   targetPosition: {x: 0, y: 0}
 --- !u!1 &757475234
 GameObject:
@@ -8237,6 +8236,7 @@ MonoBehaviour:
   - {fileID: 2541345253646511569, guid: 6257f0b9a16dbf60787bf142c71c4119, type: 3}
   - {fileID: 2541345253646511569, guid: dc640e5d33c5dbff3a04939ac51d6cc9, type: 3}
   - {fileID: 2541345253646511569, guid: 1c7326c6ebccafca8bef9878779af2e1, type: 3}
+  - {fileID: 2541345253646511569, guid: d98b2f86648808a01a295f0e1356d1a9, type: 3}
   - {fileID: 2541345253646511569, guid: bdf00bfbf3644a77b811e1d7f7bf9671, type: 3}
   availableTowers: []
   selectedTower: {fileID: 0}
@@ -11769,7 +11769,7 @@ MonoBehaviour:
   audioSource: {fileID: 519420033}
   damageSound: {fileID: 8300000, guid: e9256f9ce738408f1a604b47fec46260, type: 3}
   pauseSound: {fileID: 8300000, guid: 741ac5f0bfd36b728b980442e0a83536, type: 3}
-  pauseVolume: 0.4
+  pauseVolume: 0.05
   damageVolume: 0.4
   speedUp: 0
   paused: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7667e0e5a60745f72a3eee11643e59e2, type: 3}
   m_Name: SanaeStats
   m_EditorClassIdentifier: 
-  damage: 40
+  damage: 12
   scatteredDamageModifier: 0.5
-  fireRate: 8
+  fireRate: 1
   scatteredFireRateModifier: 1
   blockAmount: 2
   isCliffTower: 1

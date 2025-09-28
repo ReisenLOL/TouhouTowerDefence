@@ -19,14 +19,14 @@ public class MoveProjectileInfinite : Projectile
 
     protected override void OnHitEffects(Collider2D objectHit)
     {
-        if (objectHit.TryGetComponent(out Unit isRangedTower))
+        if (objectHit.TryGetComponent(out Enemy isEnemy))
         {
-            if (unitsHit.Contains(isRangedTower))
+            if (unitsHit.Contains(isEnemy))
             {
                 return;
             }
-            unitsHit.Add(isRangedTower);
-            isRangedTower.TakeDamage(damage);
+            unitsHit.Add(isEnemy);
+            isEnemy.TakeDamage(damage);
         }
         if (hitParticles)
         {

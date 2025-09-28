@@ -13,7 +13,7 @@ public class Unit : MonoBehaviour
     public bool canFire = true;
     public bool canBeAttacked = true;
     protected SpriteRenderer[] spriteRenderers;
-    private float currentState;
+    protected float currentState;
     public Transform effectOverlayUI;
     [SerializeField] private float damageColorChangeSpeed = 4f;
     [SerializeField] private float deathColorChangeSpeed = 4f;
@@ -23,7 +23,6 @@ public class Unit : MonoBehaviour
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
-
     public virtual void TakeDamage(float damage)
     {
         if (canBeAttacked)
@@ -34,7 +33,7 @@ public class Unit : MonoBehaviour
             {
                 onHitDamageNumber.Spawn(transform.position, damageToDeal);
             }
-            if (health <= 0)
+            if (health <= 0 && !isDying)
             {
                 currentState = 0;
                 isDying = true;
@@ -78,11 +77,11 @@ public class Unit : MonoBehaviour
             }
         }
     }
-    private IEnumerator DeathAnimation()
+    protected IEnumerator DeathAnimation()
     {
         while (currentState < 1)
         {
-            //Debug.Log("STATE: DYING");
+            Debug.Log("STATE: DYING");
             currentState += Time.deltaTime * deathColorChangeSpeed;
             if (currentState >= 1)
             {

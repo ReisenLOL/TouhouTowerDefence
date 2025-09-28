@@ -43,6 +43,11 @@ public class Enemy : Unit
         {
             animator.SetFloat(speedAnimParamName, 0f);
         }
+
+        if (isDying && currentState == 0)
+        {
+            StartCoroutine(DeathAnimation());
+        }
     }
     private void FixedUpdate()
     {
@@ -59,7 +64,7 @@ public class Enemy : Unit
     {
         canMove = false;
         gameManager.currentEnemyCount++;
-        gameManager.UpdateEnemyCountUI();
+        gameManager.UpdateEnemyCount();
         if (animator)
         {
             animator.SetBool(deathAnimParamName, true);

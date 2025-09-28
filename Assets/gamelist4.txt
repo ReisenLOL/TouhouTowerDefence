@@ -30,6 +30,11 @@ I FORGOT TO CHANGE MONITORS LOL
 but yeah i've just been animating cirno lol no worries nothing too exciting. but now were gonna make the perfect freeze spellcard.
 i'm trying to figure out what to add now
 i'll leave it here fornow, i'll get back to this tmrw
+okay i'm thinking what to add now.
+because there's like. every single system in place now, i have to make content.
+every tower so far should have atleast 2 spellcards
+i should probably also fix the uh, spread shots.
+idk rn gimme a bit.
 
 FX STUFF
 but uhh in very brief
@@ -41,10 +46,10 @@ animations tend to benefit from having certain key poses for the viewer’s eye 
 these are fairly high-level principles of course / you can get into all sorts of details trying to produce specific motions or effects; 
 but practicing making them and observing similar animations/vfx/reference to break down how the parts of them work will train your sense for them
 TODO
-- add a level and map system
+/ add a level and map system - yes progress
 - add a vn system
-- add spellcards, these can be big attacks, buffs, or whatever else.
-- figure out how unlocking towers will work
+/ add spellcards, these can be big attacks, buffs, or whatever else. - system works!
+- figure out how unlocking towers will work 
 - add more stuff to make this game unique from arknights
 - figure out customization
     + maybe like, towers can graze bullets, enemies would fire actual danmaku? but i dunno...
@@ -56,7 +61,7 @@ TODO
     + maybe also equipables for towers?? that'd be pretty cool i think
     + and maybe also units can choose a subclass??? maaybe....
 - add more towers, this is DRAWING and you're LAZY sylvia.
-- add animations for towers. you'll need one for instantiation, idle, firing, casting a spellcard, and defeat.
+/ add animations for towers. you'll need one for instantiation, idle, firing, casting a spellcard, and defeat. - most characters have a idle, deploy, and attack anims
 
 
 IDEAS
@@ -82,3 +87,7 @@ IDEAS
 TOWERS
 Sanae - Healer
 Yukari - Support????
+Momiji - defender, for sure.
+
+MAPS
+Bamboo forest. It has to be done.

@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectableTowers:
-  - {fileID: 2541345253646511569, guid: 2c57213f1d8cb6402aa8b0bb3261f5e9, type: 3}
+  - {fileID: 2541345253646511569, guid: d98b2f86648808a01a295f0e1356d1a9, type: 3}
   - {fileID: 2541345253646511569, guid: 53fa2e9e94200b4e2ba183931902aea5, type: 3}
   - {fileID: 2541345253646511569, guid: 6dc7edaece3566e5dbfe0d72be1f52f0, type: 3}
   - {fileID: 2541345253646511569, guid: c081bf239218b54108340618bda2d303, type: 3}

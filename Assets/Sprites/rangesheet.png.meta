@@ -332,6 +332,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: rangesheet_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebc9bb0dfc535e029123ac5c4d2dce7
+      internalID: -1714076182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -348,6 +370,7 @@ TextureImporter:
     nameFileIdTable:
       rangesheet_0: -4424752679602836869
       rangesheet_1: 1095979104
+      rangesheet_10: -1714076182
       rangesheet_2: 1297391335
       rangesheet_3: -755031443
       rangesheet_4: 783434861

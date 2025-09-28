@@ -12,6 +12,7 @@ public class LevelSelector : MonoBehaviour
     {
         public string sceneName;
         public string levelName;
+        public bool unlocked;
     }
     public List<LevelSelection> levels;
     public MainMenuTowerSelectionUIHandler towerSelector;
@@ -23,10 +24,13 @@ public class LevelSelector : MonoBehaviour
     {
         foreach (LevelSelection level in levels)
         {
-            Button newButton = Instantiate(templateLevelButton, levelUI);
-            newButton.onClick.AddListener(() => SelectLevel(level.sceneName));
-            newButton.GetComponentInChildren<TextMeshProUGUI>().text = level.levelName;
-            newButton.gameObject.SetActive(true);
+            if (level.unlocked)
+            {
+                Button newButton = Instantiate(templateLevelButton, levelUI);
+                newButton.onClick.AddListener(() => SelectLevel(level.sceneName));
+                newButton.GetComponentInChildren<TextMeshProUGUI>().text = level.levelName;
+                newButton.gameObject.SetActive(true);
+            }
         }
     }
 

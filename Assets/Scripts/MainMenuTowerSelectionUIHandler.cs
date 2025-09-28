@@ -47,7 +47,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
     {
         if (selectedTower == towerSelected)
         {
-            selectionAnimator.SetTrigger("Deselect");
+            //selectionAnimator.SetTrigger("Deselect");
         }
         else
         {

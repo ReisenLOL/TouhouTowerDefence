@@ -45,7 +45,7 @@ public class WaveManager : MonoBehaviour
                 gameManager.totalEnemyCount += enemyGroup.amountToSpawn;
             }
         }
-        gameManager.UpdateEnemyCountUI();
+        gameManager.UpdateEnemyCount();
         StartCoroutine(SpawnWave(waveList[currentWave]));
     }
 

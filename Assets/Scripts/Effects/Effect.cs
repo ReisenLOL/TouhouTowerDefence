@@ -17,7 +17,7 @@ public class Effect : ScriptableObject
         newEffectInstance.affectedUnit = affectedUnit;
         newEffectInstance.effectToApply = this;
         newEffectInstance.effectLenth = effectLength;
-        Transform newEffectSquare = Instantiate(templateEffectSquare, affectedUnit.transform.Find("EffectsCanvas"));
+        Transform newEffectSquare = Instantiate(templateEffectSquare, affectedUnit.effectOverlayUI);
         newEffectInstance.effectIconSquare = newEffectSquare.gameObject;
         newEffectSquare.transform.Find("EffectIcon").GetComponent<Image>().sprite = effectIcon;
         newEffectInstance.durationBar = newEffectSquare.transform.Find("DurationBar");

@@ -55,4 +55,4 @@ MonoBehaviour:
   thisTower: {fileID: 0}
   projectile: {fileID: 7260561363753249169, guid: 0292ca891b3f1a44eb2a95d1f87a5408, type: 3}
   rangeToCheck: {fileID: 0}
-  attackBaseDamage: 5
+  attackBaseDamage: 40

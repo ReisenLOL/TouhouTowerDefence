@@ -96,8 +96,12 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(pauseSound, pauseVolume);
         }
     }
-    public void UpdateEnemyCountUI()
+    public void UpdateEnemyCount()
     {
+        if (currentEnemyCount == totalEnemyCount)
+        {
+            EndGame();
+        }
         enemyCountText.text = currentEnemyCount + "/" + totalEnemyCount;
         enemyBar.transform.localScale = new Vector3((float)currentEnemyCount/totalEnemyCount, 1, 1);
     }
@@ -114,6 +118,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }
