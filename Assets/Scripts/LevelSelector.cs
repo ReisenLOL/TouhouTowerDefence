@@ -10,12 +10,11 @@ public class LevelSelector : MonoBehaviour
     [System.Serializable]
     public class LevelSelection
     {
-        public string sceneName;
+        public string mapID;
         public string levelName;
         public bool unlocked;
     }
     public List<LevelSelection> levels;
-    public MainMenuTowerSelectionUIHandler towerSelector;
     public Transform levelUI;
     public GameObject towerSelectionUI;
     public GameObject levelSelectionUI;
@@ -27,7 +26,7 @@ public class LevelSelector : MonoBehaviour
             if (level.unlocked)
             {
                 Button newButton = Instantiate(templateLevelButton, levelUI);
-                newButton.onClick.AddListener(() => SelectLevel(level.sceneName));
+                newButton.onClick.AddListener(() => SelectLevel(level.mapID));
                 newButton.GetComponentInChildren<TextMeshProUGUI>().text = level.levelName;
                 newButton.gameObject.SetActive(true);
             }
@@ -36,7 +35,7 @@ public class LevelSelector : MonoBehaviour
 
     public void SelectLevel(string levelToSelect)
     {
-        towerSelector.levelSelected = levelToSelect;
+        MainMenuTransferHandler.instance.mapIDSelected = levelToSelect;
         levelSelectionUI.SetActive(false);
         towerSelectionUI.SetActive(true);
     }

@@ -32,9 +32,10 @@ public class WaveManager : MonoBehaviour
     public float timeBetweenEnemySpawns; //i think each wave should have their own variable of this.
     public float timeBetweenWaves;
     private GameManager gameManager;
-    public Transform enemiesFolder;
+    private Transform enemiesFolder;
     private void Start()
     {
+        enemiesFolder = GameObject.Find("EnemiesFolder").transform;
         gameManager = FindFirstObjectByType<GameManager>();
         foreach (Wave wave in waveList)
         {

@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectedTowersTransferHandler : MonoBehaviour
+public class MainMenuTransferHandler : MonoBehaviour
 {
-    public static SelectedTowersTransferHandler instance;
+    public static MainMenuTransferHandler instance;
     public class SelectedTowerData
     {
         public string towerID;
         public int targettingMode;
     }
     public HashSet<SelectedTowerData> selectedTowers = new();
+    public string mapIDSelected;
     private void Awake()
     {
         if (instance == null)

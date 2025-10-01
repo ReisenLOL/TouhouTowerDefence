@@ -67,7 +67,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
         towerBlockAmount.text = "Block Amount: " + selectedTower.tower.stats.blockAmount;
         towerSprite.sprite = selectedTower.portrait;
         towerModeSelection.value = 0;
-        foreach (SelectedTowersTransferHandler.SelectedTowerData towerData in SelectedTowersTransferHandler.instance.selectedTowers)
+        foreach (MainMenuTransferHandler.SelectedTowerData towerData in MainMenuTransferHandler.instance.selectedTowers)
         {
             if (towerData.towerID == selectedTower.tower.towerID)
             {            
@@ -83,11 +83,11 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
     {
         showSelectedPanel.SetActive(true);
         bool notFoundInList = false;
-        foreach (SelectedTowersTransferHandler.SelectedTowerData towerData in SelectedTowersTransferHandler.instance.selectedTowers)
+        foreach (MainMenuTransferHandler.SelectedTowerData towerData in MainMenuTransferHandler.instance.selectedTowers)
         {
             if (towerData.towerID == selectedTower.tower.towerID)
             {
-                SelectedTowersTransferHandler.instance.selectedTowers.Remove(towerData);
+                MainMenuTransferHandler.instance.selectedTowers.Remove(towerData);
                 notFoundInList = true;
                 showSelectedPanel.SetActive(false);
                 break;
@@ -95,16 +95,16 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
         }
         if (!notFoundInList)
         {
-            SelectedTowersTransferHandler.SelectedTowerData newTowerData =
-                new SelectedTowersTransferHandler.SelectedTowerData();
+            MainMenuTransferHandler.SelectedTowerData newTowerData =
+                new MainMenuTransferHandler.SelectedTowerData();
             newTowerData.towerID = selectedTower.tower.towerID;
             newTowerData.targettingMode = towerModeSelection.value;
-            SelectedTowersTransferHandler.instance.selectedTowers.Add(newTowerData);
+            MainMenuTransferHandler.instance.selectedTowers.Add(newTowerData);
         }
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(levelSelected);
+        SceneManager.LoadScene("Game");
     }
 }

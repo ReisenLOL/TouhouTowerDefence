@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 587611beae236dee2bb839051b7b3bf4, type: 3}
-  m_Name: DefenseUP
+  m_Script: {fileID: 11500000, guid: 9e249e3d20acbf99aa00dbd1113fd195, type: 3}
+  m_Name: AttackUP
   m_EditorClassIdentifier: 
-  effectName: Defense Up
-  effectIcon: {fileID: 7116004456955076645, guid: 3804c5aa2a98cecb49514c01a68bdd8c, type: 3}
+  effectName: Attack Up
+  effectIcon: {fileID: -7008412969330441016, guid: e79c92b3d964051f09a0b1c16c56677a, type: 3}
   thisEffectType: 0
   templateEffectSquare: {fileID: 4162851657862829791, guid: 7f21b742d06c5053b8bfa462e7930946, type: 3}
   effectLength: 5
-  defenseDeltaChangeValue: 0.2
+  attackDeltaChangeValue: 0.8

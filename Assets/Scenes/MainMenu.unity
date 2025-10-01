@@ -1045,9 +1045,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - sceneName: Prototype
+  - mapID: Map1
     levelName: 1
-  towerSelector: {fileID: 156070169}
+    unlocked: 1
+  - mapID: Map2
+    levelName: 2
+    unlocked: 1
+  - mapID: Map4
+    levelName: 4
+    unlocked: 1
   levelUI: {fileID: 316492200}
   towerSelectionUI: {fileID: 1638492241}
   levelSelectionUI: {fileID: 702985037}
@@ -3975,6 +3981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bddeee18c9fc2e9bf4c8732908e090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapIDSelected: 
 --- !u!4 &1246922014
 Transform:
   m_ObjectHideFlags: 0

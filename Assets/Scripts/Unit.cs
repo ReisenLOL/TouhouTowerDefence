@@ -81,7 +81,6 @@ public class Unit : MonoBehaviour
     {
         while (currentState < 1)
         {
-            Debug.Log("STATE: DYING");
             currentState += Time.deltaTime * deathColorChangeSpeed;
             if (currentState >= 1)
             {

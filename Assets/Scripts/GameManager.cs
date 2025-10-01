@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,14 @@ public class GameManager : MonoBehaviour
     public int lives = 5;
     public int maxLives = 5;
     public bool gameOver = false;
+    [System.Serializable]
+    public class MapSelection
+    {
+        public GameObject map;
+        public string mapID;
+    }
+    public MapSelection[] allMaps;
+    public GameObject fallBackMap;
     [Header("[CACHE]")]
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI enemyCountText;
@@ -27,6 +36,24 @@ public class GameManager : MonoBehaviour
     public Transform livesBar;
     public GameObject pauseUI;
 
+    public void Awake()
+    {
+        if (MainMenuTransferHandler.instance)
+        {
+            foreach (MapSelection maps in allMaps)
+            {
+                if (MainMenuTransferHandler.instance.mapIDSelected == maps.mapID)
+                {
+                    Instantiate(maps.map);
+                }
+            }
+        }
+        else
+        {
+            Instantiate(fallBackMap);
+        }
+    }
+
     public void TakeDamage(int damage = 1)
     {
         lives -= damage;
@@ -44,6 +71,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         if (!gameOver)
         {
+            Time.timeScale = 1;
             rating++;
             if (lives == maxLives)
             {

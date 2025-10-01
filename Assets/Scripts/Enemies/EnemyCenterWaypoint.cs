@@ -9,11 +9,14 @@ public class EnemyCenterWaypoint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        thisUnit.currentWaypoint++;
-        if (thisUnit.currentWaypoint == thisUnit.selectedSpawnAndMovement.waypoints.Count)
+        if (other.transform == thisUnit.selectedSpawnAndMovement.waypoints[thisUnit.currentWaypoint])
         {
-            FindAnyObjectByType<GameManager>().TakeDamage();
-            Destroy(thisUnit.gameObject);
+            thisUnit.currentWaypoint++;
+            if (thisUnit.currentWaypoint == thisUnit.selectedSpawnAndMovement.waypoints.Count)
+            {
+                FindAnyObjectByType<GameManager>().TakeDamage();
+                Destroy(thisUnit.gameObject);
+            }
         }
     }
 }

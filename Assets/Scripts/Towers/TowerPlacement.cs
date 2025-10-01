@@ -67,9 +67,9 @@ public class TowerPlacement : MonoBehaviour
         unplaceableMap = GameObject.Find("Unplaceable Map").GetComponent<Tilemap>();
         showTowerInfo = FindFirstObjectByType<ShowTowerInfo>();
         cam = Camera.main;
-        if (SelectedTowersTransferHandler.instance)
+        if (MainMenuTransferHandler.instance)
         {
-            foreach (SelectedTowersTransferHandler.SelectedTowerData selectedTowers in SelectedTowersTransferHandler.instance.selectedTowers)
+            foreach (MainMenuTransferHandler.SelectedTowerData selectedTowers in MainMenuTransferHandler.instance.selectedTowers)
             {
                 foreach (TowerToPlace towerToPlace in AllTowers)
                 {

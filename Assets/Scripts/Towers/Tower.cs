@@ -105,6 +105,10 @@ public class Tower : Unit
     protected virtual void Update()
     {
         //since were having like different tower classes, the update function might be different on each one.
+        if (isDying && currentState == 0)
+        {
+            StartCoroutine(DeathAnimation());
+        }
         TryAttack();
     }
 
