@@ -14,11 +14,11 @@ public class MoveProjectile : Projectile
         base.OnHitEffects(objectHit);
         if (objectHit.TryGetComponent(out Unit isRangedTower))
         {
-            isRangedTower.TakeDamage(damage);
+            isRangedTower.TakeDamage(damage, willBypassDefense);
         }
         else if (objectHit.TryGetComponent(out TowerBlockingCollision isMeleeTower))
         {
-            isMeleeTower.thisTower.TakeDamage(damage);
+            isMeleeTower.thisTower.TakeDamage(damage, willBypassDefense);
         }
         Destroy(gameObject);
     }

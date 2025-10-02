@@ -5785,6 +5785,8 @@ MonoBehaviour:
     mapID: Map1
   - map: {fileID: 5346654115701205317, guid: 70393de9e30798cf1a9755b6dfbe5213, type: 3}
     mapID: Map2
+  - map: {fileID: 5346654115701205317, guid: 5d15311d11f8950ab8fb8a359e72a49d, type: 3}
+    mapID: Map3
   - map: {fileID: 9110514496334117032, guid: c394dd27b6f39654eb7513d25d376efb, type: 3}
     mapID: Map4
   fallBackMap: {fileID: 5346654115701205317, guid: 5d15311d11f8950ab8fb8a359e72a49d, type: 3}
@@ -5806,6 +5808,7 @@ MonoBehaviour:
   enemyBar: {fileID: 1111227990}
   livesBar: {fileID: 640577486}
   pauseUI: {fileID: 539488268}
+  waveManager: {fileID: 0}
 --- !u!1 &1606081706
 GameObject:
   m_ObjectHideFlags: 0

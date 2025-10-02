@@ -33,6 +33,7 @@ public class WaveManager : MonoBehaviour
     public float timeBetweenWaves;
     private GameManager gameManager;
     private Transform enemiesFolder;
+    public string mapIDToUnlock;
     private void Start()
     {
         enemiesFolder = GameObject.Find("EnemiesFolder").transform;

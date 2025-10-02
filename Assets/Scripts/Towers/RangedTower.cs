@@ -35,7 +35,7 @@ public class RangedTower : Tower
             }
         }
     }
-    public void FireProjectile(Transform direction)
+    public virtual void FireProjectile(Transform direction)
     {
         Projectile newProjectile = Instantiate(projectile, transform.position, projectile.transform.rotation);
         if (currentTargettingMode == TargettingModes.Focused)

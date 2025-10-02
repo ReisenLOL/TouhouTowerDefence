@@ -1050,10 +1050,13 @@ MonoBehaviour:
     unlocked: 1
   - mapID: Map2
     levelName: 2
-    unlocked: 1
+    unlocked: 0
+  - mapID: Map3
+    levelName: 3
+    unlocked: 0
   - mapID: Map4
     levelName: 4
-    unlocked: 1
+    unlocked: 0
   levelUI: {fileID: 316492200}
   towerSelectionUI: {fileID: 1638492241}
   levelSelectionUI: {fileID: 702985037}

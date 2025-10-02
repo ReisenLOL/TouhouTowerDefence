@@ -82,7 +82,7 @@ public class Tower : Unit
         audioSource.PlayOneShot(deathSound);
     }
 
-    public override void TakeDamage(float damageTaken)
+    public override void TakeDamage(float damageTaken, bool bypassDefense = false)
     {
         base.TakeDamage(damageTaken);
         UpdateHealthBar();

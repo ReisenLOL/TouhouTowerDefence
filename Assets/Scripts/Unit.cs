@@ -23,11 +23,20 @@ public class Unit : MonoBehaviour
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
-    public virtual void TakeDamage(float damage)
+
+    public virtual void TakeDamage(float damage, bool bypassDefense = false)
     {
         if (canBeAttacked)
         {
-            float damageToDeal = damage * defence;
+            float damageToDeal;
+            if (bypassDefense)
+            {
+                damageToDeal = damage * defence;
+            }
+            else
+            {
+                damageToDeal = damage;
+            }
             health -= damageToDeal;
             if (onHitDamageNumber)
             {

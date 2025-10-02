@@ -89,5 +89,11 @@ Sanae - Healer
 Yukari - Support????
 Momiji - defender, for sure.
 
+CLASSES
+Melee - High attack, low block and health
+Defender - High health, block, worse damage
+Caster - High DPS, bad at armored enemies, 
+Heavy Caster - Worse DPS, better at armored enemies
+
 MAPS
 Bamboo forest. It has to be done.

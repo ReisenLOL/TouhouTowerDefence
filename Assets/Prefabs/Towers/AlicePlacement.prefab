@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfd761b8fd4e8ab5bef8ca0bd1b025e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 3475580796332043495, guid: 44f6574a3783f4739b1fafd77e415d0d, type: 3}
+  tower: {fileID: 5208004148113699088, guid: 44f6574a3783f4739b1fafd77e415d0d, type: 3}
   portrait: {fileID: -7840536435630134090, guid: 722f786b51f98dabb9c7421e319f1fc7, type: 3}
   isPlaced: 0
   powerCost: 10

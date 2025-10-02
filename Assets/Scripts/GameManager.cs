@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,7 +37,28 @@ public class GameManager : MonoBehaviour
     public Transform enemyBar;
     public Transform livesBar;
     public GameObject pauseUI;
+    
+    #region  Save data stuffs
 
+    public class MapSaveData
+    {
+        public List<String> unlockedMaps = new();
+    }
+    private string savePath => Path.Combine(Application.persistentDataPath, "MapsSaved.json");
+    private void SaveMapCleared()
+    {
+        MapSaveData saveData = new();
+        if (File.Exists(savePath))
+        {
+            saveData = JsonUtility.FromJson<MapSaveData>(File.ReadAllText(savePath));
+        }
+        saveData.unlockedMaps.Add(FindFirstObjectByType<WaveManager>().mapIDToUnlock);
+        string json = JsonUtility.ToJson(saveData);
+        File.WriteAllText(savePath, json);
+    }
+
+    #endregion
+    
     public void Awake()
     {
         if (MainMenuTransferHandler.instance)
@@ -71,6 +94,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         if (!gameOver)
         {
+            SaveMapCleared();
             Time.timeScale = 1;
             rating++;
             if (lives == maxLives)

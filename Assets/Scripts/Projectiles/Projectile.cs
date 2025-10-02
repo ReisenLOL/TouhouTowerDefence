@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public Transform target;
     public float damage;
     public ParticleSystem hitParticles;
+    public bool willBypassDefense;
     
     protected virtual void Start()
     {

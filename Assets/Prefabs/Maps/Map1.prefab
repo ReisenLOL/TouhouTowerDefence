@@ -3568,6 +3568,7 @@ MonoBehaviour:
   currentWave: 0
   timeBetweenEnemySpawns: 1.4
   timeBetweenWaves: 4
+  mapIDToUnlock: Map2
 --- !u!1 &6547596293909312139
 GameObject:
   m_ObjectHideFlags: 0
