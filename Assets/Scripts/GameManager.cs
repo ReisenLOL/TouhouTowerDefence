@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(fallBackMap);
         }
+
+        audioSource = FindFirstObjectByType<AudioSource>();
     }
 
     public void TakeDamage(int damage = 1)

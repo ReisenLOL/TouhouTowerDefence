@@ -8,10 +8,11 @@ public class Tower : Unit
 {
     [Header("[IDENTIFICATION]")]
     public string towerID;
+    public enum TowerClass {Melee, Defender, Caster, HeavyCaster, Healer}
+    public TowerClass thisTowerClass;
     
     [Header("[STATS]")]
     public TowerRangeCollider focusedRange;
-
     public TowerRangeCollider scatteredRange;
     public enum TargettingModes {Focused, Scattered}
     public TargettingModes currentTargettingMode = TargettingModes.Focused;

@@ -472,6 +472,7 @@ MonoBehaviour:
   deathColorChangeSpeed: 2
   onHitDamageNumber: {fileID: 0}
   towerID: Alice
+  thisTowerClass: 3
   focusedRange: {fileID: 7306455127275621131, guid: ba5098383d7f205d297b093ce1a9e343, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
   currentTargettingMode: 0

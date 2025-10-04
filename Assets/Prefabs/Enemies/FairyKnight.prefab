@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   maxHealth: 150
-  defence: 1
+  defence: 2
   attackModifier: 1
   isDying: 0
   canMove: 1
@@ -192,7 +192,7 @@ MonoBehaviour:
   onHitDamageNumber: {fileID: 11400000, guid: b1afc13171294462584eec46d5ef99a1, type: 2}
   damage: 15
   fireRate: 2
-  moveSpeed: 0.2
+  moveSpeed: 0.1
   isAir: 0
   rb: {fileID: 0}
   currentWaypoint: 0

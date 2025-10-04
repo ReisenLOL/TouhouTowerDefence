@@ -1,18 +1,21 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class TowerButtonUI : MonoBehaviour
+public class TowerButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private GameObject overlay;
     private TextMeshProUGUI timer;
     public TowerToPlace thisTower;
+    public ShowTowerInfo towerInfo;
     public bool showTimer;
 
     private void Start()
     {
         overlay = transform.Find("RespawnPanel").gameObject;
         timer = overlay.GetComponentInChildren<TextMeshProUGUI>();
+        towerInfo = FindFirstObjectByType<ShowTowerInfo>();
     }
 
     private void Update()
@@ -28,7 +31,23 @@ public class TowerButtonUI : MonoBehaviour
         else
         {
             overlay.SetActive(false);
-            Destroy(this);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!towerInfo.selectedTower)
+        {
+            towerInfo.ShowTowerPlacementInfo(thisTower.tower);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!towerInfo.selectedTower)
+        {
+            towerInfo.HideTowerInfoUI();
+        }
+
     }
 }

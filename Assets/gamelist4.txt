@@ -74,13 +74,14 @@ IDEAS
         = spellcard that stuns enemies from lunacy
     + Youmu
         =
-    + Kurogane
+    + Sanae
         =
-    + Aya
+    + Alice
         =
     + Momiji
         =
-    + 
+    + Cirno
+        =
 - Classses
     + Summoner Class
         = maybe like alice periodically summons a bunch of dolls that move through the path

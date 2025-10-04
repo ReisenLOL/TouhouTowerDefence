@@ -14,7 +14,7 @@ public class EnemyCenterWaypoint : MonoBehaviour
             thisUnit.currentWaypoint++;
             if (thisUnit.currentWaypoint == thisUnit.selectedSpawnAndMovement.waypoints.Count)
             {
-                FindAnyObjectByType<GameManager>().TakeDamage();
+                FindFirstObjectByType<GameManager>().TakeDamage();
                 Destroy(thisUnit.gameObject);
             }
         }

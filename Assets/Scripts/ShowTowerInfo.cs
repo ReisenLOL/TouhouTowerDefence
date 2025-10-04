@@ -21,10 +21,14 @@ public class ShowTowerInfo : MonoBehaviour
     public TextMeshProUGUI towerDamageUI;
     public TextMeshProUGUI towerFireRateUI;
     public TextMeshProUGUI towerBlockAmountUI;
+    public TextMeshProUGUI towerClassUI;
+    public Animator infoAnimator;
     public Transform healthBar;
     public TextMeshProUGUI healthNumber;
     public Button spellCardButtonTemplate;
     public Transform spellcardUI;
+    public GameObject spellcardPanel;
+    public GameObject healthPanel;
     private bool movingCamera;
     private bool returningCamera;
     private bool hasFoundTower;
@@ -36,6 +40,7 @@ public class ShowTowerInfo : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        defaultCameraSize = cam.orthographicSize;
     }
 
     private void Update()
@@ -98,26 +103,43 @@ public class ShowTowerInfo : MonoBehaviour
             returningCamera = true;
             currentFocusedTower.GetComponentInChildren<TowerRangeCollider>().showRange.SetActive(false);
             currentFocusedTower = null;
+            infoAnimator.SetTrigger("HideInfo");
         }
     }
 
-    public void ShowTowerInfoUI(Tower towerToShow)
+    private void ShowTowerInfoUI(Tower towerToShow)
     {
         if (canShowUI)
         {
             selectedTower = towerToShow;
             towerInfoUI.SetActive(true);
+            infoAnimator.SetTrigger("ShowInfo");
             movingCamera = true;
-            //GameObject showRange = Instantiate(towerToShow.range.showRange, towerToShow.transform);
-            //showRange.SetActive(true);
-            //showRange.transform.rotation = towerToShow.transform.rotation;
+            healthPanel.SetActive(true);
+            spellcardPanel.SetActive(true);
             towerNameUI.text = towerToShow.towerID;
             towerDamageUI.text = towerToShow.stats.damage.ToString();
             towerFireRateUI.text = towerToShow.stats.fireRate + "s";
             towerBlockAmountUI.text = towerToShow.stats.blockAmount.ToString();
+            towerClassUI.text = towerToShow.thisTowerClass.ToString();
             cam.transform.position = new Vector3(towerToShow.transform.position.x, towerToShow.transform.position.y, -10);
             cam.orthographicSize = focusedCameraSize;
             RebuildSpellcardList(); 
+
+        }
+    }
+    public void ShowTowerPlacementInfo(Tower towerToShow)
+    {
+        if (canShowUI)
+        {
+            towerInfoUI.SetActive(true);
+            healthPanel.SetActive(false);
+            spellcardPanel.SetActive(false);
+            towerNameUI.text = towerToShow.towerID;
+            towerDamageUI.text = towerToShow.stats.damage.ToString();
+            towerFireRateUI.text = towerToShow.stats.fireRate + "s";
+            towerBlockAmountUI.text = towerToShow.stats.blockAmount.ToString();
+            towerClassUI.text = towerToShow.thisTowerClass.ToString();
 
         }
     }

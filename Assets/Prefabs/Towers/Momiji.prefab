@@ -385,6 +385,7 @@ MonoBehaviour:
   deathColorChangeSpeed: 2
   onHitDamageNumber: {fileID: 0}
   towerID: Momiji
+  thisTowerClass: 1
   focusedRange: {fileID: 7306455127275621131, guid: 3be73d1eb005a50e08078e3d9c2c3b04, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 3be73d1eb005a50e08078e3d9c2c3b04, type: 3}
   currentTargettingMode: 0

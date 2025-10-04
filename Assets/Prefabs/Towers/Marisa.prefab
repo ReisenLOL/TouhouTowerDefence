@@ -342,6 +342,7 @@ MonoBehaviour:
   deathColorChangeSpeed: 2
   onHitDamageNumber: {fileID: 0}
   towerID: Marisa
+  thisTowerClass: 3
   focusedRange: {fileID: 7306455127275621131, guid: 11432e2e62cbadd14ada25d6cb20e0ce, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}
   currentTargettingMode: 0

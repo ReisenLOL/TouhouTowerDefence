@@ -11,6 +11,7 @@ public class TowerPlacement : MonoBehaviour
     [Header("[CACHE]")] 
     [SerializeField] private GameObject dragHandle;
     [SerializeField] private LineRenderer dragLine;
+    public Transform powerBar;
     private GameObject newDragHandle;
     private LineRenderer newDragLine;
     private Camera cam;
@@ -262,6 +263,7 @@ public class TowerPlacement : MonoBehaviour
             Destroy(newDragLine.gameObject);
             Destroy(newDragHandle);   
         }
+        showTowerInfo.towerInfoUI.SetActive(false);
         placementFrame.gameObject.SetActive(true);
         selectingPosition = false;
         selectingRotation = false;
@@ -289,6 +291,8 @@ public class TowerPlacement : MonoBehaviour
             currentPower++;
             powerNumberUI.text = "P " + currentPower;
         }
+
+        powerBar.localScale = new Vector3(currentPowerGenerationTime / powerGenerationRate, 1, 1);
     }
     private void CreatePlaceholderTower()
     {
