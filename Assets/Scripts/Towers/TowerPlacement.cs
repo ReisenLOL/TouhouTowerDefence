@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -76,6 +77,28 @@ public class TowerPlacement : MonoBehaviour
                 {
                     if (selectedTowers.towerID == towerToPlace.tower.towerID)
                     {
+                        if (selectedTowers.isPlayer)
+                        {
+                            Debug.Log("FoundPlaayer");
+                            Tower newPlayerTowerBefore = Instantiate(towerToPlace.tower);
+                            PlayerTowerController newPlayerTower = newPlayerTowerBefore.AddComponent<PlayerTowerController>();
+                            newPlayerTower.towerID = newPlayerTowerBefore.towerID;
+                            newPlayerTower.shortName = newPlayerTowerBefore.shortName;
+                            newPlayerTower.stats = newPlayerTowerBefore.stats;
+                            newPlayerTower.attackSound = newPlayerTowerBefore.attackSound;
+                            newPlayerTower.attackSoundVolume = newPlayerTowerBefore.attackSoundVolume;
+                            newPlayerTower.audioSource = newPlayerTowerBefore.audioSource;
+                            newPlayerTower.canBeAttacked = false;
+                            newPlayerTower.gameObject.layer = LayerMask.NameToLayer("Player");
+                            newPlayerTower.attackAnimParam = newPlayerTowerBefore.attackAnimParam;
+                            Destroy(newPlayerTower.transform.Find("HealthBarUI").gameObject);
+                            if (towerToPlace.tower.TryGetComponent(out RangedTower isRanged))
+                            {
+                                newPlayerTower.projectile = isRanged.projectile;
+                            }
+                            Destroy(newPlayerTowerBefore);
+                            break;
+                        }
                         TowerToPlace newTower = Instantiate(towerToPlace, transform);
                         newTower.tower.currentTargettingMode = (Tower.TargettingModes)selectedTowers.targettingMode;
                         availableTowers.Add(newTower);

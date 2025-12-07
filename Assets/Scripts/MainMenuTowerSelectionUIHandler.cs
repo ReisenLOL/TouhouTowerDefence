@@ -22,6 +22,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
     public TextMeshProUGUI towerFireRate;
     public TextMeshProUGUI towerBlockAmount;
     public TMP_Dropdown towerModeSelection;
+    public Toggle playerTowerToggle;
     public Button selectTowerButton;
     public string levelSelected;
     private void Start()
@@ -30,6 +31,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
         {
             Button newButton = Instantiate(templateButton, towerListUI);
             newButton.transform.Find("TowerImage").GetComponent<Image>().sprite = towerToPlace.portrait;
+            newButton.transform.GetComponentInChildren<TextMeshProUGUI>().text = towerToPlace.tower.shortName;
             newButton.gameObject.SetActive(true);
             newButton.onClick.AddListener(() => SelectTower(towerToPlace, newButton.transform));
         }
@@ -67,6 +69,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
         towerBlockAmount.text = "Block Amount: " + selectedTower.tower.stats.blockAmount;
         towerSprite.sprite = selectedTower.portrait;
         towerModeSelection.value = 0;
+        playerTowerToggle.isOn = false;
         foreach (MainMenuTransferHandler.SelectedTowerData towerData in MainMenuTransferHandler.instance.selectedTowers)
         {
             if (towerData.towerID == selectedTower.tower.towerID)
@@ -99,6 +102,7 @@ public class MainMenuTowerSelectionUIHandler : MonoBehaviour
                 new MainMenuTransferHandler.SelectedTowerData();
             newTowerData.towerID = selectedTower.tower.towerID;
             newTowerData.targettingMode = towerModeSelection.value;
+            newTowerData.isPlayer = playerTowerToggle.isOn;
             MainMenuTransferHandler.instance.selectedTowers.Add(newTowerData);
         }
     }

@@ -8,6 +8,7 @@ public class Tower : Unit
 {
     [Header("[IDENTIFICATION]")]
     public string towerID;
+    public string shortName;
     public enum TowerClass {Melee, Defender, Caster, HeavyCaster, Healer}
     public TowerClass thisTowerClass;
     
@@ -29,8 +30,8 @@ public class Tower : Unit
     public List<Enemy> enemiesInRange = new();
     public List<Enemy> currentlyBlocking = new();
     public Enemy closestEnemy = null;
-    protected float currentFiringTime;
-    private Transform healthBarUI;
+    public float currentFiringTime;
+    public Transform healthBarUI;
     public List<Spellcard> spellcardList;
     public string attackAnimParam;
     public string deployAnimParam;

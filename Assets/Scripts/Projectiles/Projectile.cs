@@ -20,7 +20,12 @@ public class Projectile : MonoBehaviour
     }
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform == target)
+        if (target && other.transform == target)
+        {
+            OnHitEffects(other);
+            Destroy(gameObject);
+        }
+        else if (!target && other.TryGetComponent(out Enemy isEnemy))
         {
             OnHitEffects(other);
             Destroy(gameObject);

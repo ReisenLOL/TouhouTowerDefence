@@ -19,3 +19,7 @@ MonoBehaviour:
   blockAmount: 2
   isCliffTower: 1
   canDetectAir: 0
+  playerFireRate: 0.4
+  playerDamage: 10
+  playerProjectileSpeed: 12
+  playerMoveSpeed: 6

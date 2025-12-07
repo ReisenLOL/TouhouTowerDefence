@@ -270,6 +270,8 @@ MonoBehaviour:
   deathColorChangeSpeed: 2
   onHitDamageNumber: {fileID: 0}
   towerID: Youmu
+  shortName: Youmu
+  thisTowerClass: 0
   focusedRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: d69a8d0f2b3164284a23a2fae7396801, type: 3}
   currentTargettingMode: 0

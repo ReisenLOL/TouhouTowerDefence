@@ -603,6 +603,7 @@ MonoBehaviour:
   deathColorChangeSpeed: 2
   onHitDamageNumber: {fileID: 0}
   towerID: Shanghai
+  shortName: Shanghai
   thisTowerClass: 2
   focusedRange: {fileID: 7306455127275621131, guid: f60e46434d7788bbc90dfbda5658b55b, type: 3}
   scatteredRange: {fileID: 7306455127275621131, guid: 4a58f7c30c194176abed11aa2281c582, type: 3}

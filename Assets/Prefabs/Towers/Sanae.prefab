@@ -349,6 +349,7 @@ MonoBehaviour:
   deathColorChangeSpeed: 2
   onHitDamageNumber: {fileID: 0}
   towerID: Sanae
+  shortName: Sanae
   thisTowerClass: 4
   focusedRange: {fileID: 7322529300519180303, guid: 4c0eb233adaea83f9aabdd7f89ffe0af, type: 3}
   scatteredRange: {fileID: 7322529300519180303, guid: 4c0eb233adaea83f9aabdd7f89ffe0af, type: 3}

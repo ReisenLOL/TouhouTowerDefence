@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("Game");
     }
 
     public void ReturnGame()

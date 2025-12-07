@@ -96,7 +96,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -124,6 +124,8 @@ MonoBehaviour:
   timeUntilAutoDestroy: 2
   target: {fileID: 0}
   damage: 0
+  hitParticles: {fileID: 0}
+  willBypassDefense: 0
   rb: {fileID: 2163185384319683408}
 --- !u!1 &8959733896276759086
 GameObject:

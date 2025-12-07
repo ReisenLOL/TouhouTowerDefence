@@ -152,7 +152,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -181,6 +181,7 @@ MonoBehaviour:
   target: {fileID: 0}
   damage: 0
   hitParticles: {fileID: 4112102572818408128, guid: ea1fd512f54f88cd8831f9da3f852ff3, type: 3}
+  willBypassDefense: 0
   rb: {fileID: -1067467149319061274}
 --- !u!96 &5011213107969050907
 TrailRenderer:

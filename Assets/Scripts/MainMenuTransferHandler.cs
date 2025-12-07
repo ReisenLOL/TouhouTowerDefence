@@ -9,6 +9,7 @@ public class MainMenuTransferHandler : MonoBehaviour
     {
         public string towerID;
         public int targettingMode;
+        public bool isPlayer;
     }
     public HashSet<SelectedTowerData> selectedTowers = new();
     public string mapIDSelected;

@@ -11,4 +11,9 @@ public class TowerStats : ScriptableObject
     public int blockAmount;
     public bool isCliffTower;
     public bool canDetectAir;
+    [Header("PLAYER TOWER STATS")] 
+    public float playerFireRate;
+    public float playerDamage;
+    public float playerProjectileSpeed;
+    public float playerMoveSpeed;
 }
